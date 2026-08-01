@@ -1,0 +1,10 @@
+{
+  "description": "Showcasing cutting-edge research in sustainable energy storage, this site connects academics and industry professionals with the Advanced Battery Materials Lab.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
