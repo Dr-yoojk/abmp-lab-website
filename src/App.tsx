@@ -6,6 +6,7 @@ import Research from './pages/Research'
 import Team from './pages/Team'
 import Publications from './pages/Publications'
 import News from './pages/News'
+import NewsDetail from './pages/NewsDetail'
 import Contact from './pages/Contact'
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
             <Route path="/team" element={<Team />} />
             <Route path="/publications" element={<Publications />} />
             <Route path="/news" element={<News />} />
+            <Route path="/news/:slug" element={<NewsDetail />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>

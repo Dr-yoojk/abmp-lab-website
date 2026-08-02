@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useFadeIn } from '../hooks/useFadeIn'
 import { NEWS } from '../data'
 
-const CATEGORIES = ['All', 'Research', 'Awards', 'People', 'Lab Life']
+const CATEGORIES = ['All', 'Research', 'Awards', 'Lab life']
 
 const CATEGORY_COLORS: Record<string, string> = {
   Research: '#003087',
   Awards: '#c8a84b',
-  People: '#2a7a4a',
-  'Lab Life': '#c0392b',
+  'Lab life': '#c0392b',
 }
 
 function PageHeader() {
@@ -42,14 +42,15 @@ function NewsGrid({ items }: { items: typeof NEWS }) {
       {items.map((item) => {
         const color = CATEGORY_COLORS[item.category] ?? '#003087'
         return (
-          <div
+          <Link
             key={item.id}
+            to={`/news/${item.slug}`}
             className="group bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col cursor-pointer"
           >
             {/* Photo */}
             <div className="relative h-48 bg-gray-100 overflow-hidden">
               <img
-                src={item.photo}
+                src={item.photos[0]}
                 alt={item.title}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
@@ -81,7 +82,7 @@ function NewsGrid({ items }: { items: typeof NEWS }) {
                 </svg>
               </div>
             </div>
-          </div>
+          </Link>
         )
       })}
     </div>

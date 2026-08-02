@@ -1,53 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useFadeIn } from '../hooks/useFadeIn'
+import { PUBLICATIONS, type Publication } from '../data'
+import { getFeaturedImage } from '../utils/featuredImages'
 
-// ── Real publication data ──────────────────────────────────────────────────
+const YEARS = [...new Set(PUBLICATIONS.map((p) => p.year))].sort((a, b) => b - a)
 
-interface Pub {
-  id: string
-  year: number
-  title: string
-  authors: string
-  journal: string
-  journalDisplay: string
-}
-
-const PUBS: Pub[] = [
-  {
-    id: 'p1',
-    year: 2026,
-    title: 'Concurrently Achieving 10 mAh cm⁻² and Ultralow Binder Content via Active-Surface-Guided Fibrillation for Fab-Scale Dry-Processed Lithium-ion Batteries',
-    authors: 'J. Park, H. Oh, J.H. Lim, S. Jung, N. Yoo, J.K. Yoo, K.M. Jeong, K.Y. Park',
-    journal: 'Advanced Energy Materials',
-    journalDisplay: 'ADVANCED ENERGY MATERIALS',
-  },
-  {
-    id: 'p2',
-    year: 2026,
-    title: 'Ultrahigh-Mass-Loading Electrodes With Enhanced Homogeneity Using a High-Concentration Slurry for Lithium-Ion Batteries',
-    authors: 'J.K. Park, W. Shin, W. Jo, H.J. Lee, W.Y. Jeon, J. Ahn, J. Yoon, Y.J. Jeong, J. Oh, J.K. Yoo',
-    journal: 'Carbon Energy',
-    journalDisplay: 'CARBON ENERGY',
-  },
-  {
-    id: 'p3',
-    year: 2025,
-    title: 'Enhancing Structural Flexibility in P2-type Ni-Mn-based Na-layered Cathodes for High Power-Capability and Fast Charging/Discharging Performance',
-    authors: 'B. Ku, J. Ahn, H. Lee, H. Ahn, J. Lee, H. Kweon, M. Choi, H.G. Jung, K. Ihm, E. Sim, J.K. Yoo, J. Kim',
-    journal: 'Energy Storage Materials',
-    journalDisplay: 'ENERGY STORAGE MATERIALS',
-  },
-  {
-    id: 'p4',
-    year: 2024,
-    title: 'A Fluorine-Free Binder with Organic-Inorganic Crosslinked Networks Enabling Structural Stability of Ni-Rich Layered Cathodes in Lithium-Ion Batteries',
-    authors: 'J. Jang, J. Ahn, J. Ahn, U. Jeong, J. Yoon, J.K. Park, W. Shin, M.J. Kang, M. Cho, J.K. Yoo',
-    journal: 'Advanced Functional Materials',
-    journalDisplay: 'ADVANCED FUNCTIONAL MATERIALS',
-  },
-]
-
-const YEARS = [2026, 2025, 2024]
+const GOOGLE_SCHOLAR_URL =
+  'https://scholar.google.com/citations?hl=ko&user=tZx98QoAAAAJ&view_op=list_works&sortby=pubdate'
+const ORCID_URL = 'https://orcid.org/0000-0002-9693-649X'
 
 // ── Page header ───────────────────────────────────────────────────────────
 
@@ -66,13 +26,14 @@ function PageHeader() {
         </p>
         <div className="flex gap-3 mt-8">
           {[
-            { label: 'Google Scholar', href: '#' },
-            { label: 'ORCID', href: '#' },
-            { label: 'ResearchGate', href: '#' },
+            { label: 'Google Scholar', href: GOOGLE_SCHOLAR_URL },
+            { label: 'ORCID', href: ORCID_URL },
           ].map((link) => (
             <a
               key={link.label}
               href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-sm font-medium text-white/80 hover:text-white border border-white/25 hover:border-white/50 px-4 py-1.5 rounded transition-all duration-150"
             >
               {link.label}
@@ -86,8 +47,15 @@ function PageHeader() {
 
 // ── Cover image placeholder ───────────────────────────────────────────────
 
-function CoverPlaceholder({ size }: { size: 'large' | 'small' }) {
+function CoverPlaceholder({ size, imageSrc }: { size: 'large' | 'small'; imageSrc?: string }) {
   if (size === 'large') {
+    if (imageSrc) {
+      return (
+        <div className="w-full h-56 border-b border-gray-100 overflow-hidden">
+          <img src={imageSrc} alt="Journal cover" className="w-full h-full object-cover" />
+        </div>
+      )
+    }
     return (
       <div className="w-full h-56 bg-gradient-to-br from-[#f0f4fb] to-[#dde6f5] flex flex-col items-center justify-center gap-2 border-b border-gray-100">
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" className="text-[#003087]/25">
@@ -96,6 +64,16 @@ function CoverPlaceholder({ size }: { size: 'large' | 'small' }) {
           <path d="M22 10l6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
         <span className="text-[11px] font-medium text-[#003087]/30 tracking-wide uppercase">Journal Cover</span>
+      </div>
+    )
+  }
+  if (imageSrc) {
+    return (
+      <div
+        className="w-14 flex-shrink-0 rounded-lg overflow-hidden border border-gray-100"
+        style={{ height: '72px' }}
+      >
+        <img src={imageSrc} alt="Journal cover" className="w-full h-full object-cover" />
       </div>
     )
   }
@@ -129,13 +107,16 @@ function FeaturedPublications() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {PUBS.map((pub) => (
-            <div
+          {PUBLICATIONS.slice(0, 4).map((pub, index) => (
+            <a
               key={pub.id}
+              href={`https://doi.org/${pub.doi}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group rounded-xl overflow-hidden border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col bg-white"
             >
-              {/* Cover image placeholder */}
-              <CoverPlaceholder size="large" />
+              {/* Cover image — data-provided coverImage first, then featured-N.jpg, then placeholder */}
+              <CoverPlaceholder size="large" imageSrc={pub.coverImage ?? getFeaturedImage(index + 1)} />
 
               {/* Card body */}
               <div className="p-5 flex flex-col flex-1">
@@ -145,7 +126,7 @@ function FeaturedPublications() {
                 </span>
 
                 {/* Title */}
-                <h3 className="text-[13.5px] font-semibold text-gray-900 leading-snug mb-3 flex-1 group-hover:text-[#003087] transition-colors duration-150">
+                <h3 className="text-[13.5px] font-semibold text-gray-900 leading-snug mb-3 flex-1 group-hover:text-[#003087] transition-colors duration-150 break-words [overflow-wrap:break-word] [word-break:normal]">
                   {pub.title}
                 </h3>
 
@@ -156,10 +137,10 @@ function FeaturedPublications() {
 
                 {/* Journal */}
                 <p className="text-[10.5px] font-bold tracking-[0.08em] text-[#003087] uppercase">
-                  {pub.journalDisplay}
+                  {pub.journal.toUpperCase()}
                 </p>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
@@ -169,7 +150,7 @@ function FeaturedPublications() {
 
 // ── Year section row ──────────────────────────────────────────────────────
 
-function YearSection({ year, pubs }: { year: number; pubs: Pub[] }) {
+function YearSection({ year, pubs }: { year: number; pubs: Publication[] }) {
   const { ref, visible } = useFadeIn()
 
   if (!pubs.length) return null
@@ -190,16 +171,19 @@ function YearSection({ year, pubs }: { year: number; pubs: Pub[] }) {
 
       <div className="space-y-2.5">
         {pubs.map((pub) => (
-          <div
+          <a
             key={pub.id}
+            href={`https://doi.org/${pub.doi}`}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group flex items-center gap-4 p-5 bg-white rounded-xl border border-gray-100 hover:border-[#003087]/20 hover:shadow-md transition-all duration-200 cursor-pointer"
           >
-            {/* Small thumbnail placeholder */}
-            <CoverPlaceholder size="small" />
+            {/* Small thumbnail (falls back to placeholder when no coverImage) */}
+            <CoverPlaceholder size="small" imageSrc={pub.coverImage} />
 
             {/* Text */}
             <div className="flex-1 min-w-0">
-              <h4 className="text-[15px] font-semibold text-gray-900 group-hover:text-[#003087] transition-colors duration-150 leading-snug mb-1.5">
+              <h4 className="text-[15px] font-semibold text-gray-900 group-hover:text-[#003087] transition-colors duration-150 leading-snug mb-1.5 break-words [overflow-wrap:break-word] [word-break:normal]">
                 {pub.title}
               </h4>
               <p className="text-sm text-gray-400 mb-1.5 truncate">{pub.authors}</p>
@@ -218,7 +202,7 @@ function YearSection({ year, pubs }: { year: number; pubs: Pub[] }) {
             >
               <path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-          </div>
+          </a>
         ))}
       </div>
     </div>
@@ -268,14 +252,16 @@ function PublicationList() {
         {/* Year sections */}
         <div className="space-y-12">
           {years.map((year) => (
-            <YearSection key={year} year={year} pubs={PUBS.filter((p) => p.year === year)} />
+            <YearSection key={year} year={year} pubs={PUBLICATIONS.filter((p) => p.year === year)} />
           ))}
         </div>
 
         {/* View All button */}
         <div className="mt-14 flex justify-center">
           <a
-            href="#"
+            href={GOOGLE_SCHOLAR_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-7 py-3 bg-[#003087] text-white text-sm font-semibold rounded hover:bg-[#002070] transition-colors duration-200"
           >
             View All Publications

@@ -1,13 +1,16 @@
-import kistLogo from '../imports/image-1.png'
+import kistLogo from '../imports/kist-logo.png'
 
 export default function Footer() {
   return (
     <footer className="bg-white border-t border-gray-100" style={{ backgroundColor: 'rgb(255,255,255)' }}>
       <div className="max-w-screen-xl mx-auto px-6 lg:px-10 py-12">
-        <div className="flex flex-col lg:flex-row items-center lg:items-center justify-between gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] items-center gap-8">
+
+          {/* Left: spacer to balance the logo column so the center block stays truly centered */}
+          <div className="hidden lg:block" aria-hidden="true" />
 
           {/* Center: all text content */}
-          <div className="flex flex-col items-center lg:items-center text-center flex-1">
+          <div className="flex flex-col items-center text-center">
             <p className="text-[13px] font-bold tracking-[0.12em] text-[#003087] uppercase mb-2">
               Advanced Battery Materials &amp; Process Laboratory
             </p>
@@ -38,7 +41,7 @@ export default function Footer() {
           </div>
 
           {/* Right: KIST logo */}
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 justify-self-center lg:justify-self-end">
             <img
               src={kistLogo}
               alt="Korea Institute of Science and Technology"

@@ -2,12 +2,10 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useFadeIn } from '../hooks/useFadeIn'
 import { PUBLICATIONS } from '../data'
-import slide1Img from '../imports/image-5.png'
-import slide2Img from '../imports/image-6.png'
+import { getFeaturedImage } from '../utils/featuredImages'
 
 const SLIDES = [
   {
-    image: slide1Img,
     label: 'ELECTRODE PROCESSING',
     title: 'Engineering the Electrode.',
     subtitle: 'Dry and wet process research for high-loading thick electrodes — LFP, NCM, and beyond.',
@@ -15,7 +13,6 @@ const SLIDES = [
     link: '/research',
   },
   {
-    image: slide2Img,
     label: 'DIGITAL TWIN',
     title: 'Simulate Before You Build',
     subtitle: 'GeoDict and EDEM-based microstructure modeling to predict electrode performance before fabrication.',
@@ -23,7 +20,6 @@ const SLIDES = [
     link: '/research',
   },
   {
-    image: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1920&h=800&fit=crop&auto=format',
     label: 'JOIN US',
     title: 'Research With Purpose.',
     subtitle: 'We welcome student researchers, research interns, Ph.D. candidates, and postdoctoral fellows passionate about battery manufacturing.',
@@ -57,15 +53,20 @@ function HeroSlider() {
     }, 300)
   }
 
+  const goPrev = () => goTo((current - 1 + SLIDES.length) % SLIDES.length)
+  const goNext = () => goTo((current + 1) % SLIDES.length)
+
   const slide = SLIDES[current]
 
   return (
     <div className="relative w-full overflow-hidden bg-gray-900" style={{ height: '560px' }}>
-      {/* Background image */}
+      {/* Background placeholder */}
       <div
         className={`absolute inset-0 transition-opacity duration-500 ${transitioning ? 'opacity-0' : 'opacity-100'}`}
       >
-        <img src={slide.image} alt={slide.title} className="w-full h-full object-cover" />
+        <div className="w-full h-full bg-gray-800 flex items-center justify-center">
+          <span className="text-white/30 text-sm font-medium tracking-wide uppercase">Image coming soon</span>
+        </div>
         <div
           className="absolute inset-0"
           style={{
@@ -73,6 +74,22 @@ function HeroSlider() {
           }}
         />
       </div>
+
+      {/* Arrow navigation */}
+      <button
+        onClick={goPrev}
+        aria-label="Previous slide"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/15 hover:bg-white/30 text-white shadow-md flex items-center justify-center text-xl font-medium transition-colors duration-150"
+      >
+        ‹
+      </button>
+      <button
+        onClick={goNext}
+        aria-label="Next slide"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/15 hover:bg-white/30 text-white shadow-md flex items-center justify-center text-xl font-medium transition-colors duration-150"
+      >
+        ›
+      </button>
 
       {/* Content */}
       <div className="relative z-10 h-full flex items-center">
@@ -316,43 +333,52 @@ function FeaturedPublications() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {featured.map((pub, i) => (
-            <a
-              key={i}
-              href={`https://doi.org/${pub.doi}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
-            >
-              {/* Journal cover */}
-              <div className="relative h-44 bg-gray-100 overflow-hidden">
-                <img
-                  src={pub.coverImage}
-                  alt={pub.journal}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                <div className="absolute bottom-3 left-3 flex gap-1.5 flex-wrap">
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded text-white" style={{ backgroundColor: '#003087' }}>
-                    {pub.year}
-                  </span>
-                  {pub.isCoverArticle && (
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[#c8a84b] text-white">
-                      Cover
-                    </span>
+          {featured.map((pub, i) => {
+            const coverImage = pub.coverImage ?? getFeaturedImage(i + 1)
+            return (
+              <a
+                key={pub.id}
+                href={`https://doi.org/${pub.doi}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
+              >
+                {/* Journal cover */}
+                <div className="relative h-44 bg-gray-100 overflow-hidden">
+                  {coverImage ? (
+                    <img
+                      src={coverImage}
+                      alt={pub.journal}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-[#f0f4fb] to-[#dde6f5] flex items-center justify-center">
+                      <span className="text-[11px] font-medium text-[#003087]/30 tracking-wide uppercase">Journal Cover</span>
+                    </div>
                   )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                  <div className="absolute bottom-3 left-3 flex gap-1.5 flex-wrap">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded text-white" style={{ backgroundColor: '#003087' }}>
+                      {pub.year}
+                    </span>
+                    {pub.isCoverArticle && (
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[#c8a84b] text-white">
+                        Cover
+                      </span>
+                    )}
+                  </div>
                 </div>
-              </div>
 
-              <div className="p-4 flex flex-col flex-1">
-                <p className="text-[11px] text-[#003087] font-semibold mb-2 italic">{pub.journal}</p>
-                <h3 className="text-sm font-semibold text-gray-900 leading-snug mb-3 flex-1 group-hover:text-[#003087] transition-colors duration-150 line-clamp-3">
-                  {pub.title}
-                </h3>
-                <p className="text-xs text-gray-400">{pub.authors}</p>
-              </div>
-            </a>
-          ))}
+                <div className="p-4 flex flex-col flex-1">
+                  <p className="text-[11px] text-[#003087] font-semibold mb-2 italic">{pub.journal}</p>
+                  <h3 className="text-sm font-semibold text-gray-900 leading-snug mb-3 flex-1 group-hover:text-[#003087] transition-colors duration-150 line-clamp-3">
+                    {pub.title}
+                  </h3>
+                  <p className="text-xs text-gray-400">{pub.authors}</p>
+                </div>
+              </a>
+            )
+          })}
         </div>
       </div>
     </section>
@@ -362,7 +388,8 @@ function FeaturedPublications() {
 // ── Publication List by Year ───────────────────────────────────────────────────
 function PublicationsByYear() {
   const { ref, visible } = useFadeIn()
-  const years = [2026, 2025, 2024]
+  // Teaser for the home page — most recent 3 years only; the full archive lives on /publications.
+  const years = [...new Set(PUBLICATIONS.map((p) => p.year))].sort((a, b) => b - a).slice(0, 3)
 
   return (
     <section style={{ backgroundColor: '#F8F9FA' }} className="py-24">
@@ -390,17 +417,21 @@ function PublicationsByYear() {
                   <div className="flex-1 h-px bg-gray-200" />
                 </div>
                 <div className="space-y-3">
-                  {pubs.map((pub, i) => (
+                  {pubs.map((pub) => (
                     <a
-                      key={i}
+                      key={pub.id}
                       href={`https://doi.org/${pub.doi}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group flex items-start gap-4 p-4 bg-white rounded-lg border border-gray-100 hover:border-[#003087]/20 hover:shadow-md transition-all duration-200"
                     >
                       {/* Journal thumbnail */}
-                      <div className="w-12 h-14 rounded overflow-hidden flex-shrink-0 bg-gray-100">
-                        <img src={pub.coverImage} alt={pub.journal} className="w-full h-full object-cover" />
+                      <div className="w-12 h-14 rounded overflow-hidden flex-shrink-0 bg-gray-100 flex items-center justify-center">
+                        {pub.coverImage ? (
+                          <img src={pub.coverImage} alt={pub.journal} className="w-full h-full object-cover" />
+                        ) : (
+                          <span className="text-[8px] font-medium text-[#003087]/30 uppercase text-center leading-tight px-0.5">Cover</span>
+                        )}
                       </div>
 
                       <div className="flex-1 min-w-0">
@@ -410,16 +441,22 @@ function PublicationsByYear() {
                         <p className="text-xs text-gray-500 mb-1.5">{pub.authors}</p>
                         <div className="flex items-center gap-2 flex-wrap">
                           <span className="text-xs italic text-gray-500">{pub.journal}</span>
-                          <span className="text-gray-300">·</span>
-                          <span className="text-xs text-gray-400">{pub.volume}</span>
+                          {pub.volume && (
+                            <>
+                              <span className="text-gray-300">·</span>
+                              <span className="text-xs text-gray-400">{pub.volume}</span>
+                            </>
+                          )}
                           {pub.isCorresponding && (
                             <span className="text-[10px] px-1.5 py-0.5 rounded border border-[#003087]/30 text-[#003087] font-medium">
                               Corresponding Author
                             </span>
                           )}
-                          <span className="text-[10px] px-1.5 py-0.5 rounded bg-gray-100 text-gray-600 font-medium">
-                            IF {pub.impactFactor}
-                          </span>
+                          {pub.impactFactor && (
+                            <span className="text-[10px] px-1.5 py-0.5 rounded bg-gray-100 text-gray-600 font-medium">
+                              IF {pub.impactFactor}
+                            </span>
+                          )}
                         </div>
                       </div>
 

@@ -1,3 +1,17 @@
+import journalCoverConcurrently from '../imports/journal-cover-concurrently.jpg'
+import journalCoverUltrahigh from '../imports/journal-cover-ultrahigh.jpg'
+import journalCoverEnhancing from '../imports/journal-cover-enhancing.jpg'
+import journalCoverFluorine from '../imports/journal-cover-fluorine.jpg'
+import journalCoverStable from '../imports/journal-cover-stable.jpg'
+import journalCoverGel from '../imports/journal-cover-gel.jpg'
+import journalCoverHighly from '../imports/journal-cover-highly.jpg'
+import journalCoverSynergetic from '../imports/journal-cover-synergetic.jpg'
+import journalCoverOrganosilicon from '../imports/journal-cover-organosilicon.jpg'
+import journalCoverMultifunctional from '../imports/journal-cover-multifunctional.jpg'
+import journalCoverK15vopo4f05 from '../imports/journal-cover-k15vopo4f05.jpg'
+import labLifeHanbinBirthday1 from '../imports/lab-life-hanbin-birthday-1.jpg'
+import labLifeHanbinBirthday2 from '../imports/lab-life-hanbin-birthday-2.jpg'
+
 // ── Site-wide data ────────────────────────────────────────────────────────────
 
 export const PI = {
@@ -122,189 +136,256 @@ export const ALUMNI: TeamMember[] = [
 ]
 
 export interface Publication {
+  id: string
   title: string
   authors: string
   journal: string
   year: number
-  volume: string
   doi: string
-  impactFactor: number
-  isCorresponding: boolean
-  coverImage: string
+  volume?: string
+  impactFactor?: number
+  isCorresponding?: boolean
+  coverImage?: string
   isCoverArticle?: boolean
   abstract?: string
 }
 
+// Single source of truth for lab publications — the Publications page and
+// the Home page "Featured Publications" section both read from this array,
+// so updating it here keeps both pages in sync.
 export const PUBLICATIONS: Publication[] = [
-  // 2026
   {
-    title: 'Scalable Dry Electrode Fabrication via Sequential PTFE Fibrillation and Hot-Calendering for High-Energy Lithium-Ion Batteries',
-    authors: 'Kim, J., Park, S., Lee, H., Yoo, J.-K.',
+    id: 'p1',
+    year: 2026,
+    title: 'Concurrently Achieving 10 mAh cm⁻² and Ultralow Binder Content via Active-Surface-Guided Fibrillation for Fab-Scale Dry-Processed Lithium-ion Batteries',
+    authors: 'J. Park, H. Oh, J.H. Lim, S. Jung, N. Yoo, J.K. Yoo, K.M. Jeong, K.Y. Park',
     journal: 'Advanced Energy Materials',
+    doi: '10.1002/aenm.202504005',
+    coverImage: journalCoverConcurrently,
+  },
+  {
+    id: 'p2',
     year: 2026,
-    volume: '16, 2501124',
-    doi: '10.1002/aenm.202501124',
-    impactFactor: 24.4,
-    isCorresponding: true,
-    coverImage: 'https://images.unsplash.com/photo-1609564134002-5ec3fcba0d05?w=120&h=160&fit=crop&auto=format',
-    isCoverArticle: true,
+    title: 'Ultrahigh-Mass-Loading Electrodes With Enhanced Homogeneity Using a High-Concentration Slurry for Lithium-Ion Batteries',
+    authors: 'J.K. Park, W. Shin, W. Jo, H.J. Lee, W.Y. Jeon, J. Ahn, J. Yoon, Y.J. Jeong, J. Oh, J.K. Yoo',
+    journal: 'Carbon Energy',
+    doi: '10.1002/cey2.70108',
+    coverImage: journalCoverUltrahigh,
   },
   {
-    title: 'Machine Learning-Guided Design of Experiments for Dry Electrode Process Parameter Optimization',
-    authors: 'Kwon, M., Yoo, J.-K.',
-    journal: 'Journal of Power Sources',
-    year: 2026,
-    volume: '625, 235802',
-    doi: '10.1016/j.jpowsour.2026.235802',
-    impactFactor: 9.2,
-    isCorresponding: true,
-    coverImage: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=120&h=160&fit=crop&auto=format',
-  },
-  // 2025
-  {
-    title: 'Microstructure-Resolved Digital Twin of Li-Ion Battery Composite Cathodes Using GeoDict Finite-Element Platform',
-    authors: 'Park, S., Jung, Y., Yoo, J.-K.',
-    journal: 'Journal of The Electrochemical Society',
+    id: 'p3',
     year: 2025,
-    volume: '172, 020548',
-    doi: '10.1149/1945-7111/ad8c4a',
-    impactFactor: 3.9,
-    isCorresponding: true,
-    coverImage: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=120&h=160&fit=crop&auto=format',
-    isCoverArticle: true,
-  },
-  {
-    title: 'Fluorine-Free Carboxymethyl Cellulose / Styrene-Butadiene Rubber Binder System for High-Areal-Capacity NMC811 Cathodes',
-    authors: 'Jung, Y., Seo, D., Yoo, J.-K.',
-    journal: 'Electrochimica Acta',
-    year: 2025,
-    volume: '503, 144872',
-    doi: '10.1016/j.electacta.2025.144872',
-    impactFactor: 6.9,
-    isCorresponding: true,
-    coverImage: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=120&h=160&fit=crop&auto=format',
-  },
-  {
-    title: 'Single-Walled Carbon Nanotube Conductive Network Percolation in Thick NMC622 Electrodes: Effect of Dispersion Protocol',
-    authors: 'Lee, H., Kim, J., Yoo, J.-K.',
-    journal: 'ACS Applied Materials & Interfaces',
-    year: 2025,
-    volume: '17, 12441–12453',
-    doi: '10.1021/acsami.4c18341',
-    impactFactor: 9.5,
-    isCorresponding: true,
-    coverImage: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=120&h=160&fit=crop&auto=format',
-  },
-  // 2024
-  {
-    title: 'Tortuosity Factor Measurement of Thick Graphite Anodes via Electrochemical Impedance Spectroscopy and X-ray Tomography',
-    authors: 'Park, S., Lee, H., Yoo, J.-K.',
-    journal: 'Carbon',
-    year: 2024,
-    volume: '218, 118712',
-    doi: '10.1016/j.carbon.2024.118712',
-    impactFactor: 10.9,
-    isCorresponding: true,
-    coverImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=160&fit=crop&auto=format',
-    isCoverArticle: true,
-  },
-  {
-    title: 'Comparative Study of Solvent-Free and Slurry-Cast Electrodes: Microstructure, Mechanical Integrity, and Rate Capability',
-    authors: 'Kim, J., Yoo, J.-K.',
+    title: 'Enhancing Structural Flexibility in P2-type Ni-Mn-based Na-layered Cathodes for High Power-Capability and Fast Charging/Discharging Performance',
+    authors: 'B. Ku, J. Ahn, H. Lee, H. Ahn, J. Lee, H. Kweon, M. Choi, H.G. Jung, K. Ihm, E. Sim, J.K. Yoo, J. Kim',
     journal: 'Energy Storage Materials',
+    doi: '10.1016/j.ensm.2024.103930',
+    coverImage: journalCoverEnhancing,
+  },
+  {
+    id: 'p4',
     year: 2024,
-    volume: '71, 103618',
-    doi: '10.1016/j.ensm.2024.103618',
-    impactFactor: 18.9,
-    isCorresponding: true,
-    coverImage: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=120&h=160&fit=crop&auto=format',
+    title: 'A Fluorine-Free Binder with Organic-Inorganic Crosslinked Networks Enabling Structural Stability of Ni-Rich Layered Cathodes in Lithium-Ion Batteries',
+    authors: 'J. Jang, J. Ahn, J. Ahn, U. Jeong, J. Yoon, J.K. Park, W. Shin, M.J. Kang, M. Cho, J.K. Yoo',
+    journal: 'Advanced Functional Materials',
+    doi: '10.1002/adfm.202410866',
+    coverImage: journalCoverFluorine,
+  },
+  {
+    id: 'p5',
+    year: 2023,
+    title: 'Stable High-Voltage Operation of Oxygen Redox in P2-type Na-Layered Oxide Cathode at Fast Discharging via Enhanced Kinetics',
+    authors: 'B. Ku, H. Ahn, S. Lee, J. Ahn, M. Choi, J. Kang, H. Park, J. Kim, A.Y. Kim, J.K. Yoo',
+    journal: 'Energy Storage Materials',
+    doi: '10.1016/j.ensm.2023.102952',
+    coverImage: journalCoverStable,
+  },
+  {
+    id: 'p6',
+    year: 2023,
+    title: 'Gel Polymer Electrolyte with Improved Adhesion Property Based on Poly(4-hydroxybutyl acrylate) for Lithium-Ion Batteries',
+    authors: 'H.J. Choi, Y.J. Jeong, H.S. Choi, J.S. Kim, J. Ahn, W. Shin, B.M. Jung, E. Cho, J.K. Yoo',
+    journal: 'Chemical Engineering Journal',
+    doi: '10.1016/j.cej.2023.145673',
+    coverImage: journalCoverGel,
+  },
+  {
+    id: 'p7',
+    year: 2023,
+    title: 'Highly Efficient Oxidation of Single-Walled Carbon Nanotubes in Liquid Crystalline Phase and Dispersion for Applications in Li-Ion Batteries',
+    authors: 'J.H. Kim, J. Ahn, H.M. Kim, J.Y. Cho, D.G. Lee, Y. Oh, J.H. Park, J.S. Kim, J.K. Yoo',
+    journal: 'Chemical Engineering Journal',
+    doi: '10.1016/j.cej.2023.141350',
+    coverImage: journalCoverHighly,
+  },
+  {
+    id: 'p8',
+    year: 2022,
+    title: 'Synergetic Effect of Hybrid Conductive Additives for High-Capacity and Excellent Cyclability in Si Anodes',
+    authors: 'B.I. Yoo, H.M. Kim, M.J. Choi, J.K. Yoo',
+    journal: 'Nanomaterials',
+    doi: '10.3390/nano12193354',
+    coverImage: journalCoverSynergetic,
+  },
+  {
+    id: 'p9',
+    year: 2022,
+    title: 'A Novel Organosilicon-Type Binder for LiCoO2 Cathode in Li-Ion Batteries',
+    authors: 'J. Ahn, H.G. Im, Y. Lee, D. Lee, H. Jang, Y. Oh, K. Chung, T. Park, M.K. Um, J.K. Yoo',
+    journal: 'Energy Storage Materials',
+    doi: '10.1016/j.ensm.2022.04.005',
+    coverImage: journalCoverOrganosilicon,
+  },
+  {
+    id: 'p10',
+    year: 2021,
+    title: 'Multifunctional Additives for High-Energy-Density Lithium-Ion Batteries: Improved Conductive Additive/Binder Networks and Enhanced Electrochemical Properties',
+    authors: 'J. Ahn, B. Park, J. Kim, M.K. Um, J.W. Yi, J.K. Yoo',
+    journal: 'ACS Applied Materials & Interfaces',
+    doi: '10.1021/acsami.1c00848',
+    coverImage: journalCoverMultifunctional,
+  },
+  {
+    id: 'p11',
+    year: 2021,
+    title: 'K1.5VOPO4F0.5: A Novel High-Power and High-Voltage Cathode for Rechargeable K-Ion Batteries',
+    authors: 'H. Park, W. Ko, Y. Lee, J. Kang, J. Ahn, J.K. Yoo, J. Kim',
+    journal: 'Journal of Materials Chemistry A',
+    doi: '10.1039/D1TA02247D',
+    coverImage: journalCoverK15vopo4f05,
   },
 ]
 
 export const RESEARCH_AREAS = [
   {
     id: 'dry-electrode',
-    title: 'Dry Electrode Process',
+    title: 'Dry Electrode Processing',
     subtitle: 'Solvent-Free Fabrication',
-    description: 'We develop scalable dry electrode manufacturing using PTFE fibrillation technology, entirely eliminating toxic NMP solvents. Our process achieves electrode densities and capacities competitive with conventional wet-slurry methods while dramatically reducing energy consumption and environmental impact.',
+    description: 'We develop scalable, solvent-free dry electrode manufacturing based on PTFE fibrillation. Our active-surface-guided fibrillation approach, achieved via carbon-nanotube-coated active materials, reduces kneading time by over 75% while enabling fab-scale (>100 g batch) electrodes with industrially relevant areal capacities exceeding 10 mAh cm⁻² at ultralow binder content — all while remaining compatible with roll-to-roll manufacturing.',
     details: [
-      'PTFE fibrillation at controlled shear rates',
-      'Hot-calendering parameter optimization',
-      'Adhesion mechanics and delamination prevention',
-      'Pilot-scale roll-to-roll processing',
+      'Active-surface-guided PTFE fibrillation',
+      'Carbon-nanotube-coated active material design',
+      'Fab-scale (>100 g) roll-to-roll processing',
+      'Ultralow binder content, NMP-free process',
     ],
     image: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&h=600&fit=crop&auto=format',
     color: '#003087',
   },
   {
-    id: 'geodict',
-    title: 'GeoDict Digital Twin',
-    subtitle: 'Computational Microstructure',
-    description: 'Using FIB-SEM tomography and the GeoDict simulation platform, we construct voxel-accurate 3D models of composite electrodes. These digital twins enable virtual prediction of tortuosity, effective transport coefficients, and electrochemical performance before a single physical cell is assembled.',
+    id: 'thick-slurry',
+    title: 'Thick Electrode & High-Concentration Slurry',
+    subtitle: 'Wet-Slurry Manufacturing',
+    description: 'Alongside dry processing, we advance wet-slurry routes to ultrahigh-mass-loading electrodes for next-generation energy storage. Using an integrated binder–CNT composite (IBC) dispersion, we formulate high-solids-content (>77 wt%) slurries that deliver cathodes exceeding 12 mAh cm⁻² with improved coating homogeneity — work now extending into a dedicated national project on high-concentration slurry manufacturing for large-scale energy storage systems.',
     details: [
-      'FIB-SEM 3D tomographic reconstruction',
-      'Tortuosity and effective diffusivity prediction',
-      'Doyle-Fuller-Newman (DFN) model coupling',
-      'Virtual electrode design and optimization',
+      'High-solids-content (>77 wt%) slurry formulation',
+      'Integrated binder–CNT composite (IBC) dispersion',
+      'Ultrahigh areal capacity (>12 mAh cm⁻²) electrodes',
+      'Coating homogeneity for large-format ESS cells',
     ],
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop&auto=format',
+    image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop&auto=format',
     color: '#1a4aad',
   },
   {
     id: 'fluorine-free',
-    title: 'Fluorine-Free Binder',
+    title: 'Fluorine-Free Binder Development',
     subtitle: 'Sustainable Electrode Chemistry',
-    description: 'PVDF binders require toxic NMP solvent and are difficult to recycle. We engineer aqueous binder alternatives — CMC/SBR, PAA, and sodium alginate — that match or exceed PVDF performance while enabling water-based processing and end-of-life electrode recovery.',
+    description: "PVDF, the industry-standard binder, requires toxic NMP solvent and is increasingly restricted under PFAS regulations. We design fluorine-free alternatives — organosilicon and hydroxyl-rich siloxane nanohybrid binders — that match or exceed PVDF's adhesion and cycling performance on high-nickel and LiCoO2 cathodes, while eliminating fluorine chemistry entirely.",
     details: [
-      'CMC/SBR and PAA binder formulation',
-      'Interfacial adhesion and cohesion analysis',
-      'Cycling stability under high stress conditions',
-      'End-of-life recycle compatibility',
+      'Organosilicon and siloxane nanohybrid binder design',
+      'High-nickel (NCM811) and LiCoO2 cathode compatibility',
+      'PFAS-free binder strategy development',
+      'Adhesion, cohesion, and cycling stability evaluation',
     ],
     image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop&auto=format',
     color: '#2a5fc4',
   },
   {
     id: 'cnt',
-    title: 'CNT Conductive Additive',
+    title: 'Carbon Nanotube Conductive Networks',
     subtitle: 'Carbon Nanotube Networks',
-    description: 'Single- and multi-walled carbon nanotubes form percolating conductive networks at far lower loading than carbon black, enabling thicker, higher-energy electrodes. We study dispersion protocols, surface functionalization, and network connectivity to maximize electronic conductivity.',
+    description: 'Building on more than a decade of carbon nanotube dispersion and conductive-additive R&D — including multiple technology transfers to industry — we engineer SWCNT and hybrid CB/SWCNT conductive networks. Mild oxidation of SWCNTs in their liquid crystalline phase enables dispersant-free debundling, while hybrid CB/SWCNT additives improve cycling retention in silicon-based anodes.',
     details: [
-      'SWCNT and MWCNT dispersion engineering',
-      'Percolation threshold and network topology',
-      'Surface chemistry and functionalization',
-      'Conductive network in thick electrodes (>200 µm)',
+      'SWCNT liquid-crystalline-phase oxidation and dispersion',
+      'Hybrid CB/SWCNT conductive additive design',
+      'Dispersant-free debundling methods',
+      'Industry technology transfer track record',
     ],
     image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=600&fit=crop&auto=format',
     color: '#003087',
   },
   {
-    id: 'thick-electrode',
-    title: 'Thick Electrode Analysis',
-    subtitle: 'High-Energy Electrode Design',
-    description: 'Thick electrodes (>200 µm) offer high areal capacity but suffer from ion transport limitations and mechanical fragility. We characterize rate-limiting phenomena using EIS, GITT, and X-ray tomography, then design electrode architectures that overcome these barriers.',
+    id: 'geodict',
+    title: 'Digital Twin & Microstructure Simulation',
+    subtitle: 'Computational Microstructure',
+    description: 'In collaboration with our postdoctoral research team, we use the GeoDict simulation platform to build digital twins of composite electrode microstructures. These models let us evaluate tortuosity, transport pathways, and process-performance relationships computationally — before a single physical cell is built.',
     details: [
-      'EIS and GITT-based transport analysis',
-      'X-ray CT and FIB-SEM characterization',
-      'Pore structure gradient engineering',
-      'Mechanical integrity under cycling stress',
+      'GeoDict-based digital twin construction',
+      '3D electrode microstructure modeling',
+      'Tortuosity and transport-pathway analysis',
+      'Simulation-guided process optimization',
     ],
-    image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop&auto=format',
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop&auto=format',
     color: '#1a4aad',
   },
   {
-    id: 'doe',
-    title: 'Design of Experiments',
-    subtitle: 'Statistical Process Optimization',
-    description: 'Complex electrode formulations have large multi-dimensional parameter spaces. We apply response surface methodology, Box-Behnken design, and machine learning to efficiently navigate this space — reducing optimization experiments by 70% compared to one-factor-at-a-time approaches.',
+    id: 'silicon-anode',
+    title: 'Silicon Anode Materials',
+    subtitle: 'High-Capacity Anode Design',
+    description: "Silicon's high theoretical capacity comes with significant volume-expansion challenges during cycling. We are advancing porous silicon anode architectures and high-capacity, high-efficiency silicon materials for fast-charging, high-energy-density lithium-ion cells, currently supported by two national development programs.",
     details: [
-      'Response Surface Methodology (RSM)',
-      'Box-Behnken and Central Composite Design',
-      'Machine learning-guided optimization',
-      'Multi-objective Pareto front analysis',
+      'Porous silicon anode architecture design',
+      'Fast-charging silicon material development',
+      'Volume-expansion mitigation via conductive networks',
+      'Cell-level integration and scale-up',
     ],
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&auto=format',
     color: '#2a5fc4',
+  },
+]
+
+export interface Project {
+  agencyCode: string
+  agency: string
+  title: string
+  period: string
+  status: string
+}
+
+// Sorted by start date, most recent first.
+export const CURRENT_PROJECTS: Project[] = [
+  {
+    agencyCode: 'NRF',
+    agency: '한국연구재단',
+    title: '3D 테셀레이션 구조 기반 고출력 고안전 폼팩터프리 전지 설계 및 공정 핵심기술 개발',
+    period: '2026.07 – 2030.12',
+    status: 'Ongoing',
+  },
+  {
+    agencyCode: 'NRF',
+    agency: '한국연구재단',
+    title: '단계적 접근을 통한 고안전성 비수계 리튬이온전지용 SAFE 발화 억제 소재 개발',
+    period: '2025.04 – 2029.12',
+    status: 'Ongoing',
+  },
+  {
+    agencyCode: 'KEIT',
+    agency: '한국산업기술기획평가원',
+    title: '급속충전이 가능한 고에너지밀도 리튬이온전지용 고효율 실리콘 음극 소재 개발',
+    period: '2024.04 – 2027.12',
+    status: 'Ongoing',
+  },
+  {
+    agencyCode: 'COMPA',
+    agency: '과학기술사업화진흥원',
+    title: '차세대 이차전지용 다공성 실리콘 음극재 기술고도화 및 실용화 제조기술 개발',
+    period: '2023.04 – 2027.03',
+    status: 'Ongoing',
+  },
+  {
+    agencyCode: 'NRF',
+    agency: '한국연구재단',
+    title: '고에너지밀도 리튬이차전지용 후막전극 제조를 위한 고농도 슬러리 제조공정 개발',
+    period: '2022.01 – 2026.12',
+    status: 'Ongoing',
   },
 ]
 
@@ -332,69 +413,24 @@ export const HERO_SLIDES = [
   },
 ]
 
-export const NEWS = [
+export interface NewsItem {
+  id: number
+  slug: string
+  category: string
+  date: string
+  title: string
+  excerpt: string
+  photos: string[]
+}
+
+export const NEWS: NewsItem[] = [
   {
     id: 1,
-    category: 'Research',
-    date: 'June 15, 2026',
-    title: 'ABMP Lab paper selected as cover article in Advanced Energy Materials',
-    excerpt: 'Our recent work on scalable dry electrode fabrication was selected as the cover article for the July 2026 issue of Advanced Energy Materials.',
-    photo: 'https://images.unsplash.com/photo-1609564134002-5ec3fcba0d05?w=600&h=400&fit=crop&auto=format',
-  },
-  {
-    id: 2,
-    category: 'Awards',
-    date: 'May 22, 2026',
-    title: 'Dr. Yoo receives the KIST Outstanding Researcher Award 2026',
-    excerpt: 'Dr. Jung-Keun Yoo was honored with the KIST Outstanding Researcher Award in recognition of his contributions to sustainable battery electrode manufacturing.',
-    photo: 'https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=600&h=400&fit=crop&auto=format',
-  },
-  {
-    id: 3,
-    category: 'People',
-    date: 'April 10, 2026',
-    title: 'Jiyeon Kim wins Best Poster at the ECS Spring 2026 Meeting',
-    excerpt: 'Ph.D. candidate Jiyeon Kim received the Best Poster Award at the Electrochemical Society Spring 2026 Meeting in Seattle for her work on PTFE fibrillation mechanics.',
-    photo: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=400&fit=crop&auto=format',
-  },
-  {
-    id: 4,
-    category: 'Lab Life',
-    date: 'March 3, 2026',
-    title: 'ABMP Lab welcomes three new M.S. candidates for Spring 2026',
-    excerpt: 'We are excited to welcome Minjun Kwon, Dahye Seo, and Chanho Bae as new graduate students to the lab this semester.',
-    photo: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&h=400&fit=crop&auto=format',
-  },
-  {
-    id: 5,
-    category: 'Research',
-    date: 'February 18, 2026',
-    title: 'New NRF grant awarded for fluorine-free binder development',
-    excerpt: 'ABMP Lab received a 3-year National Research Foundation grant to develop next-generation fluorine-free binder systems for sustainable battery electrode manufacturing.',
-    photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop&auto=format',
-  },
-  {
-    id: 6,
-    category: 'Awards',
-    date: 'January 8, 2026',
-    title: 'Tech transfer agreement signed with leading battery manufacturer',
-    excerpt: 'ABMP Lab has completed its fourth technology transfer, licensing dry electrode process know-how to a major battery cell manufacturer in Korea.',
-    photo: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop&auto=format',
-  },
-  {
-    id: 7,
-    category: 'Lab Life',
-    date: 'December 15, 2025',
-    title: 'ABMP Lab end-of-year symposium and team dinner',
-    excerpt: 'The lab gathered to celebrate a productive 2025 with presentations from all lab members and a dinner at a traditional Korean restaurant in Seongbuk.',
-    photo: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=600&h=400&fit=crop&auto=format',
-  },
-  {
-    id: 8,
-    category: 'People',
-    date: 'November 20, 2025',
-    title: 'Jihwan Cho successfully defends Ph.D. dissertation',
-    excerpt: 'Congratulations to Dr. Jihwan Cho on the successful defense of his dissertation on dry electrode process scale-up. He will join Samsung SDI as a senior engineer.',
-    photo: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&h=400&fit=crop&auto=format',
+    slug: 'han-bin-songs-birthday',
+    category: 'Lab life',
+    date: 'July 10, 2026',
+    title: "Han Bin Song's Birthday",
+    excerpt: "The lab celebrated Han Bin Song's birthday with cake and good cheer!",
+    photos: [labLifeHanbinBirthday1, labLifeHanbinBirthday2],
   },
 ]

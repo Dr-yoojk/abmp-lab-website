@@ -19,7 +19,14 @@
       "PowerShell(Get-Command choco -ErrorAction SilentlyContinue)",
       "PowerShell(winget install --id GitHub.cli -e --accept-package-agreements --accept-source-agreements)",
       "Bash(git init *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git config *)",
+      "Bash(git push *)",
+      "Bash(git remote *)",
+      "Bash(git fetch *)",
+      "Bash(npx tsc *)",
+      "Bash(file \"/c/Users/lepto/Desktop/저널_Concurrently A.jpg\" \"/c/Users/lepto/Desktop/저널_Ultrahigh-Mass-Loading E.jpg\" \"/c/Users/lepto/Desktop/저널_Enhancing structural f.gif\" \"/c/Users/lepto/Desktop/저널_A Fluorine-Free Binder w.jpg\")"
     ]
   }
 }

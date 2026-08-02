@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import abmpLogo from '../imports/image.png'
+import abmpLogo from '../imports/abmp-lab-wordmark.png'
 
 const TEAM_DROPDOWN = [
   { label: 'PI', href: '/team?section=pi' },
@@ -53,14 +53,14 @@ export default function Nav() {
         }`}
       >
         <div className="max-w-screen-xl mx-auto px-6 lg:px-10">
-          <div className="flex items-center justify-between h-[72px] border border-black">
+          <div className="flex items-center justify-between h-20">
 
             {/* Left: ABMP Lab logo image */}
             <Link to="/" className="flex-shrink-0 flex items-center">
               <img
                 src={abmpLogo}
                 alt="ABMP Lab — Dr. Jung-Keun Yoo"
-                className="h-9 w-auto object-contain border border-black"
+                className="h-10 w-auto object-contain"
               />
             </Link>
 
@@ -200,7 +200,7 @@ export default function Nav() {
         </div>
       </nav>
       {/* Spacer to prevent content going under fixed nav */}
-      <div className="h-[72px]" />
+      <div className="h-20" />
     </>
   )
 }

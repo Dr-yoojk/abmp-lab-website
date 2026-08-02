@@ -1,6 +1,18 @@
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useFadeIn } from '../hooks/useFadeIn'
+import piPhoto from '../imports/pi-jungkeun-yoo.jpg'
+import jeongHyunjiPhoto from '../imports/team-jeong-hyunji.jpg'
+import songHanbinPhoto from '../imports/team-song-hanbin.jpg'
+import leeMinsooPhoto from '../imports/team-lee-minsoo.jpg'
+import shinWoohyeonPhoto from '../imports/team-shin-woohyeon.jpg'
+import kwonDasolPhoto from '../imports/team-kwon-dasol.jpg'
+import parkJunkyuPhoto from '../imports/team-park-junkyu.jpg'
+import wooJiwonPhoto from '../imports/team-woo-jiwon.jpg'
+import choJibackPhoto from '../imports/team-cho-jiback.jpg'
+import parkByeongjinPhoto from '../imports/team-park-byeongjin.jpg'
+import leeSangwonPhoto from '../imports/team-lee-sangwon.jpg'
+import yangJunhyeokPhoto from '../imports/team-yang-junhyeok.jpg'
 
 // ── PI data ────────────────────────────────────────────────────────────────
 
@@ -9,6 +21,7 @@ const PI_DATA = {
   title: 'Principal Investigator / 책임연구원',
   affiliation: 'Korea Institute of Science and Technology (KIST)',
   division: 'Energy Storage Research Center',
+  photo: piPhoto,
   email: 'jgyoo@kist.re.kr',
   googleScholar: 'https://scholar.google.com/citations?user=tZx98QoAAAAJ&hl=ko&oi=ao',
   orcid: 'https://orcid.org/0000-0002-9693-649X',
@@ -45,30 +58,37 @@ interface Member {
   nameKo: string
   nameEn: string
   role: string
+  photo?: string
+  research?: string
+  email?: string
 }
 
 const POSTDOC: Member[] = [
-  { nameKo: '신우현', nameEn: 'Woohyun Shin', role: 'Postdoctoral Researcher' },
+  { nameKo: '신우현', nameEn: 'Woohyeon Shin', role: 'Postdoctoral Researcher', photo: shinWoohyeonPhoto, email: 'whshin@kist.re.kr' },
 ]
 
-const RESEARCHERS: Member[] = [
-  { nameKo: '권다솔', nameEn: 'Dasol Kwon', role: 'Researcher' },
+const PHD_INTEGRATED: Member[] = [
+  { nameKo: '권다솔', nameEn: 'Dasol Kwon', role: 'Researcher', photo: kwonDasolPhoto, email: 'kdasol@kist.re.kr' },
+  { nameKo: '박준규', nameEn: 'Jun Kyu Park', role: 'Ph.D. Student', photo: parkJunkyuPhoto, email: 'pjk6837@kist.re.kr' },
+  { nameKo: '우지원', nameEn: 'Jiwon Woo', role: 'Integrated M.S./Ph.D. Student', photo: wooJiwonPhoto, email: 'jwwoo@kist.re.kr' },
 ]
 
-const INTERNS: Member[] = [
-  { nameKo: '김민솔', nameEn: 'Minsol Kim', role: 'Research Intern' },
-  { nameKo: '김민정', nameEn: 'Minjeong Kim', role: 'Research Intern' },
-  { nameKo: '박병진', nameEn: 'Byungjin Park', role: 'Research Intern' },
-  { nameKo: '박준규', nameEn: 'Junkyu Park', role: 'Research Intern' },
+const RESEARCH_INTERN: Member[] = [
+  { nameKo: '박병진', nameEn: 'Byeongjin Park', role: 'Research Intern', photo: parkByeongjinPhoto, email: 'bj.park@kist.re.kr' },
+  { nameKo: '조지백', nameEn: 'Jiback Cho', role: 'Research Intern', photo: choJibackPhoto, email: 'zeebaek@kist.re.kr' },
 ]
 
-const STUDENTS: Member[] = [
-  { nameKo: '정현지', nameEn: 'Hyunji Jung', role: 'Student Researcher' },
-  { nameKo: '우지원', nameEn: 'Jiwon Woo', role: 'Student Researcher' },
-  { nameKo: '이상원', nameEn: 'Sangwon Lee', role: 'Student Researcher' },
-  { nameKo: '양준혁', nameEn: 'Junhyuk Yang', role: 'Student Researcher' },
-  { nameKo: '이민수', nameEn: 'Minsoo Lee', role: 'Student Researcher' },
-  { nameKo: '송한빈', nameEn: 'Hanbin Song', role: 'Student Researcher' },
+const MASTERS_STUDENTS: Member[] = [
+  { nameKo: '정현지', nameEn: 'Hyeon Ji Jeong', role: "Master's Student", photo: jeongHyunjiPhoto, research: 'LFP Dry Electrode Cathode', email: '125027@kist.re.kr' },
+  { nameKo: '이상원', nameEn: 'Sangwon Lee', role: "Master's Student", photo: leeSangwonPhoto, email: 'sangwon00@kist.re.kr' },
+  { nameKo: '양준혁', nameEn: 'Junhyeok Yang', role: "Master's Student", photo: yangJunhyeokPhoto, email: 'yangjh9812@kist.re.kr' },
+  { nameKo: '이민수', nameEn: 'Min Soo Lee', role: "Master's Student", photo: leeMinsooPhoto, research: 'Wet Electrode Cathode', email: 'mslee@kist.re.kr' },
+  { nameKo: '송한빈', nameEn: 'Han Bin Song', role: "Master's Student", photo: songHanbinPhoto, research: 'Dry Electrode Cathode', email: 'hbsong7905@kist.re.kr' },
+]
+
+const ALUMNI: Member[] = [
+  { nameKo: '김민솔', nameEn: 'Minsol Kim', role: 'Alumni' },
+  { nameKo: '김민정', nameEn: 'Minjeong Kim', role: 'Alumni' },
 ]
 
 // ── Shared components ──────────────────────────────────────────────────────
@@ -97,28 +117,64 @@ function PhotoPlaceholder({ size }: { size: 'pi' | 'member' }) {
 
 function MemberCard({ member }: { member: Member }) {
   return (
-    <div className="bg-white rounded-xl border border-gray-100 p-4 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex flex-col gap-3">
-      {/* Photo placeholder */}
-      <div className="w-full max-w-[80px] mx-auto">
-        <PhotoPlaceholder size="member" />
+    <div className="bg-white rounded-xl border border-gray-100 p-5 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex flex-col gap-3">
+      {/* Photo */}
+      <div className="w-full max-w-[92px] mx-auto">
+        {member.photo ? (
+          <img
+            src={member.photo}
+            alt={member.nameEn}
+            className="w-full aspect-square rounded-lg object-cover border border-gray-100"
+          />
+        ) : (
+          <PhotoPlaceholder size="member" />
+        )}
       </div>
 
       {/* Name & role */}
       <div className="text-center">
+        <p className="font-bold text-gray-900 text-[14px] leading-tight">
+          {member.nameKo} ({member.nameEn})
+        </p>
+        <p className="text-[#003087] text-[12px] font-medium mt-0.5">{member.role}</p>
+      </div>
+
+      {/* Research interest */}
+      <div className="text-center">
+        {member.research ? (
+          <p className="text-[11.5px] text-gray-500">{member.research}</p>
+        ) : (
+          <p className="text-[11.5px] text-gray-300 italic">Research interest TBD</p>
+        )}
+      </div>
+
+      {/* Email */}
+      <div className="text-center">
+        {member.email ? (
+          <a
+            href={`mailto:${member.email}`}
+            className="text-[11px] text-gray-500 hover:text-[#003087] hover:underline break-all"
+          >
+            {member.email}
+          </a>
+        ) : (
+          <span className="text-[10.5px] text-gray-300">—</span>
+        )}
+      </div>
+    </div>
+  )
+}
+
+function AlumniCard({ member }: { member: Member }) {
+  return (
+    <div className="bg-white rounded-xl border border-gray-100 p-4 flex flex-col gap-3">
+      <div className="w-full max-w-[80px] mx-auto">
+        <PhotoPlaceholder size="member" />
+      </div>
+      <div className="text-center">
         <p className="font-bold text-gray-900 text-[13px] leading-tight">
           {member.nameKo} ({member.nameEn})
         </p>
-        <p className="text-[#003087] text-[11px] font-medium mt-0.5">{member.role}</p>
-      </div>
-
-      {/* Research interest placeholder */}
-      <div className="text-center">
-        <p className="text-[11px] text-gray-300 italic">Research interest TBD</p>
-      </div>
-
-      {/* Email placeholder */}
-      <div className="text-center">
-        <span className="text-[10.5px] text-gray-300">—</span>
       </div>
     </div>
   )
@@ -198,9 +254,17 @@ function PISection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
-          {/* Photo placeholder */}
+          {/* Photo */}
           <div className="lg:col-span-3">
-            <PhotoPlaceholder size="pi" />
+            {PI_DATA.photo ? (
+              <img
+                src={PI_DATA.photo}
+                alt={PI_DATA.name}
+                className="w-full aspect-square rounded-2xl object-cover [object-position:50%_20%] border border-gray-200"
+              />
+            ) : (
+              <PhotoPlaceholder size="pi" />
+            )}
           </div>
 
           {/* Bio column */}
@@ -274,19 +338,12 @@ function PISection() {
               </button>
 
               <a
-                href="https://www.kist.re.kr"
+                href="https://kist.re.kr/ko/index.do"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-4 py-2 rounded border border-gray-200 text-gray-600 text-[12px] font-medium hover:border-[#003087]/30 hover:text-[#003087] transition-all duration-200"
               >
                 KIST
-              </a>
-
-              <a
-                href="#"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded border border-gray-200 text-gray-600 text-[12px] font-medium hover:border-[#003087]/30 hover:text-[#003087] transition-all duration-200"
-              >
-                SCOPUS
               </a>
 
               <a
@@ -347,9 +404,9 @@ function CurrentMembersSection() {
         </div>
 
         <MemberGroup title="Postdoctoral Researcher" members={POSTDOC} />
-        <MemberGroup title="Researcher (Ph.D. / 석박통합)" members={RESEARCHERS} />
-        <MemberGroup title="Research Intern" members={INTERNS} />
-        <MemberGroup title="Student Researcher" members={STUDENTS} />
+        <MemberGroup title="Ph.D. & Integrated M.S./Ph.D. Students" members={PHD_INTEGRATED} />
+        <MemberGroup title="Research Intern" members={RESEARCH_INTERN} />
+        <MemberGroup title="Master's Student" members={MASTERS_STUDENTS} />
       </div>
     </section>
   )
@@ -371,23 +428,11 @@ function AlumniSection() {
           <div className="flex-1 h-px bg-gray-200" />
         </div>
 
-        {/* Placeholder cards grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-10">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <div
-              key={i}
-              className="bg-white rounded-xl border border-gray-100 p-4 flex flex-col gap-3 opacity-40"
-            >
-              <div className="w-full max-w-[80px] mx-auto aspect-square rounded-lg bg-[#f0f4fb] border border-gray-100" />
-              <div className="text-center space-y-1.5">
-                <div className="h-3 bg-gray-200 rounded-full w-3/4 mx-auto" />
-                <div className="h-2.5 bg-gray-100 rounded-full w-1/2 mx-auto" />
-              </div>
-            </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          {ALUMNI.map((m) => (
+            <AlumniCard key={m.nameEn} member={m} />
           ))}
         </div>
-
-        <p className="text-center text-gray-400 text-sm">Alumni information coming soon.</p>
       </div>
     </section>
   )
