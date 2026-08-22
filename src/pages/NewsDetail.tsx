@@ -25,7 +25,7 @@ function PhotoSlider({ photos, title }: { photos: string[]; title: string }) {
 
   return (
     <div className="relative w-full aspect-[4/3] bg-gray-100 rounded-2xl overflow-hidden">
-      <img src={photos[index]} alt={`${title} — photo ${index + 1}`} className="w-full h-full object-cover" />
+      <img src={photos[index]} alt={`${title} — photo ${index + 1}`} className="w-full h-full object-contain" />
 
       {hasMultiple && (
         <>
