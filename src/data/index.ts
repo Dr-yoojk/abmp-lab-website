@@ -444,8 +444,8 @@ export const NEWS: NewsItem[] = [
     slug: 'dasol-kwon-outstanding-graduate-award',
     category: 'Awards',
     date: 'August 19, 2026',
-    title: 'Dasol Kwon Wins Outstanding Graduate Award',
-    excerpt: 'Congratulations to Dr. Dasol Kwon for winning the Outstanding Graduate Award at the 2026 KIST-School Excellence Awards Ceremony!',
+    title: 'Da-Sol Kwon Wins Outstanding Graduate Award',
+    excerpt: 'Congratulations to Dr. Da-Sol Kwon for winning the Outstanding Graduate Award at the 2026 KIST-School Excellence Awards Ceremony!',
     photos: [awardsDasolKwonCeremony, awardsDasolKwonList],
   },
   {

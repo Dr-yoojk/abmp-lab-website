@@ -73,7 +73,7 @@ const POSTDOC: Member[] = [
 ]
 
 const PHD_INTEGRATED: Member[] = [
-  { nameKo: '권다솔', nameEn: 'Dasol Kwon', role: 'Researcher', photo: kwonDasolPhoto, research: 'Wet Electrode Cathode', email: 'kdasol@kist.re.kr' },
+  { nameKo: '권다솔', nameEn: 'Da-Sol Kwon', role: 'Researcher', photo: kwonDasolPhoto, research: 'Wet Electrode Cathode', email: 'kdasol@kist.re.kr' },
   { nameKo: '박준규', nameEn: 'Jun Kyu Park', role: 'Ph.D. Student', photo: parkJunkyuPhoto, research: 'Wet Electrode Cathode', email: 'pjk6837@kist.re.kr' },
   { nameKo: '우지원', nameEn: 'Jiwon Woo', role: 'Integrated M.S./Ph.D. Student', photo: wooJiwonPhoto, research: 'Dry Electrode Cathode', email: 'jwwoo@kist.re.kr' },
 ]
