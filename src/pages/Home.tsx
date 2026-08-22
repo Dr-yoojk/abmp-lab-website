@@ -5,6 +5,8 @@ import { PUBLICATIONS } from '../data'
 import { getFeaturedImage } from '../utils/featuredImages'
 import Authors from '../components/Authors'
 import HeroPattern from '../components/HeroPattern'
+import heroSlide1Electrode from '../imports/hero-slide-1-electrode.jpg'
+import heroSlide2DigitalTwin from '../imports/hero-slide-2-digital-twin.jpg'
 
 const SLIDES = [
   {
@@ -13,6 +15,8 @@ const SLIDES = [
     subtitle: 'Dry and wet process research for high-loading thick electrodes — LFP, NCM, and beyond.',
     button: 'Explore Research →',
     link: '/research',
+    image: heroSlide1Electrode,
+    imagePosition: '80% center',
   },
   {
     label: 'DIGITAL TWIN',
@@ -20,6 +24,8 @@ const SLIDES = [
     subtitle: 'GeoDict and EDEM-based microstructure modeling to predict electrode performance before fabrication.',
     button: 'Learn More →',
     link: '/research',
+    image: heroSlide2DigitalTwin,
+    imagePosition: '75% center',
   },
   {
     label: 'JOIN US',
@@ -27,6 +33,8 @@ const SLIDES = [
     subtitle: 'We welcome student researchers, research interns, Ph.D. candidates, and postdoctoral fellows passionate about battery manufacturing.',
     button: 'View Openings →',
     link: '/contact',
+    image: undefined as string | undefined,
+    imagePosition: undefined as string | undefined,
   },
 ]
 
@@ -62,13 +70,22 @@ function HeroSlider() {
 
   return (
     <div className="relative w-full overflow-hidden bg-gray-900" style={{ height: '560px' }}>
-      {/* Background placeholder */}
+      {/* Background */}
       <div
         className={`absolute inset-0 transition-opacity duration-500 ${transitioning ? 'opacity-0' : 'opacity-100'}`}
       >
-        <div className="w-full h-full bg-gray-800 flex items-center justify-center">
-          <span className="text-white/30 text-sm font-medium tracking-wide uppercase">Image coming soon</span>
-        </div>
+        {slide.image ? (
+          <img
+            src={slide.image}
+            alt=""
+            className="w-full h-full object-cover"
+            style={{ objectPosition: slide.imagePosition }}
+          />
+        ) : (
+          <div className="w-full h-full bg-gray-800 flex items-center justify-center">
+            <span className="text-white/30 text-sm font-medium tracking-wide uppercase">Image coming soon</span>
+          </div>
+        )}
         <div
           className="absolute inset-0"
           style={{
