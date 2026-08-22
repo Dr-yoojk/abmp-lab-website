@@ -11,6 +11,12 @@ import journalCoverMultifunctional from '../imports/journal-cover-multifunctiona
 import journalCoverK15vopo4f05 from '../imports/journal-cover-k15vopo4f05.jpg'
 import labLifeHanbinBirthday1 from '../imports/lab-life-hanbin-birthday-1.jpg'
 import labLifeHanbinBirthday2 from '../imports/lab-life-hanbin-birthday-2.jpg'
+import labLifeByeongjinBirthday1 from '../imports/lab-life-byeongjin-birthday-1.jpg'
+import labLifeByeongjinBirthday2 from '../imports/lab-life-byeongjin-birthday-2.jpg'
+import labLifeByeongjinBirthday3 from '../imports/lab-life-byeongjin-birthday-3.jpg'
+import galleryBatterySymposium2026 from '../imports/gallery-battery-symposium-2026.jpg'
+import awardsDasolKwonCeremony from '../imports/awards-dasol-kwon-ceremony.png'
+import awardsDasolKwonList from '../imports/awards-dasol-kwon-list.png'
 
 // ── Site-wide data ────────────────────────────────────────────────────────────
 
@@ -424,6 +430,33 @@ export interface NewsItem {
 }
 
 export const NEWS: NewsItem[] = [
+  {
+    id: 4,
+    slug: '2026-battery-technology-symposium',
+    category: 'Research',
+    date: 'August 20–21, 2026',
+    title: '2026 Battery Technology Symposium',
+    excerpt: 'Our lab attended the 2026 Battery Technology Symposium (전지기술심포지엄) at the Korea Science & Technology Center, Seoul.',
+    photos: [galleryBatterySymposium2026],
+  },
+  {
+    id: 3,
+    slug: 'dasol-kwon-outstanding-graduate-award',
+    category: 'Awards',
+    date: 'August 19, 2026',
+    title: 'Dasol Kwon Wins Outstanding Graduate Award',
+    excerpt: 'Congratulations to Dr. Dasol Kwon for winning the Outstanding Graduate Award at the 2026 KIST-School Excellence Awards Ceremony!',
+    photos: [awardsDasolKwonCeremony, awardsDasolKwonList],
+  },
+  {
+    id: 2,
+    slug: 'byeongjin-parks-birthday',
+    category: 'Lab life',
+    date: 'August 14, 2026',
+    title: "Byeongjin Park's Birthday",
+    excerpt: "We celebrated Byeongjin Park's birthday with cake, then headed to KIST's guest dining hall for their limited-edition mal-bok chicken porridge special!",
+    photos: [labLifeByeongjinBirthday1, labLifeByeongjinBirthday2, labLifeByeongjinBirthday3],
+  },
   {
     id: 1,
     slug: 'han-bin-songs-birthday',

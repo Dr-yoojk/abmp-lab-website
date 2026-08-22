@@ -3,6 +3,7 @@ import Nav from './components/Nav'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import Research from './pages/Research'
+import Equipment from './pages/Equipment'
 import Team from './pages/Team'
 import Publications from './pages/Publications'
 import News from './pages/News'
@@ -18,6 +19,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/research" element={<Research />} />
+            <Route path="/equipment" element={<Equipment />} />
             <Route path="/team" element={<Team />} />
             <Route path="/publications" element={<Publications />} />
             <Route path="/news" element={<News />} />

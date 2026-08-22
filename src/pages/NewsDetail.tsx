@@ -15,6 +15,14 @@ function PhotoSlider({ photos, title }: { photos: string[]; title: string }) {
   const goPrev = () => setIndex((i) => (i - 1 + photos.length) % photos.length)
   const goNext = () => setIndex((i) => (i + 1) % photos.length)
 
+  if (photos.length === 0) {
+    return (
+      <div className="relative w-full aspect-[4/3] bg-gray-100 rounded-2xl overflow-hidden flex items-center justify-center">
+        <span className="text-[13px] font-medium text-gray-400 tracking-wide uppercase">Photo coming soon</span>
+      </div>
+    )
+  }
+
   return (
     <div className="relative w-full aspect-[4/3] bg-gray-100 rounded-2xl overflow-hidden">
       <img src={photos[index]} alt={`${title} — photo ${index + 1}`} className="w-full h-full object-cover" />
@@ -69,7 +77,7 @@ export default function NewsDetail() {
         <div className="max-w-screen-md mx-auto px-6 lg:px-10 text-center">
           <p className="text-gray-500 mb-6">This news item could not be found.</p>
           <Link to="/news" className="text-[#003087] font-semibold hover:underline">
-            ← Back to News
+            ← Back to Gallery
           </Link>
         </div>
       </section>
@@ -85,7 +93,7 @@ export default function NewsDetail() {
           to="/news"
           className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-500 hover:text-[#003087] transition-colors duration-150 mb-8"
         >
-          ← Back to News
+          ← Back to Gallery
         </Link>
 
         <div className="flex items-center gap-3 mb-4">

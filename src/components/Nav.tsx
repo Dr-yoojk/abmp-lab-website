@@ -1,6 +1,11 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import abmpLogo from '../imports/abmp-lab-wordmark.png'
+
+const RESEARCH_DROPDOWN = [
+  { label: 'Overview', href: '/research' },
+  { label: 'Equipment', href: '/equipment' },
+]
 
 const TEAM_DROPDOWN = [
   { label: 'PI', href: '/team?section=pi' },
@@ -10,18 +15,17 @@ const TEAM_DROPDOWN = [
 
 const NAV_LINKS = [
   { label: 'Home', href: '/' },
-  { label: 'Research', href: '/research' },
+  { label: 'Research', href: '/research', dropdown: RESEARCH_DROPDOWN },
   { label: 'Our Team', href: '/team', dropdown: TEAM_DROPDOWN },
   { label: 'Publications', href: '/publications' },
-  { label: 'News', href: '/news' },
+  { label: 'Gallery', href: '/news' },
   { label: 'Contact', href: '/contact' },
 ]
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [teamOpen, setTeamOpen] = useState(false)
-  const dropdownRef = useRef<HTMLDivElement>(null)
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const location = useLocation()
 
   useEffect(() => {
@@ -32,13 +36,13 @@ export default function Nav() {
 
   useEffect(() => {
     setMobileOpen(false)
-    setTeamOpen(false)
+    setOpenDropdown(null)
   }, [location.pathname])
 
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setTeamOpen(false)
+      if (!(e.target as Element).closest?.('[data-nav-dropdown]')) {
+        setOpenDropdown(null)
       }
     }
     document.addEventListener('mousedown', handleClick)
@@ -67,23 +71,26 @@ export default function Nav() {
             {/* Center: Nav links */}
             <div className="hidden lg:flex items-center gap-0">
               {NAV_LINKS.map((item) => {
-                const isActive = location.pathname === item.href || (item.href !== '/' && location.pathname.startsWith(item.href))
+                const isActive = location.pathname === item.href
+                  || (item.href !== '/' && location.pathname.startsWith(item.href))
+                  || (item.dropdown?.some((sub) => location.pathname === sub.href.split('?')[0]) ?? false)
 
                 if (item.dropdown) {
+                  const isOpen = openDropdown === item.label
                   return (
-                    <div key={item.label} className="relative" ref={dropdownRef}>
+                    <div key={item.label} className="relative" data-nav-dropdown>
                       <button
                         className={`nav-link group flex items-center gap-1 px-4 py-2 text-[14px] font-medium transition-colors duration-150 ${
                           isActive ? 'text-[#003087]' : 'text-gray-600 hover:text-[#003087]'
                         }`}
-                        onClick={() => setTeamOpen(!teamOpen)}
-                        onMouseEnter={() => setTeamOpen(true)}
+                        onClick={() => setOpenDropdown(isOpen ? null : item.label)}
+                        onMouseEnter={() => setOpenDropdown(item.label)}
                       >
                         <span className="relative">
                           {item.label}
                           <span
                             className={`absolute -bottom-0.5 left-0 h-[1.5px] bg-[#003087] transition-all duration-200 ${
-                              isActive || teamOpen ? 'w-full' : 'w-0 group-hover:w-full'
+                              isActive || isOpen ? 'w-full' : 'w-0 group-hover:w-full'
                             }`}
                           />
                         </span>
@@ -92,7 +99,7 @@ export default function Nav() {
                           height="12"
                           viewBox="0 0 12 12"
                           fill="none"
-                          className={`transition-transform duration-200 ${teamOpen ? 'rotate-180' : ''}`}
+                          className={`transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
                         >
                           <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
@@ -101,9 +108,9 @@ export default function Nav() {
                       {/* Dropdown */}
                       <div
                         className={`absolute top-full left-1/2 -translate-x-1/2 mt-1 w-48 bg-white border border-gray-100 rounded-lg shadow-lg transition-all duration-200 ${
-                          teamOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-1 pointer-events-none'
+                          isOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-1 pointer-events-none'
                         }`}
-                        onMouseLeave={() => setTeamOpen(false)}
+                        onMouseLeave={() => setOpenDropdown(null)}
                       >
                         <div className="py-1.5">
                           {item.dropdown.map((sub) => (
@@ -111,7 +118,7 @@ export default function Nav() {
                               key={sub.label}
                               to={sub.href}
                               className="flex items-center px-4 py-2.5 text-sm text-gray-600 hover:text-[#003087] hover:bg-[#f0f4fb] transition-colors duration-100"
-                              onClick={() => setTeamOpen(false)}
+                              onClick={() => setOpenDropdown(null)}
                             >
                               {sub.label}
                             </Link>

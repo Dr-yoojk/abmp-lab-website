@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useFadeIn } from '../hooks/useFadeIn'
 import { PUBLICATIONS, type Publication } from '../data'
 import { getFeaturedImage } from '../utils/featuredImages'
+import Authors from '../components/Authors'
 
 const YEARS = [...new Set(PUBLICATIONS.map((p) => p.year))].sort((a, b) => b - a)
 
@@ -132,7 +133,7 @@ function FeaturedPublications() {
 
                 {/* Authors */}
                 <p className="text-[11.5px] text-gray-400 leading-relaxed mb-3 line-clamp-2">
-                  {pub.authors}
+                  <Authors text={pub.authors} />
                 </p>
 
                 {/* Journal */}
@@ -186,7 +187,7 @@ function YearSection({ year, pubs }: { year: number; pubs: Publication[] }) {
               <h4 className="text-[15px] font-semibold text-gray-900 group-hover:text-[#003087] transition-colors duration-150 leading-snug mb-1.5 break-words [overflow-wrap:break-word] [word-break:normal]">
                 {pub.title}
               </h4>
-              <p className="text-sm text-gray-400 mb-1.5 truncate">{pub.authors}</p>
+              <p className="text-sm text-gray-400 mb-1.5 truncate"><Authors text={pub.authors} /></p>
               <p className="text-[11px] font-bold tracking-[0.07em] text-[#003087] uppercase">
                 {pub.journal}
               </p>

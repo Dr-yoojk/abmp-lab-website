@@ -25,7 +25,12 @@ const PI_DATA = {
   email: 'jgyoo@kist.re.kr',
   googleScholar: 'https://scholar.google.com/citations?user=tZx98QoAAAAJ&hl=ko&oi=ao',
   orcid: 'https://orcid.org/0000-0002-9693-649X',
-  bio: `Dr. Jung-Keun Yoo is a Principal Investigator at the Energy Storage Research Center, Korea Institute of Science and Technology (KIST). He received his B.S. in Metallurgical Systems Engineering from Yonsei University (2009), and his M.S. and Ph.D. in Materials Science and Engineering from KAIST (2011, 2015) under Prof. Yeon-Sik Jung and Prof. Kisuk Kang. Following his doctorate, he worked at LG Chem Battery Division (2015–2017) as a Senior Researcher responsible for conductive additive and binder development, and subsequently at the Korea Institute of Materials Science (KIMS, 2017–2024) as a Principal Researcher. His research currently focuses on dry/wet thick electrode processing, digital twin simulation, and fluorine-free binder development for next-generation energy storage systems.`,
+  bio: [
+    'Dr. Jung-Keun Yoo is a Principal Investigator at the Energy Storage Research Center, Korea Institute of Science and Technology (KIST).',
+    'He received his B.S. in Metallurgical Systems Engineering from Yonsei University (2009), and his M.S. and Ph.D. in Materials Science and Engineering from KAIST (2011, 2015) under Prof. Yeon-Sik Jung and Prof. Kisuk Kang.',
+    'Following his doctorate, he worked at LG Chem Battery Division (2015–2017) as a Senior Researcher responsible for conductive additive and binder development, and subsequently at the Korea Institute of Materials Science (KIMS, 2017–2024) as a Principal Researcher.',
+    'His research currently focuses on dry/wet thick electrode processing, digital twin simulation, and fluorine-free binder development for next-generation energy storage systems.',
+  ],
   education: [
     { period: '2002.03 – 2009.08', degree: 'B.S. Metallurgical Systems Engineering', institution: 'Yonsei University' },
     { period: '2009.09 – 2011.08', degree: 'M.S. Materials Science & Engineering', institution: 'KAIST' },
@@ -275,7 +280,11 @@ function PISection() {
             <p className="text-gray-400 text-sm mb-6">{PI_DATA.division}</p>
 
             {/* Bio */}
-            <p className="text-gray-600 leading-relaxed text-[15px] mb-8">{PI_DATA.bio}</p>
+            <div className="space-y-4 mb-8">
+              {PI_DATA.bio.map((paragraph, i) => (
+                <p key={i} className="text-gray-600 leading-relaxed text-[15px]">{paragraph}</p>
+              ))}
+            </div>
 
             {/* Education */}
             <div className="mb-8">
@@ -338,7 +347,7 @@ function PISection() {
               </button>
 
               <a
-                href="https://kist.re.kr/ko/index.do"
+                href="https://kist.re.kr/ko/research/advanced-materials-Energystorageresearcher.do"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-4 py-2 rounded border border-gray-200 text-gray-600 text-[12px] font-medium hover:border-[#003087]/30 hover:text-[#003087] transition-all duration-200"

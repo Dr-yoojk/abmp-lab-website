@@ -19,9 +19,9 @@ function PageHeader() {
     >
       <div className="max-w-screen-xl mx-auto px-6 lg:px-10">
         <p className="text-[11px] font-bold tracking-[0.14em] uppercase text-blue-300 mb-3">ABMP Laboratory</p>
-        <h1 className="text-4xl font-bold text-white mb-4">News & Updates</h1>
+        <h1 className="text-4xl font-bold text-white mb-4">Gallery</h1>
         <p className="text-blue-200 max-w-2xl leading-relaxed">
-          Latest news from the Advanced Battery Materials & Process Laboratory — publications, awards,
+          Moments from the Advanced Battery Materials & Process Laboratory — publications, awards,
           team milestones, and lab life.
         </p>
       </div>
@@ -49,11 +49,17 @@ function NewsGrid({ items }: { items: typeof NEWS }) {
           >
             {/* Photo */}
             <div className="relative h-48 bg-gray-100 overflow-hidden">
-              <img
-                src={item.photos[0]}
-                alt={item.title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
+              {item.photos[0] ? (
+                <img
+                  src={item.photos[0]}
+                  alt={item.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center">
+                  <span className="text-[11px] font-medium text-gray-400 tracking-wide uppercase">Photo coming soon</span>
+                </div>
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
               <div className="absolute top-3 left-3">
                 <span

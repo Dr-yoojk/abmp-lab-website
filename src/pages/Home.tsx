@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useFadeIn } from '../hooks/useFadeIn'
 import { PUBLICATIONS } from '../data'
 import { getFeaturedImage } from '../utils/featuredImages'
+import Authors from '../components/Authors'
 
 const SLIDES = [
   {
@@ -374,7 +375,7 @@ function FeaturedPublications() {
                   <h3 className="text-sm font-semibold text-gray-900 leading-snug mb-3 flex-1 group-hover:text-[#003087] transition-colors duration-150 line-clamp-3">
                     {pub.title}
                   </h3>
-                  <p className="text-xs text-gray-400">{pub.authors}</p>
+                  <p className="text-xs text-gray-400"><Authors text={pub.authors} /></p>
                 </div>
               </a>
             )
@@ -438,7 +439,7 @@ function PublicationsByYear() {
                         <h4 className="text-sm font-semibold text-gray-900 group-hover:text-[#003087] transition-colors duration-150 leading-snug mb-1">
                           {pub.title}
                         </h4>
-                        <p className="text-xs text-gray-500 mb-1.5">{pub.authors}</p>
+                        <p className="text-xs text-gray-500 mb-1.5"><Authors text={pub.authors} /></p>
                         <div className="flex items-center gap-2 flex-wrap">
                           <span className="text-xs italic text-gray-500">{pub.journal}</span>
                           {pub.volume && (
