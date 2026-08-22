@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { NEWS } from '../data'
+import { NEWS, type GalleryPhoto } from '../data'
 
 const CATEGORY_COLORS: Record<string, string> = {
   Research: '#003087',
@@ -8,7 +8,7 @@ const CATEGORY_COLORS: Record<string, string> = {
   'Lab life': '#c0392b',
 }
 
-function PhotoSlider({ photos, title }: { photos: string[]; title: string }) {
+function PhotoSlider({ photos, title }: { photos: GalleryPhoto[]; title: string }) {
   const [index, setIndex] = useState(0)
   const hasMultiple = photos.length > 1
 
@@ -25,7 +25,11 @@ function PhotoSlider({ photos, title }: { photos: string[]; title: string }) {
 
   return (
     <div className="relative w-full aspect-[4/3] bg-gray-100 rounded-2xl overflow-hidden">
-      <img src={photos[index]} alt={`${title} — photo ${index + 1}`} className="w-full h-full object-contain" />
+      <img
+        src={photos[index].src}
+        alt={`${title} — photo ${index + 1}`}
+        className={`w-full h-full ${photos[index].fit === 'contain' ? 'object-contain' : 'object-cover'}`}
+      />
 
       {hasMultiple && (
         <>
@@ -109,7 +113,7 @@ export default function NewsDetail() {
         <h1 className="text-3xl font-bold text-gray-900 mb-4 leading-tight">{item.title}</h1>
         <p className="text-gray-600 text-[15px] leading-relaxed mb-8">{item.excerpt}</p>
 
-        <PhotoSlider photos={item.photos} title={item.title} />
+        <PhotoSlider key={item.slug} photos={item.photos} title={item.title} />
 
         <div className="mt-14 pt-8 border-t border-gray-100 flex items-center justify-between text-sm font-medium">
           {prevItem ? (

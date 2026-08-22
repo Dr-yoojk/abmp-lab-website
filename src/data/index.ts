@@ -449,6 +449,14 @@ export const HERO_SLIDES = [
   },
 ]
 
+export interface GalleryPhoto {
+  src: string
+  // 'cover' (default) crops the photo to fill the slide; 'contain' shrinks
+  // it to fit fully in frame — use for posters/screenshots where cropping
+  // would cut off text.
+  fit?: 'cover' | 'contain'
+}
+
 export interface NewsItem {
   id: number
   slug: string
@@ -456,7 +464,7 @@ export interface NewsItem {
   date: string
   title: string
   excerpt: string
-  photos: string[]
+  photos: GalleryPhoto[]
 }
 
 export const NEWS: NewsItem[] = [
@@ -467,7 +475,7 @@ export const NEWS: NewsItem[] = [
     date: 'August 20–21, 2026',
     title: '2026 Battery Technology Symposium',
     excerpt: 'Our lab attended the 2026 Battery Technology Symposium (전지기술심포지엄) at the Korea Science & Technology Center, Seoul.',
-    photos: [galleryBatterySymposium2026],
+    photos: [{ src: galleryBatterySymposium2026 }],
   },
   {
     id: 3,
@@ -476,7 +484,10 @@ export const NEWS: NewsItem[] = [
     date: 'August 19, 2026',
     title: 'Da-Sol Kwon Wins Outstanding Graduate Award',
     excerpt: 'Congratulations to Dr. Da-Sol Kwon for winning the Outstanding Graduate Award at the 2026 KIST-School Excellence Awards Ceremony!',
-    photos: [awardsDasolKwonCeremony, awardsDasolKwonList],
+    photos: [
+      { src: awardsDasolKwonCeremony },
+      { src: awardsDasolKwonList, fit: 'contain' },
+    ],
   },
   {
     id: 2,
@@ -485,7 +496,11 @@ export const NEWS: NewsItem[] = [
     date: 'August 14, 2026',
     title: "Byeongjin Park's Birthday",
     excerpt: "We celebrated Byeongjin Park's birthday with cake, then headed to KIST's guest dining hall for their limited-edition mal-bok chicken porridge special!",
-    photos: [labLifeByeongjinBirthday1, labLifeByeongjinBirthday2, labLifeOebinRestaurantFlyer],
+    photos: [
+      { src: labLifeByeongjinBirthday1 },
+      { src: labLifeByeongjinBirthday2 },
+      { src: labLifeOebinRestaurantFlyer, fit: 'contain' },
+    ],
   },
   {
     id: 1,
@@ -494,6 +509,6 @@ export const NEWS: NewsItem[] = [
     date: 'July 10, 2026',
     title: "Han Bin Song's Birthday",
     excerpt: "The lab celebrated Han Bin Song's birthday with cake and good cheer!",
-    photos: [labLifeHanbinBirthday1, labLifeHanbinBirthday2],
+    photos: [{ src: labLifeHanbinBirthday1 }, { src: labLifeHanbinBirthday2 }],
   },
 ]

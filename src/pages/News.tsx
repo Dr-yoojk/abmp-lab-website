@@ -53,7 +53,7 @@ function NewsGrid({ items }: { items: typeof NEWS }) {
             <div className="relative h-48 bg-gray-100 overflow-hidden">
               {item.photos[0] ? (
                 <img
-                  src={item.photos[0]}
+                  src={item.photos[0].src}
                   alt={item.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
