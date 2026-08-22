@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react'
 import { useFadeIn } from '../hooks/useFadeIn'
 import contactDirections from '../imports/contact-directions.avif'
+import HeroPattern from '../components/HeroPattern'
 
 function PageHeader() {
   return (
     <section
-      className="py-20"
+      className="relative overflow-hidden py-20"
       style={{ background: 'linear-gradient(135deg, #001f5a 0%, #003087 100%)' }}
     >
-      <div className="max-w-screen-xl mx-auto px-6 lg:px-10">
+      <HeroPattern />
+      <div className="relative z-10 max-w-screen-xl mx-auto px-6 lg:px-10">
         <p className="text-[11px] font-bold tracking-[0.14em] uppercase text-blue-300 mb-3">ABMP Laboratory</p>
         <h1 className="text-4xl font-bold text-white mb-4">Contact</h1>
         <p className="text-blue-200 max-w-2xl leading-relaxed">

@@ -17,6 +17,8 @@ import labLifeOebinRestaurantFlyer from '../imports/lab-life-oebin-restaurant-fl
 import galleryBatterySymposium2026 from '../imports/gallery-battery-symposium-2026.jpg'
 import awardsDasolKwonCeremony from '../imports/awards-dasol-kwon-ceremony.png'
 import awardsDasolKwonList from '../imports/awards-dasol-kwon-list.png'
+import researchCntNetworks from '../imports/research-cnt-networks.jpg'
+import researchWetSlurryProcess from '../imports/research-wet-slurry-process.jpg'
 
 // ── Site-wide data ────────────────────────────────────────────────────────────
 
@@ -261,89 +263,117 @@ export const PUBLICATIONS: Publication[] = [
   },
 ]
 
-export const RESEARCH_AREAS = [
+export interface ResearchArea {
+  id: string
+  navLabel: string
+  title: string
+  subtitle: string
+  description: string[]
+  details: string[]
+  image?: string
+  color: string
+}
+
+export const RESEARCH_AREAS: ResearchArea[] = [
   {
     id: 'dry-electrode',
+    navLabel: 'Dry Electrode Processing',
     title: 'Dry Electrode Processing',
     subtitle: 'Solvent-Free Fabrication',
-    description: 'We develop scalable, solvent-free dry electrode manufacturing based on PTFE fibrillation. Our active-surface-guided fibrillation approach, achieved via carbon-nanotube-coated active materials, reduces kneading time by over 75% while enabling fab-scale (>100 g batch) electrodes with industrially relevant areal capacities exceeding 10 mAh cm⁻² at ultralow binder content — all while remaining compatible with roll-to-roll manufacturing.',
+    description: [
+      'We develop scalable, solvent-free dry electrode manufacturing based on PTFE fibrillation. Our active-surface-guided fibrillation approach, achieved via carbon-nanotube-coated active materials, reduces kneading time by over 75% while enabling fab-scale (>100 g batch) electrodes with industrially relevant areal capacities exceeding 10 mAh cm⁻² at ultralow binder content — all while remaining compatible with roll-to-roll manufacturing.',
+    ],
     details: [
       'Active-surface-guided PTFE fibrillation',
       'Carbon-nanotube-coated active material design',
       'Fab-scale (>100 g) roll-to-roll processing',
       'Ultralow binder content, NMP-free process',
     ],
-    image: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&h=600&fit=crop&auto=format',
     color: '#003087',
   },
   {
     id: 'thick-slurry',
+    navLabel: 'Slurry & Coating',
     title: 'Thick Electrode & High-Concentration Slurry',
     subtitle: 'Wet-Slurry Manufacturing',
-    description: 'Alongside dry processing, we advance wet-slurry routes to ultrahigh-mass-loading electrodes for next-generation energy storage. Using an integrated binder–CNT composite (IBC) dispersion, we formulate high-solids-content (>77 wt%) slurries that deliver cathodes exceeding 12 mAh cm⁻² with improved coating homogeneity — work now extending into a dedicated national project on high-concentration slurry manufacturing for large-scale energy storage systems.',
+    description: [
+      'We develop wet-slurry routes to ultrahigh-mass-loading electrodes using an integrated binder–CNT composite (IBC) dispersion. This approach enables high-solids-content (>77 wt%) slurries with uniform conductive-additive/binder distribution — reducing solvent usage by ~30% while achieving cathodes exceeding 12 mAh cm⁻² at low CNT content (0.6 wt% vs. 0.85 wt% conventional).',
+      'Faster drying also improves coating speed, supporting energy-efficient, large-scale electrode manufacturing.',
+    ],
     details: [
-      'High-solids-content (>77 wt%) slurry formulation',
-      'Integrated binder–CNT composite (IBC) dispersion',
-      'Ultrahigh areal capacity (>12 mAh cm⁻²) electrodes',
+      'High-solids-content (>77 wt%) IBC slurry formulation',
+      '~30% solvent reduction, faster drying & coating speed',
+      'Ultrahigh areal capacity (>12 mAh cm⁻²) at low CNT content',
       'Coating homogeneity for large-format ESS cells',
     ],
-    image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop&auto=format',
+    image: researchWetSlurryProcess,
     color: '#1a4aad',
   },
   {
     id: 'fluorine-free',
+    navLabel: 'Fluorine-Free Binder',
     title: 'Fluorine-Free Binder Development',
     subtitle: 'Sustainable Electrode Chemistry',
-    description: "PVDF, the industry-standard binder, requires toxic NMP solvent and is increasingly restricted under PFAS regulations. We design fluorine-free alternatives — organosilicon and hydroxyl-rich siloxane nanohybrid binders — that match or exceed PVDF's adhesion and cycling performance on high-nickel and LiCoO2 cathodes, while eliminating fluorine chemistry entirely.",
+    description: [
+      "PVDF, the industry-standard binder, requires toxic NMP solvent and is increasingly restricted under PFAS regulations. We design fluorine-free alternatives — organosilicon and hydroxyl-rich siloxane nanohybrid binders — that match or exceed PVDF's adhesion and cycling performance on high-nickel and LiCoO2 cathodes, while eliminating fluorine chemistry entirely.",
+    ],
     details: [
       'Organosilicon and siloxane nanohybrid binder design',
       'High-nickel (NCM811) and LiCoO2 cathode compatibility',
       'PFAS-free binder strategy development',
       'Adhesion, cohesion, and cycling stability evaluation',
     ],
-    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop&auto=format',
     color: '#2a5fc4',
   },
   {
     id: 'cnt',
-    title: 'Carbon Nanotube Conductive Networks',
+    navLabel: 'CNT Networks',
+    title: 'Carbon Nanotube Networks',
     subtitle: 'Carbon Nanotube Networks',
-    description: 'Building on more than a decade of carbon nanotube dispersion and conductive-additive R&D — including multiple technology transfers to industry — we engineer SWCNT and hybrid CB/SWCNT conductive networks. Mild oxidation of SWCNTs in their liquid crystalline phase enables dispersant-free debundling, while hybrid CB/SWCNT additives improve cycling retention in silicon-based anodes.',
+    description: [
+      'Building on more than a decade of carbon nanotube dispersion and conductive-additive R&D — including multiple technology transfers to industry — we engineer SWCNT and hybrid CB/SWCNT conductive networks. Mild oxidation of SWCNTs in their liquid crystalline phase enables dispersant-free debundling, while hybrid CB/SWCNT additives improve cycling retention in silicon-based anodes.',
+      'Through the "Form-Factor-Free" battery project (KIER-led consortium, 2026–), we are extending this to SWCNT–GMS hybrid networks for flexible, high-output thick-film cathodes — combining SWCNT\'s electron transport with GMS\'s flexible compression-recovery.',
+    ],
     details: [
       'SWCNT liquid-crystalline-phase oxidation and dispersion',
       'Hybrid CB/SWCNT conductive additive design',
+      'SWCNT–GMS hybrid networks for flexible thick-film cathodes',
       'Dispersant-free debundling methods',
       'Industry technology transfer track record',
     ],
-    image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=600&fit=crop&auto=format',
+    image: researchCntNetworks,
     color: '#003087',
   },
   {
     id: 'geodict',
+    navLabel: 'Digital Twin',
     title: 'Digital Twin & Microstructure Simulation',
     subtitle: 'Computational Microstructure',
-    description: 'In collaboration with our postdoctoral research team, we use the GeoDict simulation platform to build digital twins of composite electrode microstructures. These models let us evaluate tortuosity, transport pathways, and process-performance relationships computationally — before a single physical cell is built.',
+    description: [
+      'In collaboration with our postdoctoral research team, we use the GeoDict simulation platform to build digital twins of composite electrode microstructures. These models let us evaluate tortuosity, transport pathways, and process-performance relationships computationally — before a single physical cell is built.',
+    ],
     details: [
       'GeoDict-based digital twin construction',
       '3D electrode microstructure modeling',
       'Tortuosity and transport-pathway analysis',
       'Simulation-guided process optimization',
     ],
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop&auto=format',
     color: '#1a4aad',
   },
   {
     id: 'silicon-anode',
+    navLabel: 'Silicon Anode',
     title: 'Silicon Anode Materials',
     subtitle: 'High-Capacity Anode Design',
-    description: "Silicon's high theoretical capacity comes with significant volume-expansion challenges during cycling. We are advancing porous silicon anode architectures and high-capacity, high-efficiency silicon materials for fast-charging, high-energy-density lithium-ion cells, currently supported by two national development programs.",
+    description: [
+      "Silicon's high theoretical capacity comes with significant volume-expansion challenges during cycling. We are advancing porous silicon anode architectures and high-capacity, high-efficiency silicon materials for fast-charging, high-energy-density lithium-ion cells, currently supported by two national development programs.",
+    ],
     details: [
       'Porous silicon anode architecture design',
       'Fast-charging silicon material development',
       'Volume-expansion mitigation via conductive networks',
       'Cell-level integration and scale-up',
     ],
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&auto=format',
     color: '#2a5fc4',
   },
 ]

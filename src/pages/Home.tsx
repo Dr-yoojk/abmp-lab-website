@@ -4,6 +4,7 @@ import { useFadeIn } from '../hooks/useFadeIn'
 import { PUBLICATIONS } from '../data'
 import { getFeaturedImage } from '../utils/featuredImages'
 import Authors from '../components/Authors'
+import HeroPattern from '../components/HeroPattern'
 
 const SLIDES = [
   {
@@ -75,6 +76,8 @@ function HeroSlider() {
           }}
         />
       </div>
+
+      <HeroPattern />
 
       {/* Arrow navigation */}
       <button
