@@ -69,24 +69,24 @@ interface Member {
 }
 
 const POSTDOC: Member[] = [
-  { nameKo: '신우현', nameEn: 'Woohyeon Shin', role: 'Postdoctoral Researcher', photo: shinWoohyeonPhoto, email: 'whshin@kist.re.kr' },
+  { nameKo: '신우현', nameEn: 'Woohyeon Shin', role: 'Postdoctoral Researcher', photo: shinWoohyeonPhoto, research: 'Digital Twin & Simulation', email: 'whshin@kist.re.kr' },
 ]
 
 const PHD_INTEGRATED: Member[] = [
-  { nameKo: '권다솔', nameEn: 'Dasol Kwon', role: 'Researcher', photo: kwonDasolPhoto, email: 'kdasol@kist.re.kr' },
-  { nameKo: '박준규', nameEn: 'Jun Kyu Park', role: 'Ph.D. Student', photo: parkJunkyuPhoto, email: 'pjk6837@kist.re.kr' },
-  { nameKo: '우지원', nameEn: 'Jiwon Woo', role: 'Integrated M.S./Ph.D. Student', photo: wooJiwonPhoto, email: 'jwwoo@kist.re.kr' },
+  { nameKo: '권다솔', nameEn: 'Dasol Kwon', role: 'Researcher', photo: kwonDasolPhoto, research: 'Wet Electrode Cathode', email: 'kdasol@kist.re.kr' },
+  { nameKo: '박준규', nameEn: 'Jun Kyu Park', role: 'Ph.D. Student', photo: parkJunkyuPhoto, research: 'Wet Electrode Cathode', email: 'pjk6837@kist.re.kr' },
+  { nameKo: '우지원', nameEn: 'Jiwon Woo', role: 'Integrated M.S./Ph.D. Student', photo: wooJiwonPhoto, research: 'Dry Electrode Cathode', email: 'jwwoo@kist.re.kr' },
 ]
 
 const RESEARCH_INTERN: Member[] = [
-  { nameKo: '박병진', nameEn: 'Byeongjin Park', role: 'Research Intern', photo: parkByeongjinPhoto, email: 'bj.park@kist.re.kr' },
-  { nameKo: '조지백', nameEn: 'Jiback Cho', role: 'Research Intern', photo: choJibackPhoto, email: 'zeebaek@kist.re.kr' },
+  { nameKo: '박병진', nameEn: 'Byeongjin Park', role: 'Research Intern', photo: parkByeongjinPhoto, research: 'Dry Electrode Cathode', email: 'bj.park@kist.re.kr' },
+  { nameKo: '조지백', nameEn: 'Jiback Cho', role: 'Research Intern', photo: choJibackPhoto, research: 'Dry Electrode Cathode', email: 'zeebaek@kist.re.kr' },
 ]
 
 const MASTERS_STUDENTS: Member[] = [
   { nameKo: '정현지', nameEn: 'Hyeon Ji Jeong', role: "Master's Student", photo: jeongHyunjiPhoto, research: 'LFP Dry Electrode Cathode', email: '125027@kist.re.kr' },
-  { nameKo: '이상원', nameEn: 'Sangwon Lee', role: "Master's Student", photo: leeSangwonPhoto, email: 'sangwon00@kist.re.kr' },
-  { nameKo: '양준혁', nameEn: 'Junhyeok Yang', role: "Master's Student", photo: yangJunhyeokPhoto, email: 'yangjh9812@kist.re.kr' },
+  { nameKo: '이상원', nameEn: 'Sangwon Lee', role: "Master's Student", photo: leeSangwonPhoto, research: 'Dry Electrode Anode', email: 'sangwon00@kist.re.kr' },
+  { nameKo: '양준혁', nameEn: 'Junhyeok Yang', role: "Master's Student", photo: yangJunhyeokPhoto, research: 'Primer Foil & Current Collector', email: 'yangjh9812@kist.re.kr' },
   { nameKo: '이민수', nameEn: 'Min Soo Lee', role: "Master's Student", photo: leeMinsooPhoto, research: 'Wet Electrode Cathode', email: 'mslee@kist.re.kr' },
   { nameKo: '송한빈', nameEn: 'Han Bin Song', role: "Master's Student", photo: songHanbinPhoto, research: 'Dry Electrode Cathode', email: 'hbsong7905@kist.re.kr' },
 ]
@@ -122,9 +122,9 @@ function PhotoPlaceholder({ size }: { size: 'pi' | 'member' }) {
 
 function MemberCard({ member }: { member: Member }) {
   return (
-    <div className="bg-white rounded-xl border border-gray-100 p-5 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex flex-col gap-3">
+    <div className="bg-white rounded-xl border border-gray-100 p-6 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex flex-col gap-3">
       {/* Photo */}
-      <div className="w-full max-w-[92px] mx-auto">
+      <div className="w-full max-w-[112px] mx-auto">
         {member.photo ? (
           <img
             src={member.photo}
@@ -138,18 +138,18 @@ function MemberCard({ member }: { member: Member }) {
 
       {/* Name & role */}
       <div className="text-center">
-        <p className="font-bold text-gray-900 text-[14px] leading-tight">
+        <p className="font-bold text-gray-900 text-[15px] leading-tight">
           {member.nameKo} ({member.nameEn})
         </p>
-        <p className="text-[#003087] text-[12px] font-medium mt-0.5">{member.role}</p>
+        <p className="text-[#003087] text-[12.5px] font-medium mt-0.5">{member.role}</p>
       </div>
 
       {/* Research interest */}
       <div className="text-center">
         {member.research ? (
-          <p className="text-[11.5px] text-gray-500">{member.research}</p>
+          <p className="text-[12px] text-gray-500">{member.research}</p>
         ) : (
-          <p className="text-[11.5px] text-gray-300 italic">Research interest TBD</p>
+          <p className="text-[12px] text-gray-300 italic">Research interest TBD</p>
         )}
       </div>
 
@@ -194,7 +194,7 @@ function MemberGroup({ title, members }: { title: string; members: Member[] }) {
         </h3>
         <div className="flex-1 h-px bg-[#003087]/12" />
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5">
         {members.map((m) => (
           <MemberCard key={m.nameEn} member={m} />
         ))}
