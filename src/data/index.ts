@@ -34,7 +34,7 @@ export const PI = {
   email: 'jkyoo@kist.re.kr',
   phone: '+82-2-958-5441',
   photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=500&fit=crop&auto=format',
-  bio: `Dr. Jung-Keun Yoo leads the Advanced Battery Materials & Process Laboratory at KIST, where his team investigates next-generation electrode fabrication methods and advanced carbon nanomaterials. With a career spanning both fundamental electrochemistry and scalable manufacturing, Dr. Yoo bridges the gap between laboratory innovation and industrial application.
+  bio: `Dr. Jung-Keun Yoo leads the Digital Engineering for Electrode Processing Laboratory at KIST, where his team investigates next-generation electrode fabrication methods and advanced carbon nanomaterials. With a career spanning both fundamental electrochemistry and scalable manufacturing, Dr. Yoo bridges the gap between laboratory innovation and industrial application.
 
 His pioneering work on dry electrode processing and CNT conductive networks has attracted collaboration from leading battery manufacturers across East Asia and Europe. He received his Ph.D. in Chemical Engineering from KAIST and completed postdoctoral training at MIT's Research Laboratory of Electronics.`,
   education: [
@@ -446,7 +446,7 @@ export const HERO_SLIDES = [
   {
     image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1920&h=800&fit=crop&auto=format',
     tag: 'Open Positions',
-    title: 'Join ABMP Lab',
+    title: 'Join DEEP Lab',
     subtitle: 'We are recruiting motivated Ph.D. students and postdoctoral researchers',
     link: '#contact',
   },
@@ -476,8 +476,8 @@ export const NEWS: NewsItem[] = [
     slug: 'vietnamese-deputy-pm-visits-abmp-lab',
     category: 'Research',
     date: 'September 8, 2026',
-    title: 'Vietnamese Deputy PM Visits ABMP Lab',
-    excerpt: 'Deputy Prime Minister Ho Quoc Dung of Vietnam visited KIST as part of an official delegation and observed a live coin-cell assembly demonstration at the ABMP Laboratory.',
+    title: 'Vietnamese Deputy PM Visits DEEP Lab',
+    excerpt: 'Deputy Prime Minister Ho Quoc Dung of Vietnam visited KIST as part of an official delegation and observed a live coin-cell assembly demonstration at the DEEP Laboratory.',
     photos: [
       { src: researchVietnamDeputyPmVisit1 },
       { src: researchVietnamDeputyPmVisit2 },

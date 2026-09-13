@@ -12,7 +12,7 @@ export default function Footer() {
           {/* Center: all text content */}
           <div className="flex flex-col items-center text-center">
             <p className="text-[13px] font-bold tracking-[0.12em] text-[#003087] uppercase mb-2">
-              Advanced Battery Materials &amp; Process Laboratory
+              Digital Engineering for Electrode Processing Laboratory
             </p>
             <p className="text-sm text-gray-600 mb-0.5">Korea Institute of Science and Technology (KIST)</p>
             <p className="text-sm text-gray-500 mb-5">Energy Storage Research Center</p>
@@ -37,7 +37,7 @@ export default function Footer() {
               </span>
             </div>
 
-            <p className="text-xs text-gray-400">© 2026 ABMP Laboratory. All Rights Reserved.</p>
+            <p className="text-xs text-gray-400">© 2026 DEEP Laboratory. All Rights Reserved.</p>
           </div>
 
           {/* Right: KIST logo */}

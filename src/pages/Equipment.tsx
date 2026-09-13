@@ -33,10 +33,10 @@ function PageHeader() {
     >
       <HeroPattern />
       <div className="relative z-10 max-w-screen-xl mx-auto px-6 lg:px-10">
-        <p className="text-[11px] font-bold tracking-[0.14em] uppercase text-blue-300 mb-3">ABMP Laboratory</p>
+        <p className="text-[11px] font-bold tracking-[0.14em] uppercase text-blue-300 mb-3">DEEP Laboratory</p>
         <h1 className="text-4xl font-bold text-white mb-4">Equipment & Facilities</h1>
         <p className="text-blue-200 max-w-2xl leading-relaxed">
-          Key instrumentation available to the ABMP Laboratory for electrode fabrication and characterization.
+          Key instrumentation available to the DEEP Laboratory for electrode fabrication and characterization.
         </p>
       </div>
     </section>

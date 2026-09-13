@@ -11,7 +11,7 @@ function PageHeader() {
     >
       <HeroPattern />
       <div className="relative z-10 max-w-screen-xl mx-auto px-6 lg:px-10">
-        <p className="text-[11px] font-bold tracking-[0.14em] uppercase text-blue-300 mb-3">ABMP Laboratory</p>
+        <p className="text-[11px] font-bold tracking-[0.14em] uppercase text-blue-300 mb-3">DEEP Laboratory</p>
         <h1 className="text-4xl font-bold text-white mb-4">Contact</h1>
         <p className="text-blue-200 max-w-2xl leading-relaxed">
           We welcome inquiries from prospective students, postdocs, and industry partners.
@@ -115,7 +115,7 @@ function LocationSection() {
             <div className="bg-gray-50 rounded-xl p-6 mb-5">
               <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">Address</h3>
               <p className="text-gray-700 leading-relaxed text-sm">
-                Advanced Battery Materials & Process Laboratory (L5 Building)<br />
+                Digital Engineering for Electrode Processing Laboratory (L5 Building)<br />
                 Korea Institute of Science and Technology<br />
                 5 Hwarang-ro 14-gil, Seongbuk-gu<br />
                 Seoul 02792, Republic of Korea

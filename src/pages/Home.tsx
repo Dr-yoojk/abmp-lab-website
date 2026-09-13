@@ -173,15 +173,15 @@ function WelcomeSection() {
       >
         <p className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#003087] mb-4">Welcome</p>
         <h2 className="text-4xl font-bold text-gray-900 mb-3 relative inline-block">
-          Advanced Battery Materials
+          Digital Engineering for
           <span
             className="block h-[3px] w-16 mx-auto mt-3 rounded"
             style={{ backgroundColor: '#003087' }}
           />
         </h2>
-        <h2 className="text-4xl font-bold text-[#003087] mb-8">& Process Laboratory</h2>
+        <h2 className="text-4xl font-bold text-[#003087] mb-8">Electrode Processing</h2>
         <p className="text-gray-500 max-w-3xl mx-auto text-lg leading-relaxed mb-4">
-          ABMP Laboratory at KIST is a process-focused research group specializing in thick electrode fabrication
+          DEEP Laboratory at KIST is a process-focused research group specializing in thick electrode fabrication
           for next-generation lithium-ion batteries. We pursue both dry (solvent-free) and wet (slurry-based)
           electrode processing — covering LFP and NCM cathode systems, silicon-based anodes, and full electrode
           stack engineering including conductive additives, binders, dispersants, and current collectors.
@@ -227,7 +227,7 @@ function WorkWithUs() {
 
             <div className="space-y-4 text-[15px] text-gray-600 leading-relaxed mb-8">
               <p>
-                한국과학기술연구원(KIST) 에너지저장연구센터 ABMP 연구실에서
+                한국과학기술연구원(KIST) 에너지저장연구센터 DEEP 연구실에서
                 함께 연구할 대학원생 및 박사후연구원을 모집합니다.
               </p>
               <div className="space-y-2 pl-1">

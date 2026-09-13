@@ -20,10 +20,10 @@ function PageHeader() {
     >
       <HeroPattern />
       <div className="relative z-10 max-w-screen-xl mx-auto px-6 lg:px-10">
-        <p className="text-[11px] font-bold tracking-[0.14em] uppercase text-blue-300 mb-3">ABMP Laboratory</p>
+        <p className="text-[11px] font-bold tracking-[0.14em] uppercase text-blue-300 mb-3">DEEP Laboratory</p>
         <h1 className="text-4xl font-bold text-white mb-4">Gallery</h1>
         <p className="text-blue-200 max-w-2xl leading-relaxed">
-          Moments from the Advanced Battery Materials & Process Laboratory — publications, awards,
+          Moments from the Digital Engineering for Electrode Processing Laboratory — publications, awards,
           team milestones, and lab life.
         </p>
       </div>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import abmpLogo from '../imports/abmp-lab-wordmark.png'
+import deepLabLogo from '../imports/deep-lab-logo.png'
 
 const RESEARCH_DROPDOWN = [
   { label: 'Overview', href: '/research' },
@@ -59,11 +59,11 @@ export default function Nav() {
         <div className="max-w-screen-xl mx-auto px-6 lg:px-10">
           <div className="flex items-center justify-between h-20">
 
-            {/* Left: ABMP Lab logo image */}
+            {/* Left: DEEP Lab logo image */}
             <Link to="/" className="flex-shrink-0 flex items-center">
               <img
-                src={abmpLogo}
-                alt="ABMP Lab — Dr. Jung-Keun Yoo"
+                src={deepLabLogo}
+                alt="DEEP Lab — Dr. Jung-Keun Yoo"
                 className="h-10 w-auto object-contain"
               />
             </Link>
