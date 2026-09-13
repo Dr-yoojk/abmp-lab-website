@@ -22,6 +22,7 @@ import researchWetSlurryProcess from '../imports/research-wet-slurry-process.jpg
 import researchVietnamDeputyPmVisit1 from '../imports/research-vietnam-deputy-pm-visit-1.jpg'
 import researchVietnamDeputyPmVisit2 from '../imports/research-vietnam-deputy-pm-visit-2.jpg'
 import researchVietnamDeputyPmVisit3 from '../imports/research-vietnam-deputy-pm-visit-3.jpg'
+import galleryKwonAdvsPaper from '../imports/gallery-kwon-advs-paper.jpg'
 
 // ── Site-wide data ────────────────────────────────────────────────────────────
 
@@ -517,6 +518,15 @@ export const NEWS: NewsItem[] = [
       { src: labLifeByeongjinBirthday2 },
       { src: labLifeOebinRestaurantFlyer, fit: 'contain' },
     ],
+  },
+  {
+    id: 6,
+    slug: 'dasol-kwon-paper-accepted-advanced-science',
+    category: 'Research',
+    date: 'August 12, 2026',
+    title: "Dasol Kwon's Paper Accepted in Advanced Science",
+    excerpt: "Congratulations to Dr. Dasol Kwon on the acceptance of her paper, 'A Dispersant-Driven Carbon-Binder Domains Homogeneity in High-Energy-Density Electrodes for Lithium-Ion Batteries,' in Advanced Science!",
+    photos: [{ src: galleryKwonAdvsPaper, fit: 'contain' }],
   },
   {
     id: 1,
