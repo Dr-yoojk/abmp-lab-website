@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import deepLabLogo from '../imports/deep-lab-logo.png'
+import headerLogo from '../imports/header-logo.png'
 
 const RESEARCH_DROPDOWN = [
   { label: 'Overview', href: '/research' },
@@ -59,10 +59,10 @@ export default function Nav() {
         <div className="max-w-screen-xl mx-auto px-6 lg:px-10">
           <div className="flex items-center justify-between h-24">
 
-            {/* Left: DEEP Lab logo image */}
+            {/* Left: DEEP Lab logo — icon + wordmark already baked into this image */}
             <Link to="/" className="flex-shrink-0 flex items-center">
               <img
-                src={deepLabLogo}
+                src={headerLogo}
                 alt="DEEP Lab — Dr. Jung-Keun Yoo"
                 className="h-16 w-auto object-contain"
               />

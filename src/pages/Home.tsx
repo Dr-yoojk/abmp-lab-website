@@ -7,6 +7,7 @@ import Authors from '../components/Authors'
 import HeroPattern from '../components/HeroPattern'
 import heroSlide1Electrode from '../imports/hero-slide-1-electrode.jpg'
 import heroSlide2DigitalTwin from '../imports/hero-slide-2-digital-twin.jpg'
+import heroSlide3JoinUs from '../imports/hero-slide-3-join-us.jpg'
 
 const SLIDES = [
   {
@@ -33,8 +34,8 @@ const SLIDES = [
     subtitle: 'We welcome student researchers, research interns, Ph.D. candidates, and postdoctoral fellows passionate about battery manufacturing.',
     button: 'View Openings →',
     link: '/contact',
-    image: undefined as string | undefined,
-    imagePosition: undefined as string | undefined,
+    image: heroSlide3JoinUs,
+    imagePosition: '78% center',
   },
 ]
 
@@ -70,7 +71,10 @@ function SlideBackground({ slide }: { slide: (typeof SLIDES)[number] }) {
       <div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(90deg, rgba(0,32,96,0.82) 0%, rgba(0,48,135,0.60) 50%, rgba(0,20,60,0.40) 100%)',
+          // Lighter than before, especially past the text column (~50%+), so
+          // slides 1/2's photos read as clearly as slide 3's — whose own
+          // background is dark navy already and barely needed the dimming.
+          background: 'linear-gradient(90deg, rgba(0,32,96,0.75) 0%, rgba(0,48,135,0.40) 50%, rgba(0,20,60,0.12) 100%)',
         }}
       />
     </>
