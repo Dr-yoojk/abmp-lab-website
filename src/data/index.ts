@@ -19,6 +19,9 @@ import awardsDasolKwonCeremony from '../imports/awards-dasol-kwon-ceremony.png'
 import awardsDasolKwonList from '../imports/awards-dasol-kwon-list.png'
 import researchCntNetworks from '../imports/research-cnt-networks.jpg'
 import researchWetSlurryProcess from '../imports/research-wet-slurry-process.jpg'
+import researchVietnamDeputyPmVisit1 from '../imports/research-vietnam-deputy-pm-visit-1.jpg'
+import researchVietnamDeputyPmVisit2 from '../imports/research-vietnam-deputy-pm-visit-2.jpg'
+import researchVietnamDeputyPmVisit3 from '../imports/research-vietnam-deputy-pm-visit-3.jpg'
 
 // ── Site-wide data ────────────────────────────────────────────────────────────
 
@@ -468,6 +471,19 @@ export interface NewsItem {
 }
 
 export const NEWS: NewsItem[] = [
+  {
+    id: 5,
+    slug: 'vietnamese-deputy-pm-visits-abmp-lab',
+    category: 'Research',
+    date: 'September 8, 2026',
+    title: 'Vietnamese Deputy PM Visits ABMP Lab',
+    excerpt: 'Deputy Prime Minister Ho Quoc Dung of Vietnam visited KIST as part of an official delegation and observed a live coin-cell assembly demonstration at the ABMP Laboratory.',
+    photos: [
+      { src: researchVietnamDeputyPmVisit1 },
+      { src: researchVietnamDeputyPmVisit2 },
+      { src: researchVietnamDeputyPmVisit3 },
+    ],
+  },
   {
     id: 4,
     slug: '2026-battery-technology-symposium',
