@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useFadeIn } from '../hooks/useFadeIn'
 import { PUBLICATIONS } from '../data'
@@ -39,62 +39,141 @@ const SLIDES = [
 ]
 
 // ── Hero Slider ────────────────────────────────────────────────────────────────
-function HeroSlider() {
-  const [current, setCurrent] = useState(0)
-  const [transitioning, setTransitioning] = useState(false)
+
+// How long the background crossfade (and the arrow/autoplay transition it's
+// tied to) takes; kept in the 600–800ms range alongside HeroSlideText's own
+// 600ms text transition so the two feel like one coordinated motion.
+const HERO_TRANSITION_MS = 700
+
+// One slide's background — image (or the placeholder + dot-grid pattern when
+// there's no image yet) plus the readability gradient. Shared by the current
+// and outgoing layers so a crossfade never reveals bare background between them.
+function SlideBackground({ slide }: { slide: (typeof SLIDES)[number] }) {
+  return (
+    <>
+      {slide.image ? (
+        <img
+          src={slide.image}
+          alt=""
+          className="w-full h-full object-cover"
+          style={{ objectPosition: slide.imagePosition }}
+        />
+      ) : (
+        <div className="relative w-full h-full bg-gray-800 flex items-center justify-center">
+          {/* Dot-grid pattern only makes sense on the placeholder — a real photo doesn't need it */}
+          <HeroPattern />
+          <span className="relative z-10 text-white/30 text-sm font-medium tracking-wide uppercase">
+            Image coming soon
+          </span>
+        </div>
+      )}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(90deg, rgba(0,32,96,0.82) 0%, rgba(0,48,135,0.60) 50%, rgba(0,20,60,0.40) 100%)',
+        }}
+      />
+    </>
+  )
+}
+
+// Text block for one slide — starts faded-down-and-out, then transitions to its
+// resting state shortly after mount. Remounted via `key={current}` on every
+// slide change so the transition replays each time, with each element's
+// `transitionDelay` staggering it slightly behind the last.
+function HeroSlideText({ slide }: { slide: (typeof SLIDES)[number] }) {
+  const [entered, setEntered] = useState(false)
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTransitioning(true)
-      setTimeout(() => {
-        setCurrent((c) => (c + 1) % SLIDES.length)
-        setTransitioning(false)
-      }, 400)
-    }, 5000)
-    return () => clearInterval(timer)
+    // A brief delay (rather than requestAnimationFrame) so the "hidden" state
+    // above actually paints first — rAF can stay stalled indefinitely on a
+    // backgrounded/occluded tab, whereas a timer keeps firing regardless.
+    const t = setTimeout(() => setEntered(true), 20)
+    return () => clearTimeout(t)
   }, [])
 
+  const base = 'transition-all ease-out duration-[600ms]'
+  const state = entered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
+
+  return (
+    <div className="max-w-2xl">
+      <span
+        className={`inline-block text-[11px] font-bold tracking-[0.12em] uppercase text-[#c8a84b] mb-4 px-3 py-1 border border-[#c8a84b]/40 rounded ${base} ${state}`}
+        style={{ transitionDelay: '0ms' }}
+      >
+        {slide.label}
+      </span>
+      <h1
+        className={`text-white font-bold mb-4 leading-tight ${base} ${state}`}
+        style={{ fontSize: 'clamp(2rem,4vw,3rem)', transitionDelay: '90ms' }}
+      >
+        {slide.title}
+      </h1>
+      <p className={`text-blue-100 text-lg mb-8 leading-relaxed ${base} ${state}`} style={{ transitionDelay: '180ms' }}>
+        {slide.subtitle}
+      </p>
+      <Link
+        to={slide.link}
+        className={`inline-flex items-center px-7 py-3 bg-white text-[#003087] text-sm font-semibold rounded hover:bg-blue-50 shadow-lg ${base} ${state}`}
+        style={{ transitionDelay: '270ms' }}
+      >
+        {slide.button}
+      </Link>
+    </div>
+  )
+}
+
+function HeroSlider() {
+  const [current, setCurrent] = useState(0)
+  const [prevIndex, setPrevIndex] = useState<number | null>(null)
+  const [fadingOut, setFadingOut] = useState(false)
+  const isAnimating = useRef(false)
+
   const goTo = (i: number) => {
-    if (i === current) return
-    setTransitioning(true)
+    if (i === current || isAnimating.current) return
+    isAnimating.current = true
+    setPrevIndex(current)
+    setCurrent(i)
+    setFadingOut(false)
+    // Paint the outgoing layer at full opacity first, then trigger its fade shortly
+    // after so the crossfade actually animates instead of snapping. A timer (rather
+    // than requestAnimationFrame) keeps firing even on a backgrounded/occluded tab.
+    const fadeTimer = setTimeout(() => setFadingOut(true), 20)
     setTimeout(() => {
-      setCurrent(i)
-      setTransitioning(false)
-    }, 300)
+      clearTimeout(fadeTimer)
+      setPrevIndex(null)
+      isAnimating.current = false
+    }, HERO_TRANSITION_MS)
   }
+
+  useEffect(() => {
+    const timer = setInterval(() => goTo((current + 1) % SLIDES.length), 5000)
+    return () => clearInterval(timer)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [current])
 
   const goPrev = () => goTo((current - 1 + SLIDES.length) % SLIDES.length)
   const goNext = () => goTo((current + 1) % SLIDES.length)
 
   const slide = SLIDES[current]
+  const prevSlide = prevIndex !== null ? SLIDES[prevIndex] : null
 
   return (
     <div className="relative w-full overflow-hidden bg-gray-900" style={{ height: '560px' }}>
-      {/* Background */}
-      <div
-        className={`absolute inset-0 transition-opacity duration-500 ${transitioning ? 'opacity-0' : 'opacity-100'}`}
-      >
-        {slide.image ? (
-          <img
-            src={slide.image}
-            alt=""
-            className="w-full h-full object-cover"
-            style={{ objectPosition: slide.imagePosition }}
-          />
-        ) : (
-          <div className="w-full h-full bg-gray-800 flex items-center justify-center">
-            <span className="text-white/30 text-sm font-medium tracking-wide uppercase">Image coming soon</span>
-          </div>
-        )}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: 'linear-gradient(90deg, rgba(0,32,96,0.82) 0%, rgba(0,48,135,0.60) 50%, rgba(0,20,60,0.40) 100%)',
-          }}
-        />
+      {/* Current slide — always fully visible underneath so the crossfade has something to reveal */}
+      <div className="absolute inset-0">
+        <SlideBackground slide={slide} />
       </div>
 
-      <HeroPattern />
+      {/* Outgoing slide crossfades out on top of it */}
+      {prevSlide && (
+        <div
+          className="absolute inset-0 transition-opacity ease-in-out"
+          style={{ transitionDuration: `${HERO_TRANSITION_MS}ms`, opacity: fadingOut ? 0 : 1 }}
+        >
+          <SlideBackground slide={prevSlide} />
+        </div>
+      )}
 
       {/* Arrow navigation */}
       <button
@@ -112,28 +191,11 @@ function HeroSlider() {
         ›
       </button>
 
-      {/* Content */}
+      {/* Content — key={current} remounts HeroSlideText on every slide change
+          so its enter transition replays, staggered per element */}
       <div className="relative z-10 h-full flex items-center">
         <div className="max-w-screen-xl mx-auto px-6 lg:px-10 w-full">
-          <div
-            className={`max-w-2xl transition-all duration-500 ${
-              transitioning ? 'opacity-0 translate-y-3' : 'opacity-100 translate-y-0'
-            }`}
-          >
-            <span className="inline-block text-[11px] font-bold tracking-[0.12em] uppercase text-[#c8a84b] mb-4 px-3 py-1 border border-[#c8a84b]/40 rounded">
-              {slide.label}
-            </span>
-            <h1 className="text-white font-bold mb-4 leading-tight" style={{ fontSize: 'clamp(2rem,4vw,3rem)' }}>
-              {slide.title}
-            </h1>
-            <p className="text-blue-100 text-lg mb-8 leading-relaxed">{slide.subtitle}</p>
-            <Link
-              to={slide.link}
-              className="inline-flex items-center px-7 py-3 bg-white text-[#003087] text-sm font-semibold rounded hover:bg-blue-50 transition-all duration-200 shadow-lg"
-            >
-              {slide.button}
-            </Link>
-          </div>
+          <HeroSlideText key={current} slide={slide} />
         </div>
       </div>
 
