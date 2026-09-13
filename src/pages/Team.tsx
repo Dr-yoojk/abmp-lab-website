@@ -80,7 +80,6 @@ const PHD_INTEGRATED: Member[] = [
 ]
 
 const RESEARCH_INTERN: Member[] = [
-  { nameKo: '박병진', nameEn: 'Byeongjin Park', role: 'Research Intern', photo: parkByeongjinPhoto, research: 'Dry Electrode Cathode', email: 'bj.park@kist.re.kr' },
   { nameKo: '조지백', nameEn: 'Jiback Cho', role: 'Research Intern', photo: choJibackPhoto, research: 'Dry Electrode Cathode', email: 'zeebaek@kist.re.kr' },
 ]
 
@@ -92,9 +91,14 @@ const MASTERS_STUDENTS: Member[] = [
   { nameKo: '송한빈', nameEn: 'Han Bin Song', role: "Master's Student", photo: songHanbinPhoto, research: 'Dry Electrode Cathode', email: 'hbsong7905@kist.re.kr' },
 ]
 
-const ALUMNI: Member[] = [
-  { nameKo: '김민솔', nameEn: 'Minsol Kim', role: 'Alumni' },
-  { nameKo: '김민정', nameEn: 'Minjeong Kim', role: 'Alumni' },
+// Alumni "role" doubles as the degree label shown on the card (e.g. "M.S. Graduate").
+const ALUMNI_GRAD_POSTDOC: Member[] = [
+  { nameKo: '김민정', nameEn: 'Minjeong Kim', role: 'M.S. Graduate', research: 'Dry Process' },
+  { nameKo: '김민솔', nameEn: 'Minsol Kim', role: 'M.S. Graduate', research: 'Wet Fluorine-Free Binder' },
+]
+
+const ALUMNI_RESEARCH_INTERN: Member[] = [
+  { nameKo: '박병진', nameEn: 'Byeongjin Park', role: 'Research Intern', photo: parkByeongjinPhoto, research: 'Dry Electrode Cathode' },
 ]
 
 // ── Shared components ──────────────────────────────────────────────────────
@@ -171,22 +175,52 @@ function MemberCard({ member }: { member: Member }) {
   )
 }
 
+// Same tone/layout as MemberCard, minus the email field — alumni cards never show one.
 function AlumniCard({ member }: { member: Member }) {
   return (
-    <div className="bg-white rounded-xl border border-gray-100 p-4 flex flex-col gap-3">
-      <div className="w-full max-w-[80px] mx-auto">
-        <PhotoPlaceholder size="member" />
+    <div className="bg-white rounded-xl border border-gray-100 p-6 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex flex-col gap-3">
+      {/* Photo */}
+      <div className="w-full max-w-[112px] mx-auto">
+        {member.photo ? (
+          <img
+            src={member.photo}
+            alt={member.nameEn}
+            className="w-full aspect-square rounded-lg object-cover border border-gray-100"
+          />
+        ) : (
+          <PhotoPlaceholder size="member" />
+        )}
       </div>
+
+      {/* Name & degree label */}
       <div className="text-center">
-        <p className="font-bold text-gray-900 text-[13px] leading-tight">
+        <p className="font-bold text-gray-900 text-[15px] leading-tight">
           {member.nameKo} ({member.nameEn})
         </p>
+        <p className="text-[#003087] text-[12.5px] font-medium mt-0.5">{member.role}</p>
+      </div>
+
+      {/* Research interest */}
+      <div className="text-center">
+        {member.research ? (
+          <p className="text-[12px] text-gray-500">{member.research}</p>
+        ) : (
+          <p className="text-[12px] text-gray-300 italic">Research interest TBD</p>
+        )}
       </div>
     </div>
   )
 }
 
-function MemberGroup({ title, members }: { title: string; members: Member[] }) {
+function MemberGroup({
+  title,
+  members,
+  Card = MemberCard,
+}: {
+  title: string
+  members: Member[]
+  Card?: typeof MemberCard
+}) {
   return (
     <div className="mb-10">
       <div className="flex items-center gap-3 mb-5">
@@ -197,7 +231,7 @@ function MemberGroup({ title, members }: { title: string; members: Member[] }) {
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5">
         {members.map((m) => (
-          <MemberCard key={m.nameEn} member={m} />
+          <Card key={m.nameEn} member={m} />
         ))}
       </div>
     </div>
@@ -439,11 +473,8 @@ function AlumniSection() {
           <div className="flex-1 h-px bg-gray-200" />
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-          {ALUMNI.map((m) => (
-            <AlumniCard key={m.nameEn} member={m} />
-          ))}
-        </div>
+        <MemberGroup title="Graduate & Postdoc" members={ALUMNI_GRAD_POSTDOC} Card={AlumniCard} />
+        <MemberGroup title="Research Intern" members={ALUMNI_RESEARCH_INTERN} Card={AlumniCard} />
       </div>
     </section>
   )
