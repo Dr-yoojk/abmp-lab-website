@@ -1,14 +1,18 @@
-import journalCoverConcurrently from '../imports/journal-cover-concurrently.jpg'
-import journalCoverUltrahigh from '../imports/journal-cover-ultrahigh.jpg'
-import journalCoverEnhancing from '../imports/journal-cover-enhancing.jpg'
-import journalCoverFluorine from '../imports/journal-cover-fluorine.jpg'
-import journalCoverStable from '../imports/journal-cover-stable.jpg'
-import journalCoverGel from '../imports/journal-cover-gel.jpg'
-import journalCoverHighly from '../imports/journal-cover-highly.jpg'
-import journalCoverSynergetic from '../imports/journal-cover-synergetic.jpg'
-import journalCoverOrganosilicon from '../imports/journal-cover-organosilicon.jpg'
-import journalCoverMultifunctional from '../imports/journal-cover-multifunctional.jpg'
-import journalCoverK15vopo4f05 from '../imports/journal-cover-k15vopo4f05.jpg'
+import pubAdvs2026Fig1 from '../imports/pub-advs2026-fig1.jpg'
+import pubCey2026Fig1 from '../imports/pub-cey2026-fig1.jpg'
+import pubCssc2026Fig1 from '../imports/pub-cssc2026-fig1.jpg'
+import pubAenm2026Fig1 from '../imports/pub-aenm2026-fig1.jpg'
+import pubEsm2025Fig1 from '../imports/pub-esm2025-fig1.jpg'
+import pubAfm2024Fig1 from '../imports/pub-afm2024-fig1.jpg'
+import pubEsm2023Fig1 from '../imports/pub-esm2023-fig1.jpg'
+import pubCej2023aFig1 from '../imports/pub-cej2023a-fig1.jpg'
+import pubCej2023bFig1 from '../imports/pub-cej2023b-fig1.jpg'
+import pubJmca2022Fig1 from '../imports/pub-jmca2022-fig1.jpg'
+import pubNano2022aFig1 from '../imports/pub-nano2022a-fig1.jpg'
+import pubNano2022bFig1 from '../imports/pub-nano2022b-fig1.jpg'
+import pubEsm2022Fig1 from '../imports/pub-esm2022-fig1.jpg'
+import pubJmca2021Fig1 from '../imports/pub-jmca2021-fig1.jpg'
+import pubAcsami2021Fig1 from '../imports/pub-acsami2021-fig1.jpg'
 import labLifeHanbinBirthday1 from '../imports/lab-life-hanbin-birthday-1.jpg'
 import labLifeHanbinBirthday2 from '../imports/lab-life-hanbin-birthday-2.jpg'
 import labLifeByeongjinBirthday1 from '../imports/lab-life-byeongjin-birthday-1.jpg'
@@ -153,7 +157,8 @@ export interface Publication {
   authors: string
   journal: string
   year: number
-  doi: string
+  link: string
+  doi?: string
   volume?: string
   impactFactor?: number
   isCorresponding?: boolean
@@ -164,106 +169,144 @@ export interface Publication {
 
 // Single source of truth for lab publications — the Publications page and
 // the Home page "Featured Publications" section both read from this array,
-// so updating it here keeps both pages in sync.
+// so updating it here keeps both pages in sync. The first 4 entries are
+// shown as "Featured Publications" on both pages (PUBLICATIONS.slice(0, 4)),
+// so their order matters; the rest just need to be grouped correctly by year.
 export const PUBLICATIONS: Publication[] = [
   {
     id: 'p1',
     year: 2026,
-    title: 'Concurrently Achieving 10 mAh cm⁻² and Ultralow Binder Content via Active-Surface-Guided Fibrillation for Fab-Scale Dry-Processed Lithium-ion Batteries',
-    authors: 'J. Park, H. Oh, J.H. Lim, S. Jung, N. Yoo, J.K. Yoo, K.M. Jeong, K.Y. Park',
-    journal: 'Advanced Energy Materials',
-    doi: '10.1002/aenm.202504005',
-    coverImage: journalCoverConcurrently,
+    title: 'A Dispersant-Driven Carbon-Binder Domains Homogeneity in High-Energy-Density Electrodes for Lithium-Ion Batteries',
+    authors: 'D.S. Kwon, M.Y. Seo, J. Ahn, Y.J. Jeong, W. Shin, W. Ko, M.J. Kim, J. Lee, W.Y. Jeon, M.J. Choi, K.I. Kim, J.J. Eom, S.Y. Oh, H. Lee, J. Bang, J. Kim, Y.J. Kim, J.K. Yoo',
+    journal: 'Advanced Science',
+    link: 'https://advanced.onlinelibrary.wiley.com/doi/abs/10.1002/advs.77293',
+    coverImage: pubAdvs2026Fig1,
   },
   {
     id: 'p2',
     year: 2026,
-    title: 'Ultrahigh-Mass-Loading Electrodes With Enhanced Homogeneity Using a High-Concentration Slurry for Lithium-Ion Batteries',
-    authors: 'J.K. Park, W. Shin, W. Jo, H.J. Lee, W.Y. Jeon, J. Ahn, J. Yoon, Y.J. Jeong, J. Oh, J.K. Yoo',
-    journal: 'Carbon Energy',
-    doi: '10.1002/cey2.70108',
-    coverImage: journalCoverUltrahigh,
+    title: 'Concurrently Achieving 10 mAh cm⁻² and Ultralow Binder Content via Active-Surface-Guided Fibrillation for Fab-Scale Dry-Processed Lithium-ion Batteries',
+    authors: 'J. Park, H. Oh, J.H. Lim, S. Jung, N. Yoo, J.K. Yoo, K.M. Jeong, K.Y. Park',
+    journal: 'Advanced Energy Materials',
+    link: 'https://advanced.onlinelibrary.wiley.com/doi/abs/10.1002/aenm.202504005',
+    coverImage: pubAenm2026Fig1,
   },
   {
     id: 'p3',
+    year: 2026,
+    title: 'Ultrahigh-Mass-Loading Electrodes With Enhanced Homogeneity Using a High-Concentration Slurry for Lithium-Ion Batteries',
+    authors: 'J.K. Park, W. Shin, W. Jo, H.J. Lee, W.Y. Jeon, J. Ahn, J. Yoon, Y.J. Jeong, J. Oh, M. Kang, M.J. Choi, J. Joo, J. Kim, S.K. Cho, J.D. Park, J. Nam, J.K. Yoo',
+    journal: 'Carbon Energy',
+    link: 'https://onlinelibrary.wiley.com/doi/abs/10.1002/cey2.70108',
+    coverImage: pubCey2026Fig1,
+  },
+  {
+    id: 'p4',
+    year: 2026,
+    title: 'Fluorine-Free Binder Strategies for High-Nickel Cathodes: Toward PFAS-Free Lithium-Ion Batteries',
+    authors: 'W. Shin, D.S. Kwon, M. Kim, J. Woo, H.G. Jung, J. Bang, J. Shim, J.K. Yoo',
+    journal: 'ChemSusChem',
+    link: 'https://chemistry-europe.onlinelibrary.wiley.com/doi/abs/10.1002/cssc.202501943',
+    coverImage: pubCssc2026Fig1,
+  },
+  {
+    id: 'p5',
     year: 2025,
     title: 'Enhancing Structural Flexibility in P2-type Ni-Mn-based Na-layered Cathodes for High Power-Capability and Fast Charging/Discharging Performance',
     authors: 'B. Ku, J. Ahn, H. Lee, H. Ahn, J. Lee, H. Kweon, M. Choi, H.G. Jung, K. Ihm, E. Sim, J.K. Yoo, J. Kim',
     journal: 'Energy Storage Materials',
-    doi: '10.1016/j.ensm.2024.103930',
-    coverImage: journalCoverEnhancing,
-  },
-  {
-    id: 'p4',
-    year: 2024,
-    title: 'A Fluorine-Free Binder with Organic-Inorganic Crosslinked Networks Enabling Structural Stability of Ni-Rich Layered Cathodes in Lithium-Ion Batteries',
-    authors: 'J. Jang, J. Ahn, J. Ahn, U. Jeong, J. Yoon, J.K. Park, W. Shin, M.J. Kang, M. Cho, J.K. Yoo',
-    journal: 'Advanced Functional Materials',
-    doi: '10.1002/adfm.202410866',
-    coverImage: journalCoverFluorine,
-  },
-  {
-    id: 'p5',
-    year: 2023,
-    title: 'Stable High-Voltage Operation of Oxygen Redox in P2-type Na-Layered Oxide Cathode at Fast Discharging via Enhanced Kinetics',
-    authors: 'B. Ku, H. Ahn, S. Lee, J. Ahn, M. Choi, J. Kang, H. Park, J. Kim, A.Y. Kim, J.K. Yoo',
-    journal: 'Energy Storage Materials',
-    doi: '10.1016/j.ensm.2023.102952',
-    coverImage: journalCoverStable,
+    link: 'https://www.sciencedirect.com/science/article/pii/S2405829724007566',
+    coverImage: pubEsm2025Fig1,
   },
   {
     id: 'p6',
-    year: 2023,
-    title: 'Gel Polymer Electrolyte with Improved Adhesion Property Based on Poly(4-hydroxybutyl acrylate) for Lithium-Ion Batteries',
-    authors: 'H.J. Choi, Y.J. Jeong, H.S. Choi, J.S. Kim, J. Ahn, W. Shin, B.M. Jung, E. Cho, J.K. Yoo',
-    journal: 'Chemical Engineering Journal',
-    doi: '10.1016/j.cej.2023.145673',
-    coverImage: journalCoverGel,
+    year: 2024,
+    title: 'A Fluorine-Free Binder with Organic-Inorganic Crosslinked Networks Enabling Structural Stability of Ni-Rich Layered Cathodes in Lithium-Ion Batteries',
+    authors: 'J. Jang, J. Ahn, J. Ahn, U. Jeong, J. Yoon, J.K. Park, W. Shin, M.J. Kang, M.K. Cho, D.J. Kang, J. Kim, J.K. Yoo, H.G. Im',
+    journal: 'Advanced Functional Materials',
+    link: 'https://advanced.onlinelibrary.wiley.com/doi/abs/10.1002/adfm.202410866',
+    coverImage: pubAfm2024Fig1,
   },
   {
     id: 'p7',
     year: 2023,
-    title: 'Highly Efficient Oxidation of Single-Walled Carbon Nanotubes in Liquid Crystalline Phase and Dispersion for Applications in Li-Ion Batteries',
-    authors: 'J.H. Kim, J. Ahn, H.M. Kim, J.Y. Cho, D.G. Lee, Y. Oh, J.H. Park, J.S. Kim, J.K. Yoo',
-    journal: 'Chemical Engineering Journal',
-    doi: '10.1016/j.cej.2023.141350',
-    coverImage: journalCoverHighly,
+    title: 'Stable High-Voltage Operation of Oxygen Redox in P2-type Na-Layered Oxide Cathode at Fast Discharging via Enhanced Kinetics',
+    authors: 'B. Ku, H. Ahn, S. Lee, J. Ahn, M. Choi, J. Kang, H. Park, J. Kim, A.Y. Kim, H.G. Jung, J.K. Yoo, J. Kim',
+    journal: 'Energy Storage Materials',
+    link: 'https://www.sciencedirect.com/science/article/pii/S2405829723003306',
+    coverImage: pubEsm2023Fig1,
   },
   {
     id: 'p8',
+    year: 2023,
+    title: 'Gel Polymer Electrolyte with Improved Adhesion Property Based on Poly(4-hydroxybutyl acrylate) for Lithium-Ion Batteries',
+    authors: 'H.J. Choi, Y.J. Jeong, H.S. Choi, J.S. Kim, J. Ahn, W. Shin, B.M. Jung, E. Cho, H.J. Lee, J.H. Choi, M.J. Choi, J. Yoon, J.W. Yi, G.T. Hwang, J.K. Yoo, K. Chung',
+    journal: 'Chemical Engineering Journal',
+    link: 'https://www.sciencedirect.com/science/article/pii/S1385894723044042',
+    coverImage: pubCej2023aFig1,
+  },
+  {
+    id: 'p9',
+    year: 2023,
+    title: 'Highly Efficient Oxidation of Single-Walled Carbon Nanotubes in Liquid Crystalline Phase and Dispersion for Applications in Li-Ion Batteries',
+    authors: 'J.H. Kim, J. Ahn, H.M. Kim, J.Y. Cho, D.G. Lee, Y. Oh, J.H. Park, J.S. Kim, J.K. Yoo, J.T. Han',
+    journal: 'Chemical Engineering Journal',
+    link: 'https://www.sciencedirect.com/science/article/pii/S1385894723000815',
+    coverImage: pubCej2023bFig1,
+  },
+  {
+    id: 'p10',
+    year: 2022,
+    title: 'A High-Energy Conversion-Type Cathode Activated by Amorpholization for Li Rechargeable Batteries',
+    authors: 'Y. Lee, J. Kang, J. Ahn, W. Ko, H. Park, S. Lee, S. Lee, J.K. Yoo, J. Kim',
+    journal: 'Journal of Materials Chemistry A',
+    link: 'https://pubs.rsc.org/ta/article-abstract/10/37/20080/789574',
+    coverImage: pubJmca2022Fig1,
+  },
+  {
+    id: 'p11',
     year: 2022,
     title: 'Synergetic Effect of Hybrid Conductive Additives for High-Capacity and Excellent Cyclability in Si Anodes',
     authors: 'B.I. Yoo, H.M. Kim, M.J. Choi, J.K. Yoo',
     journal: 'Nanomaterials',
-    doi: '10.3390/nano12193354',
-    coverImage: journalCoverSynergetic,
+    link: 'https://www.mdpi.com/2079-4991/12/19/3354',
+    coverImage: pubNano2022aFig1,
   },
   {
-    id: 'p9',
+    id: 'p12',
+    year: 2022,
+    title: 'Solvent-Free Fabrication of Thick Electrodes in Thermoplastic Binders for High Energy Density Lithium-Ion Batteries',
+    authors: 'H.M. Kim, B.I. Yoo, J.W. Yi, M.J. Choi, J.K. Yoo',
+    journal: 'Nanomaterials',
+    link: 'https://www.mdpi.com/2079-4991/12/19/3320',
+    coverImage: pubNano2022bFig1,
+  },
+  {
+    id: 'p13',
     year: 2022,
     title: 'A Novel Organosilicon-Type Binder for LiCoO2 Cathode in Li-Ion Batteries',
-    authors: 'J. Ahn, H.G. Im, Y. Lee, D. Lee, H. Jang, Y. Oh, K. Chung, T. Park, M.K. Um, J.K. Yoo',
+    authors: 'J. Ahn, H.G. Im, Y. Lee, D. Lee, H. Jang, Y. Oh, K. Chung, T. Park, M.K. Um, J.W. Yi, J. Kim, D.J. Kang, J.K. Yoo',
     journal: 'Energy Storage Materials',
-    doi: '10.1016/j.ensm.2022.04.005',
-    coverImage: journalCoverOrganosilicon,
+    link: 'https://www.sciencedirect.com/science/article/pii/S2405829722001945',
+    coverImage: pubEsm2022Fig1,
   },
   {
-    id: 'p10',
-    year: 2021,
-    title: 'Multifunctional Additives for High-Energy-Density Lithium-Ion Batteries: Improved Conductive Additive/Binder Networks and Enhanced Electrochemical Properties',
-    authors: 'J. Ahn, B. Park, J. Kim, M.K. Um, J.W. Yi, J.K. Yoo',
-    journal: 'ACS Applied Materials & Interfaces',
-    doi: '10.1021/acsami.1c00848',
-    coverImage: journalCoverMultifunctional,
-  },
-  {
-    id: 'p11',
+    id: 'p14',
     year: 2021,
     title: 'K1.5VOPO4F0.5: A Novel High-Power and High-Voltage Cathode for Rechargeable K-Ion Batteries',
     authors: 'H. Park, W. Ko, Y. Lee, J. Kang, J. Ahn, J.K. Yoo, J. Kim',
     journal: 'Journal of Materials Chemistry A',
-    doi: '10.1039/D1TA02247D',
-    coverImage: journalCoverK15vopo4f05,
+    link: 'https://pubs.rsc.org/ta/article-abstract/9/19/11802/749474',
+    coverImage: pubJmca2021Fig1,
+  },
+  {
+    id: 'p15',
+    year: 2021,
+    title: 'Multifunctional Additives for High-Energy-Density Lithium-Ion Batteries: Improved Conductive Additive/Binder Networks and Enhanced Electrochemical Properties',
+    authors: 'J. Ahn, B. Park, J. Kim, M.K. Um, J.W. Yi, J.K. Yoo',
+    journal: 'ACS Applied Materials & Interfaces',
+    link: 'https://pubs.acs.org/doi/abs/10.1021/acsami.1c00848',
+    coverImage: pubAcsami2021Fig1,
   },
 ]
 

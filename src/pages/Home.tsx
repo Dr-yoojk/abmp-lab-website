@@ -359,7 +359,7 @@ function FeaturedPublications() {
             return (
               <a
                 key={pub.id}
-                href={`https://doi.org/${pub.doi}`}
+                href={pub.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
@@ -441,7 +441,7 @@ function PublicationsByYear() {
                   {pubs.map((pub) => (
                     <a
                       key={pub.id}
-                      href={`https://doi.org/${pub.doi}`}
+                      href={pub.link}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group flex items-start gap-4 p-4 bg-white rounded-lg border border-gray-100 hover:border-[#003087]/20 hover:shadow-md transition-all duration-200"

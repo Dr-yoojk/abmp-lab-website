@@ -113,7 +113,7 @@ function FeaturedPublications() {
           {PUBLICATIONS.slice(0, 4).map((pub, index) => (
             <a
               key={pub.id}
-              href={`https://doi.org/${pub.doi}`}
+              href={pub.link}
               target="_blank"
               rel="noopener noreferrer"
               className="group rounded-xl overflow-hidden border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col bg-white"
@@ -176,7 +176,7 @@ function YearSection({ year, pubs }: { year: number; pubs: Publication[] }) {
         {pubs.map((pub) => (
           <a
             key={pub.id}
-            href={`https://doi.org/${pub.doi}`}
+            href={pub.link}
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center gap-4 p-5 bg-white rounded-xl border border-gray-100 hover:border-[#003087]/20 hover:shadow-md transition-all duration-200 cursor-pointer"
