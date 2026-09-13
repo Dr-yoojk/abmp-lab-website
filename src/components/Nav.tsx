@@ -57,14 +57,14 @@ export default function Nav() {
         }`}
       >
         <div className="max-w-screen-xl mx-auto px-6 lg:px-10">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-24">
 
             {/* Left: DEEP Lab logo image */}
             <Link to="/" className="flex-shrink-0 flex items-center">
               <img
                 src={deepLabLogo}
                 alt="DEEP Lab — Dr. Jung-Keun Yoo"
-                className="h-10 w-auto object-contain"
+                className="h-16 w-auto object-contain"
               />
             </Link>
 
@@ -207,7 +207,7 @@ export default function Nav() {
         </div>
       </nav>
       {/* Spacer to prevent content going under fixed nav */}
-      <div className="h-20" />
+      <div className="h-24" />
     </>
   )
 }
