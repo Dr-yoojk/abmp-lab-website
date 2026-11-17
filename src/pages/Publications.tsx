@@ -27,7 +27,7 @@ function PageHeader() {
           Peer-reviewed research from the DEEP Laboratory. For a complete list, visit our Google Scholar profile
           or ORCID page.
         </p>
-        <div className="flex gap-3 mt-8">
+        <div className="flex flex-wrap gap-3 mt-8">
           {[
             { label: 'Google Scholar', href: GOOGLE_SCHOLAR_URL },
             { label: 'ORCID', href: ORCID_URL },
@@ -225,7 +225,7 @@ function PublicationList() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5 mb-12">
           <h2 className="text-2xl font-bold text-gray-900">Publications by Year</h2>
           {/* Year filter pills */}
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <button
               onClick={() => setFilter('all')}
               className={`px-4 py-1.5 rounded text-sm font-medium transition-all duration-150 ${

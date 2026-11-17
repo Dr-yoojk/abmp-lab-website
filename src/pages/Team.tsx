@@ -151,11 +151,7 @@ function MemberCard({ member }: { member: Member }) {
 
       {/* Research interest */}
       <div className="text-center">
-        {member.research ? (
-          <p className="text-[12px] text-gray-500">{member.research}</p>
-        ) : (
-          <p className="text-[12px] text-gray-300 italic">Research interest TBD</p>
-        )}
+        {member.research && <p className="text-[12px] text-gray-500">{member.research}</p>}
       </div>
 
       {/* Email */}
@@ -202,11 +198,7 @@ function AlumniCard({ member }: { member: Member }) {
 
       {/* Research interest */}
       <div className="text-center">
-        {member.research ? (
-          <p className="text-[12px] text-gray-500">{member.research}</p>
-        ) : (
-          <p className="text-[12px] text-gray-300 italic">Research interest TBD</p>
-        )}
+        {member.research && <p className="text-[12px] text-gray-500">{member.research}</p>}
       </div>
     </div>
   )

@@ -51,7 +51,7 @@ function RecruitmentBanner() {
           </div>
           <div className="lg:col-span-4 flex flex-col gap-3">
             <a
-              href="mailto:jkyoo@kist.re.kr"
+              href="mailto:yoojk@kist.re.kr"
               className="w-full text-center py-3.5 bg-[#003087] text-white text-sm font-bold rounded shadow-sm hover:bg-[#001f5a] transition-all duration-200"
             >
               Apply by Email
@@ -130,7 +130,7 @@ function LocationSection() {
                   <svg className="w-4 h-4 text-[#003087] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                   </svg>
-                  <a href="mailto:jkyoo@kist.re.kr" className="text-[#003087] hover:underline">jkyoo@kist.re.kr</a>
+                  <a href="mailto:yoojk@kist.re.kr" className="text-[#003087] hover:underline">yoojk@kist.re.kr</a>
                 </div>
                 <div className="flex items-center gap-3">
                   <svg className="w-4 h-4 text-[#003087] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -181,6 +181,11 @@ function LocationSection() {
   )
 }
 
+// 문의 폼 설정 — formspree.io 가입 후 받은 주소(https://formspree.io/f/xxxx)를 아래에 넣으면
+// 사이트에서 바로 전송됩니다. 비워두면 방문자의 메일 앱이 내용이 채워진 채로 열립니다.
+const FORMSPREE_ENDPOINT = ''
+const INQUIRY_EMAIL = 'yoojk@kist.re.kr'
+
 const INQUIRY_TYPES = [
   { value: 'joint-research', label: '공동연구 Joint Research' },
   { value: 'tech-transfer', label: '기술이전 Technology Transfer' },
@@ -202,13 +207,56 @@ function InquiryForm() {
     }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [sending, setSending] = useState(false)
+  const [sentVia, setSentVia] = useState<'form' | 'mail'>('form')
+  const [error, setError] = useState('')
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setError('')
+    const typeLabels = INQUIRY_TYPES.filter((t) => form.types.includes(t.value)).map((t) => t.label)
+
+    // Formspree 주소가 설정돼 있으면 사이트 안에서 바로 전송
+    if (FORMSPREE_ENDPOINT) {
+      setSending(true)
+      try {
+        const res = await fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            name: form.name,
+            email: form.email,
+            organization: form.org,
+            inquiry_type: typeLabels.join(', '),
+            message: form.message,
+            _subject: `[DEEP Lab 홈페이지] 협력 문의 - ${form.name}`,
+          }),
+        })
+        if (!res.ok) throw new Error(String(res.status))
+        setSentVia('form')
+        setSubmitted(true)
+        setForm({ name: '', email: '', org: '', types: [], message: '' })
+      } catch {
+        setError(`전송에 실패했습니다. ${INQUIRY_EMAIL} 로 직접 메일 부탁드립니다. / Sending failed — please email us directly.`)
+      } finally {
+        setSending(false)
+      }
+      return
+    }
+
+    // 아직 Formspree 미연결: 내용이 채워진 메일 작성 창을 열어 문의가 사라지지 않게 함
+    const subject = `[DEEP Lab 홈페이지] 협력 문의 - ${form.name}`
+    const body = [
+      `이름 / Name: ${form.name}`,
+      `이메일 / Email: ${form.email}`,
+      `소속 / Organization: ${form.org || '-'}`,
+      `문의 유형 / Inquiry Type: ${typeLabels.join(', ') || '-'}`,
+      '',
+      form.message,
+    ].join('\n')
+    window.location.href = `mailto:${INQUIRY_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    setSentVia('mail')
     setSubmitted(true)
-    setTimeout(() => {
-      setSubmitted(false)
-      setForm({ name: '', email: '', org: '', types: [], message: '' })
-    }, 5000)
   }
 
   return (
@@ -237,10 +285,24 @@ function InquiryForm() {
                     <path d="M6 14l6 6 10-12" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Message Sent</h3>
-                <p className="text-gray-500 text-sm">
-                  Thank you for reaching out. We will get back to you within 2–3 business days.
+                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  {sentVia === 'form' ? '문의가 접수되었습니다 / Message Sent' : '메일 앱에서 전송을 완료해 주세요'}
+                </h3>
+                <p className="text-gray-500 text-sm leading-relaxed">
+                  {sentVia === 'form' ? (
+                    <>감사합니다. 2–3일 내로 회신드리겠습니다.<br />Thank you — we will get back to you within 2–3 business days.</>
+                  ) : (
+                    <>작성하신 내용이 담긴 메일 창이 열렸습니다. 보내기를 눌러 주세요.<br />
+                    메일 창이 열리지 않았다면 <a href={`mailto:${INQUIRY_EMAIL}`} className="text-[#003087] underline">{INQUIRY_EMAIL}</a> 로 직접 보내주세요.</>
+                  )}
                 </p>
+                <button
+                  type="button"
+                  onClick={() => setSubmitted(false)}
+                  className="mt-6 text-sm text-[#003087] font-semibold hover:underline"
+                >
+                  {sentVia === 'form' ? '새 문의 작성' : '← 작성 내용으로 돌아가기'}
+                </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
@@ -307,11 +369,13 @@ function InquiryForm() {
                   />
                 </FormField>
 
+                {error && <p className="text-sm text-red-500">{error}</p>}
                 <button
                   type="submit"
-                  className="w-full py-3.5 bg-[#003087] text-white text-sm font-bold rounded hover:bg-[#001f5a] active:scale-[0.99] transition-all duration-200"
+                  disabled={sending}
+                  className="w-full py-3.5 bg-[#003087] text-white text-sm font-bold rounded hover:bg-[#001f5a] active:scale-[0.99] transition-all duration-200 disabled:opacity-60"
                 >
-                  문의 보내기 / Send Inquiry
+                  {sending ? '전송 중… / Sending…' : '문의 보내기 / Send Inquiry'}
                 </button>
               </form>
             )}

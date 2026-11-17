@@ -19,7 +19,7 @@ import labLifeByeongjinBirthday1 from '../imports/lab-life-byeongjin-birthday-1.
 import labLifeByeongjinBirthday2 from '../imports/lab-life-byeongjin-birthday-2.jpg'
 import labLifeOebinRestaurantFlyer from '../imports/lab-life-oebin-restaurant-flyer.jpg'
 import galleryBatterySymposium2026 from '../imports/gallery-battery-symposium-2026.jpg'
-import awardsDasolKwonCeremony from '../imports/awards-dasol-kwon-ceremony.png'
+import awardsDasolKwonCeremony from '../imports/awards-dasol-kwon-ceremony.jpg'
 import awardsDasolKwonList from '../imports/awards-dasol-kwon-list.png'
 import researchCntNetworks from '../imports/research-cnt-networks.jpg'
 import researchWetSlurryProcess from '../imports/research-wet-slurry-process.jpg'
@@ -36,7 +36,7 @@ export const PI = {
   position: 'Senior Research Scientist',
   affiliation: 'Korea Institute of Science and Technology (KIST)',
   department: 'Division of Energy & Environment Technology',
-  email: 'jkyoo@kist.re.kr',
+  email: 'yoojk@kist.re.kr',
   phone: '+82-2-958-5441',
   photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=500&fit=crop&auto=format',
   bio: `Dr. Jung-Keun Yoo leads the Digital Engineering for Electrode Processing Laboratory at KIST, where his team investigates next-generation electrode fabrication methods and advanced carbon nanomaterials. With a career spanning both fundamental electrochemistry and scalable manufacturing, Dr. Yoo bridges the gap between laboratory innovation and industrial application.
@@ -567,8 +567,8 @@ export const NEWS: NewsItem[] = [
     slug: 'dasol-kwon-paper-accepted-advanced-science',
     category: 'Research',
     date: 'August 12, 2026',
-    title: "Dasol Kwon's Paper Accepted in Advanced Science",
-    excerpt: "Congratulations to Dr. Dasol Kwon on the acceptance of her paper, 'A Dispersant-Driven Carbon-Binder Domains Homogeneity in High-Energy-Density Electrodes for Lithium-Ion Batteries,' in Advanced Science!",
+    title: "Da-Sol Kwon's Paper Accepted in Advanced Science",
+    excerpt: "Congratulations to Dr. Da-Sol Kwon on the acceptance of her paper, 'A Dispersant-Driven Carbon-Binder Domains Homogeneity in High-Energy-Density Electrodes for Lithium-Ion Batteries,' in Advanced Science!",
     photos: [{ src: galleryKwonAdvsPaper, fit: 'contain' }],
   },
   {

@@ -10,17 +10,18 @@ import equipmentOverviewFull from '../imports/equipment-overview-full.jpg'
 interface EquipmentItem {
   name: string
   description?: string
+  photo?: string // 장비 사진을 src/imports에 넣고 import한 뒤 여기 지정하면 카드에 표시됨
 }
 
 const EQUIPMENT: EquipmentItem[] = [
-  { name: 'Dry Room' },
-  { name: 'Pouch Cell Assembly' },
-  { name: 'Powder Mixer' },
-  { name: '3 Roll Mill' },
-  { name: 'Wet Mixer' },
-  { name: 'Rheometer' },
-  { name: 'Coater' },
-  { name: 'Powder Resistivity' },
+  { name: 'Dry Room', description: 'Low-humidity environment for moisture-sensitive electrode and cell handling' },
+  { name: 'Pouch Cell Assembly', description: 'Stacking, sealing and degassing of pouch-type cells' },
+  { name: 'Powder Mixer', description: 'Dry mixing of active material, conductive additive and binder' },
+  { name: '3 Roll Mill', description: 'High-shear dispersion and kneading of electrode pastes' },
+  { name: 'Wet Mixer', description: 'Slurry preparation for wet-processed electrodes' },
+  { name: 'Rheometer', description: 'Viscosity and viscoelastic analysis of electrode slurries' },
+  { name: 'Coater', description: 'Electrode slurry coating onto current-collector foil' },
+  { name: 'Powder Resistivity', description: 'Electrical conductivity of powders under controlled pressure' },
 ]
 
 // ── Page header ───────────────────────────────────────────────────────────
@@ -71,24 +72,27 @@ function OverviewSection() {
 function EquipmentCard({ item }: { item: EquipmentItem }) {
   return (
     <div className="bg-white rounded-xl border border-gray-100 p-5 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex flex-col gap-3">
-      {/* Photo placeholder */}
-      <div className="w-full aspect-square rounded-lg bg-[#f0f4fb] border border-gray-100 flex flex-col items-center justify-center gap-2">
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" className="text-[#003087]/20">
-          <rect x="3" y="7" width="22" height="15" rx="2" stroke="currentColor" strokeWidth="1.5" />
-          <circle cx="14" cy="14.5" r="4" stroke="currentColor" strokeWidth="1.5" />
-          <path d="M9 7l1.5-2.5h7L19 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-        <span className="text-[10px] font-medium text-[#003087]/30 tracking-wide uppercase">TBD</span>
-      </div>
+      {/* Photo (placeholder until a photo is added) */}
+      {item.photo ? (
+        <img src={item.photo} alt={item.name} className="w-full aspect-square rounded-lg object-cover border border-gray-100" loading="lazy" />
+      ) : (
+        <div className="w-full aspect-square rounded-lg bg-[#f0f4fb] border border-gray-100 flex items-center justify-center">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" className="text-[#003087]/20">
+            <rect x="3" y="7" width="22" height="15" rx="2" stroke="currentColor" strokeWidth="1.5" />
+            <circle cx="14" cy="14.5" r="4" stroke="currentColor" strokeWidth="1.5" />
+            <path d="M9 7l1.5-2.5h7L19 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+      )}
 
       {/* Name & description */}
       <div className="text-center">
         <p className="font-bold text-gray-900 text-[14px] leading-tight">
           {item.name}
         </p>
-        <p className="text-[12px] text-gray-400 mt-1.5">
-          {item.description ?? 'Details coming soon'}
-        </p>
+        {item.description && (
+          <p className="text-[12px] text-gray-500 mt-1.5 leading-snug">{item.description}</p>
+        )}
       </div>
     </div>
   )
