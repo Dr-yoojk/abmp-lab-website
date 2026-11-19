@@ -1,10 +1,11 @@
 {
-  "description": "Showcasing cutting-edge research in sustainable energy storage, this site connects academics and industry professionals with the Advanced Battery Materials Lab.",
+  "description": "Dr. Jung-Keun Yoo's lab at KIST Energy Storage Research Center — dry & wet thick-electrode processing, digital twin simulation, binders and conductive additives.",
   "robots": {
     "index": false
   },
   "accessibility": {
     "addBypassLinks": false,
     "ignoreReducedMotion": false
-  }
+  },
+  "title": "DEEP Lab | Digital Engineering for Electrode Processing"
 }
