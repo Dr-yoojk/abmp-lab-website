@@ -27,129 +27,9 @@ import researchVietnamDeputyPmVisit1 from '../imports/research-vietnam-deputy-pm
 import researchVietnamDeputyPmVisit2 from '../imports/research-vietnam-deputy-pm-visit-2.jpg'
 import researchVietnamDeputyPmVisit3 from '../imports/research-vietnam-deputy-pm-visit-3.jpg'
 import galleryKwonAdvsPaper from '../imports/gallery-kwon-advs-paper.jpg'
-
-// ── Site-wide data ────────────────────────────────────────────────────────────
-
-export const PI = {
-  name: 'Dr. Jung-Keun Yoo',
-  title: 'Principal Investigator',
-  position: 'Senior Research Scientist',
-  affiliation: 'Korea Institute of Science and Technology (KIST)',
-  department: 'Division of Energy & Environment Technology',
-  email: 'yoojk@kist.re.kr',
-  phone: '+82-2-958-5441',
-  photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=500&fit=crop&auto=format',
-  bio: `Dr. Jung-Keun Yoo leads the Digital Engineering for Electrode Processing Laboratory at KIST, where his team investigates next-generation electrode fabrication methods and advanced carbon nanomaterials. With a career spanning both fundamental electrochemistry and scalable manufacturing, Dr. Yoo bridges the gap between laboratory innovation and industrial application.
-
-His pioneering work on dry electrode processing and CNT conductive networks has attracted collaboration from leading battery manufacturers across East Asia and Europe. He received his Ph.D. in Chemical Engineering from KAIST and completed postdoctoral training at MIT's Research Laboratory of Electronics.`,
-  education: [
-    { degree: 'Ph.D. Chemical Engineering', institution: 'KAIST', year: '2008' },
-    { degree: 'Postdoctoral Fellow', institution: 'MIT Research Laboratory of Electronics', year: '2010' },
-    { degree: 'B.S. Chemical Engineering', institution: 'Seoul National University', year: '2003' },
-  ],
-  stats: [
-    { value: '60+', label: 'Publications' },
-    { value: '25', label: 'H-index' },
-    { value: '2,664+', label: 'Citations' },
-    { value: '4', label: 'Tech Transfers' },
-  ],
-}
-
-export interface TeamMember {
-  name: string
-  role: string
-  degree: string
-  research: string
-  photo: string
-  email?: string
-  year?: string
-}
-
-export const CURRENT_MEMBERS: TeamMember[] = [
-  {
-    name: 'Sungho Park',
-    role: 'Senior Researcher',
-    degree: 'Ph.D., KAIST',
-    research: 'GeoDict digital twin, electrode microstructure simulation',
-    photo: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&h=300&fit=crop&auto=format',
-    email: 'shpark@kist.re.kr',
-  },
-  {
-    name: 'Jiyeon Kim',
-    role: 'Ph.D. Candidate',
-    degree: 'M.S., Seoul National University',
-    research: 'Dry electrode process, PTFE fibrillation mechanics',
-    photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=300&fit=crop&auto=format',
-    email: 'jykim@kist.re.kr',
-  },
-  {
-    name: 'Hyunjoon Lee',
-    role: 'Ph.D. Candidate',
-    degree: 'B.S., POSTECH',
-    research: 'CNT conductive additives, thick electrode characterization',
-    photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&auto=format',
-    email: 'hjlee@kist.re.kr',
-  },
-  {
-    name: 'Yuna Jung',
-    role: 'M.S. Candidate',
-    degree: 'B.S., Yonsei University',
-    research: 'Fluorine-free binders, aqueous electrode processing',
-    photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&h=300&fit=crop&auto=format',
-    email: 'ynjung@kist.re.kr',
-  },
-  {
-    name: 'Minjun Kwon',
-    role: 'M.S. Candidate',
-    degree: 'B.S., Korea University',
-    research: 'Design of experiments, RSM-guided process optimization',
-    photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&auto=format',
-    email: 'mjkwon@kist.re.kr',
-  },
-  {
-    name: 'Dahye Seo',
-    role: 'Research Assistant',
-    degree: 'B.S., KAIST',
-    research: 'EIS characterization, electrochemical testing protocols',
-    photo: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=300&h=300&fit=crop&auto=format',
-    email: 'dhseo@kist.re.kr',
-  },
-]
-
-export const ALUMNI: TeamMember[] = [
-  {
-    name: 'Jihwan Cho',
-    role: 'Ph.D. 2023',
-    degree: 'Now at Samsung SDI',
-    research: 'Dry electrode process scale-up',
-    photo: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&auto=format',
-    year: '2023',
-  },
-  {
-    name: 'Minji Park',
-    role: 'M.S. 2023',
-    degree: 'Now at LG Energy Solution',
-    research: 'Aqueous binder systems',
-    photo: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=300&h=300&fit=crop&auto=format',
-    year: '2023',
-  },
-  {
-    name: 'Seungmin Han',
-    role: 'Ph.D. 2022',
-    degree: 'Postdoc, MIT',
-    research: 'CNT network percolation',
-    photo: 'https://images.unsplash.com/photo-1463453091185-61582044d556?w=300&h=300&fit=crop&auto=format',
-    year: '2022',
-  },
-  {
-    name: 'Areum Shin',
-    role: 'M.S. 2022',
-    degree: 'Now at SK Innovation',
-    research: 'Electrode microstructure analysis',
-    photo: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300&h=300&fit=crop&auto=format',
-    year: '2022',
-  },
-]
+import awardsJiwonWooPoster2026 from '../imports/awards-jiwon-woo-poster-2026.jpg'
+import labLifeKistAutumnFesta1 from '../imports/lab-life-kist-autumn-festa-1.jpg'
+import labLifeKistAutumnFesta2 from '../imports/lab-life-kist-autumn-festa-2.jpg'
 
 export interface Publication {
   id: string
@@ -425,77 +305,6 @@ export const RESEARCH_AREAS: ResearchArea[] = [
   },
 ]
 
-export interface Project {
-  agencyCode: string
-  agency: string
-  title: string
-  period: string
-  status: string
-}
-
-// Sorted by start date, most recent first.
-export const CURRENT_PROJECTS: Project[] = [
-  {
-    agencyCode: 'NRF',
-    agency: '한국연구재단',
-    title: '3D 테셀레이션 구조 기반 고출력 고안전 폼팩터프리 전지 설계 및 공정 핵심기술 개발',
-    period: '2026.07 – 2030.12',
-    status: 'Ongoing',
-  },
-  {
-    agencyCode: 'NRF',
-    agency: '한국연구재단',
-    title: '단계적 접근을 통한 고안전성 비수계 리튬이온전지용 SAFE 발화 억제 소재 개발',
-    period: '2025.04 – 2029.12',
-    status: 'Ongoing',
-  },
-  {
-    agencyCode: 'KEIT',
-    agency: '한국산업기술기획평가원',
-    title: '급속충전이 가능한 고에너지밀도 리튬이온전지용 고효율 실리콘 음극 소재 개발',
-    period: '2024.04 – 2027.12',
-    status: 'Ongoing',
-  },
-  {
-    agencyCode: 'COMPA',
-    agency: '과학기술사업화진흥원',
-    title: '차세대 이차전지용 다공성 실리콘 음극재 기술고도화 및 실용화 제조기술 개발',
-    period: '2023.04 – 2027.03',
-    status: 'Ongoing',
-  },
-  {
-    agencyCode: 'NRF',
-    agency: '한국연구재단',
-    title: '고에너지밀도 리튬이차전지용 후막전극 제조를 위한 고농도 슬러리 제조공정 개발',
-    period: '2022.01 – 2026.12',
-    status: 'Ongoing',
-  },
-]
-
-export const HERO_SLIDES = [
-  {
-    image: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1920&h=800&fit=crop&auto=format',
-    tag: 'Featured Research',
-    title: 'Dry Electrode Processing',
-    subtitle: 'Solvent-free fabrication for sustainable battery manufacturing at scale',
-    link: '#research',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1920&h=800&fit=crop&auto=format',
-    tag: 'New Publication',
-    title: 'GeoDict Digital Twin',
-    subtitle: 'Microstructure-resolved simulation platform for next-generation electrode design',
-    link: '#publications',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1920&h=800&fit=crop&auto=format',
-    tag: 'Open Positions',
-    title: 'Join DEEP Lab',
-    subtitle: 'We are recruiting motivated Ph.D. students and postdoctoral researchers',
-    link: '#contact',
-  },
-]
-
 export interface GalleryPhoto {
   src: string
   // 'cover' (default) crops the photo to fill the slide; 'contain' shrinks
@@ -515,6 +324,15 @@ export interface NewsItem {
 }
 
 export const NEWS: NewsItem[] = [
+  {
+    id: 8,
+    slug: 'kist-autumn-festa-2026',
+    category: 'Lab life',
+    date: 'October 16, 2026',
+    title: '2026 KIST Autumn Festa',
+    excerpt: 'The lab joined the 2026 KIST Autumn Festa — an afternoon of games and team events with colleagues across the institute.',
+    photos: [{ src: labLifeKistAutumnFesta2 }, { src: labLifeKistAutumnFesta1 }],
+  },
   {
     id: 5,
     slug: 'vietnamese-deputy-pm-visits-abmp-lab',
@@ -579,5 +397,14 @@ export const NEWS: NewsItem[] = [
     title: "Han Bin Song's Birthday",
     excerpt: "The lab celebrated Han Bin Song's birthday with cake and good cheer!",
     photos: [{ src: labLifeHanbinBirthday1 }, { src: labLifeHanbinBirthday2 }],
+  },
+  {
+    id: 7,
+    slug: 'jiwon-woo-best-poster-award-kecs-2026',
+    category: 'Awards',
+    date: 'April 3, 2026',
+    title: 'Jiwon Woo Wins Best Poster Award at KECS 2026',
+    excerpt: "Congratulations to Jiwon Woo on receiving the Best Poster Award at the Korean Electrochemical Society 2026 Spring Meeting (BEXCO, Busan) for 'Rheology-Guided Quantification of Structural Evolution and Performance Governed by PTFE Fibrillation in Dry Electrode for Lithium-Ion Batteries.'",
+    photos: [{ src: awardsJiwonWooPoster2026, fit: 'contain' }],
   },
 ]

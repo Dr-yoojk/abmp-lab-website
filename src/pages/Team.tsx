@@ -14,6 +14,10 @@ import choJibackPhoto from '../imports/team-cho-jiback.jpg'
 import parkByeongjinPhoto from '../imports/team-park-byeongjin.jpg'
 import leeSangwonPhoto from '../imports/team-lee-sangwon.jpg'
 import yangJunhyeokPhoto from '../imports/team-yang-junhyeok.jpg'
+import shinYuyeongPhoto from '../imports/team-shin-yuyeong.jpg'
+import kimSeongraePhoto from '../imports/team-kim-seongrae.jpg'
+import kimMinsolPhoto from '../imports/team-kim-minsol.jpg'
+import kimMinjeongPhoto from '../imports/team-kim-minjeong.jpg'
 
 // ── PI data ────────────────────────────────────────────────────────────────
 
@@ -23,7 +27,7 @@ const PI_DATA = {
   affiliation: 'Korea Institute of Science and Technology (KIST)',
   division: 'Energy Storage Research Center',
   photo: piPhoto,
-  email: 'jgyoo@kist.re.kr',
+  email: 'yoojk@kist.re.kr',
   googleScholar: 'https://scholar.google.com/citations?user=tZx98QoAAAAJ&hl=ko&oi=ao',
   orcid: 'https://orcid.org/0000-0002-9693-649X',
   bio: [
@@ -71,15 +75,17 @@ interface Member {
 
 const POSTDOC: Member[] = [
   { nameKo: '신우현', nameEn: 'Woohyeon Shin', role: 'Postdoctoral Researcher', photo: shinWoohyeonPhoto, research: 'Digital Twin & Simulation', email: 'whshin@kist.re.kr' },
+  { nameKo: '권다솔', nameEn: 'Da-Sol Kwon', role: 'Postdoctoral Researcher', photo: kwonDasolPhoto, research: 'Wet Electrode Cathode', email: 'kdasol@kist.re.kr' },
 ]
 
 const PHD_INTEGRATED: Member[] = [
-  { nameKo: '권다솔', nameEn: 'Da-Sol Kwon', role: 'Researcher', photo: kwonDasolPhoto, research: 'Wet Electrode Cathode', email: 'kdasol@kist.re.kr' },
   { nameKo: '박준규', nameEn: 'Jun Kyu Park', role: 'Ph.D. Student', photo: parkJunkyuPhoto, research: 'Wet Electrode Cathode', email: 'pjk6837@kist.re.kr' },
   { nameKo: '우지원', nameEn: 'Jiwon Woo', role: 'Integrated M.S./Ph.D. Student', photo: wooJiwonPhoto, research: 'Dry Electrode Cathode', email: 'jwwoo@kist.re.kr' },
 ]
 
 const RESEARCH_INTERN: Member[] = [
+  { nameKo: '신유영', nameEn: 'Yuyeong Shin', role: 'Research Intern', photo: shinYuyeongPhoto, research: 'Dry Electrode Cathode' },
+  { nameKo: '김성래', nameEn: 'Seongrae Kim', role: 'Research Intern', photo: kimSeongraePhoto, research: 'Wet Electrode Cathode' },
   { nameKo: '조지백', nameEn: 'Jiback Cho', role: 'Research Intern', photo: choJibackPhoto, research: 'Dry Electrode Cathode', email: 'zeebaek@kist.re.kr' },
 ]
 
@@ -93,12 +99,18 @@ const MASTERS_STUDENTS: Member[] = [
 
 // Alumni "role" doubles as the degree label shown on the card (e.g. "M.S. Graduate").
 const ALUMNI_GRAD_POSTDOC: Member[] = [
-  { nameKo: '김민정', nameEn: 'Minjeong Kim', role: 'M.S. Graduate', research: 'Dry Process' },
-  { nameKo: '김민솔', nameEn: 'Minsol Kim', role: 'M.S. Graduate', research: 'Wet Fluorine-Free Binder' },
+  { nameKo: '김민정', nameEn: 'Minjeong Kim', role: 'M.S. Graduate', photo: kimMinjeongPhoto, research: 'Dry Process' },
+  { nameKo: '김민솔', nameEn: 'Minsol Kim', role: 'M.S. Graduate', photo: kimMinsolPhoto, research: 'Wet Fluorine-Free Binder' },
+  { nameKo: '이진이', nameEn: 'Jiny Lee', role: 'M.S. Graduate' },
+  { nameKo: '정예지', nameEn: 'Yea-Ji Jeong', role: 'M.S. Graduate' },
+  { nameKo: '전원용', nameEn: 'Won-Yong Jeon', role: 'M.S. Graduate' },
+  { nameKo: '김한민', nameEn: 'Han-Min Kim', role: 'M.S. Graduate' },
+  { nameKo: '유병일', nameEn: 'Byeong-Il Yoo', role: 'M.S. Graduate' },
 ]
 
 const ALUMNI_RESEARCH_INTERN: Member[] = [
   { nameKo: '박병진', nameEn: 'Byeongjin Park', role: 'Research Intern', photo: parkByeongjinPhoto, research: 'Dry Electrode Cathode' },
+  { nameKo: '황영근', nameEn: 'Younggeun Hwang', role: 'Research Intern' },
 ]
 
 // ── Shared components ──────────────────────────────────────────────────────
@@ -116,11 +128,12 @@ function PhotoPlaceholder({ size }: { size: 'pi' | 'member' }) {
     )
   }
   return (
-    <div className="w-full aspect-square rounded-lg bg-[#f0f4fb] border border-gray-100 flex items-center justify-center">
+    <div className="w-full aspect-square rounded-lg bg-[#f0f4fb] border border-gray-100 flex flex-col items-center justify-center gap-1.5">
       <svg width="24" height="24" viewBox="0 0 40 40" fill="none" className="text-[#003087]/20">
         <circle cx="20" cy="15" r="7" stroke="currentColor" strokeWidth="1.5"/>
         <path d="M6 36c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
       </svg>
+      <span className="text-[9.5px] text-[#003087]/35 font-medium">Photo coming soon</span>
     </div>
   )
 }

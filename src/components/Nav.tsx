@@ -4,7 +4,7 @@ import headerLogo from '../imports/header-logo.png'
 
 const RESEARCH_DROPDOWN = [
   { label: 'Overview', href: '/research' },
-  { label: 'Equipment', href: '/equipment' },
+  { label: 'Research Areas', href: '/research/areas' },
 ]
 
 const TEAM_DROPDOWN = [

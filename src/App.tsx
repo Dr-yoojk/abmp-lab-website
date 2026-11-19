@@ -3,7 +3,7 @@ import Nav from './components/Nav'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import Research from './pages/Research'
-import Equipment from './pages/Equipment'
+import ResearchOverview from './pages/ResearchOverview'
 import Team from './pages/Team'
 import Publications from './pages/Publications'
 import News from './pages/News'
@@ -18,8 +18,8 @@ export default function App() {
         <main className="flex-1">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/research" element={<Research />} />
-            <Route path="/equipment" element={<Equipment />} />
+            <Route path="/research" element={<ResearchOverview />} />
+            <Route path="/research/areas" element={<Research />} />
             <Route path="/team" element={<Team />} />
             <Route path="/publications" element={<Publications />} />
             <Route path="/news" element={<News />} />

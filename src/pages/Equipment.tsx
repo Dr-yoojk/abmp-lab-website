@@ -1,3 +1,5 @@
+// Parked: removed from the nav/routes on 2026-11-19 at the lab's request.
+// To restore, add `<Route path="/equipment" ...>` in App.tsx and a link in Nav.tsx.
 import { useEffect } from 'react'
 import { useFadeIn } from '../hooks/useFadeIn'
 import HeroPattern from '../components/HeroPattern'

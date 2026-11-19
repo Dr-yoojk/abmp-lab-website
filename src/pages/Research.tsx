@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { useFadeIn } from '../hooks/useFadeIn'
 import { RESEARCH_AREAS } from '../data'
 import HeroPattern from '../components/HeroPattern'
@@ -94,9 +95,16 @@ function ResearchAreaBlock({ area }: { area: (typeof RESEARCH_AREAS)[0] }) {
 }
 
 export default function Research() {
+  const [searchParams] = useSearchParams()
+
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    const area = searchParams.get('area')
+    if (area) {
+      setTimeout(() => document.getElementById(area)?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 150)
+    } else {
+      window.scrollTo(0, 0)
+    }
+  }, [searchParams])
 
   return (
     <>

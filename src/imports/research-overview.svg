@@ -1,0 +1,340 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="DEEP Lab research overview: materials, dry and wet electrode processing, thick electrodes, and a digital-twin feedback loop" font-family="Inter, system-ui, -apple-system, sans-serif">
+<defs>
+<radialGradient id="pA" cx="35%" cy="30%" r="70%"><stop offset="0" stop-color="#9fb4e6"/><stop offset=".55" stop-color="#3d5fae"/><stop offset="1" stop-color="#16306e"/></radialGradient>
+<radialGradient id="pB" cx="35%" cy="30%" r="70%"><stop offset="0" stop-color="#cfd9f1"/><stop offset=".6" stop-color="#7f97cf"/><stop offset="1" stop-color="#40598f"/></radialGradient>
+<linearGradient id="cc" x1="0" x2="1"><stop offset="0" stop-color="#b8bfc9"/><stop offset=".5" stop-color="#e5e8ec"/><stop offset="1" stop-color="#aeb6c1"/></linearGradient>
+<linearGradient id="roll" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e2e8f0"/><stop offset=".5" stop-color="#94a3b8"/><stop offset="1" stop-color="#475569"/></linearGradient>
+<linearGradient id="twin" x1="0" x2="1"><stop offset="0" stop-color="#ecfeff"/><stop offset="1" stop-color="#e0f2fe"/></linearGradient>
+<linearGradient id="slurry" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b4a63"/><stop offset="1" stop-color="#1e293b"/></linearGradient>
+<marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#003087"/></marker>
+<marker id="arc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#0891b2"/></marker>
+<filter id="sh" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0b2a6f" flood-opacity=".10"/></filter>
+<clipPath id="elc"><rect x="905" y="128" width="250" height="168" rx="2"/></clipPath>
+</defs>
+<rect width="1200" height="700" fill="#ffffff"/>
+<circle cx="41" cy="39" r="11" fill="#003087"/>
+<text x="41" y="43" font-size="12" fill="#fff" font-weight="700" text-anchor="middle" letter-spacing="0" >1</text>
+<text x="60" y="44" font-size="13" fill="#003087" font-weight="700" text-anchor="start" letter-spacing="1.6" >MATERIALS</text>
+<line x1="30" y1="58" x2="300" y2="58" stroke="#cbd5e1" stroke-width="1"/>
+<circle cx="371" cy="39" r="11" fill="#003087"/>
+<text x="371" y="43" font-size="12" fill="#fff" font-weight="700" text-anchor="middle" letter-spacing="0" >2</text>
+<text x="390" y="44" font-size="13" fill="#003087" font-weight="700" text-anchor="start" letter-spacing="1.6" >PROCESS</text>
+<line x1="360" y1="58" x2="825" y2="58" stroke="#cbd5e1" stroke-width="1"/>
+<circle cx="896" cy="39" r="11" fill="#003087"/>
+<text x="896" y="43" font-size="12" fill="#fff" font-weight="700" text-anchor="middle" letter-spacing="0" >3</text>
+<text x="915" y="44" font-size="13" fill="#003087" font-weight="700" text-anchor="start" letter-spacing="1.6" >ELECTRODE &amp; CELL</text>
+<line x1="885" y1="58" x2="1170" y2="58" stroke="#cbd5e1" stroke-width="1"/>
+<rect x="30" y="76" width="270" height="100" rx="12" fill="#ffffff" stroke="#e2e8f0" filter="url(#sh)"/>
+<text x="140" y="120" font-size="15" fill="#0f172a" font-weight="700" text-anchor="start" letter-spacing="0" >Active Material</text>
+<text x="140" y="142" font-size="12.5" fill="#64748b" font-weight="500" text-anchor="start" letter-spacing="0" >NCM · LFP · Si</text>
+<rect x="30" y="196" width="270" height="100" rx="12" fill="#ffffff" stroke="#e2e8f0" filter="url(#sh)"/>
+<text x="140" y="240" font-size="15" fill="#0f172a" font-weight="700" text-anchor="start" letter-spacing="0" >Conductive Additive</text>
+<text x="140" y="262" font-size="12.5" fill="#64748b" font-weight="500" text-anchor="start" letter-spacing="0" >SWCNT · CB · GMS</text>
+<rect x="30" y="316" width="270" height="100" rx="12" fill="#ffffff" stroke="#e2e8f0" filter="url(#sh)"/>
+<text x="140" y="360" font-size="15" fill="#0f172a" font-weight="700" text-anchor="start" letter-spacing="0" >Binder</text>
+<text x="140" y="382" font-size="12.5" fill="#64748b" font-weight="500" text-anchor="start" letter-spacing="0" >PTFE · Fluorine-free</text>
+<circle cx="78.0" cy="122.0" r="17.0" fill="url(#pA)"/>
+<circle cx="102.0" cy="132.0" r="13.0" fill="url(#pA)"/>
+<circle cx="72.0" cy="146.0" r="12.0" fill="url(#pA)"/>
+<circle cx="98.0" cy="108.0" r="10.0" fill="url(#pA)"/>
+<circle cx="108.0" cy="150.0" r="9.0" fill="url(#pA)"/>
+<path d="M52 240.6 C 74 256, 92 240, 118 253.2" stroke="#0891b2" stroke-width="6.5" fill="none" stroke-linecap="round" opacity=".9"/>
+<path d="M52 240.6 C 74 256, 92 240, 118 253.2" stroke="#a5f3fc" stroke-width="2" fill="none" stroke-linecap="round"/>
+<path d="M52 256.0 C 74 242, 92 268, 118 256.0" stroke="#0891b2" stroke-width="6.5" fill="none" stroke-linecap="round" opacity=".9"/>
+<path d="M52 256.0 C 74 242, 92 268, 118 256.0" stroke="#a5f3fc" stroke-width="2" fill="none" stroke-linecap="round"/>
+<path d="M52 263.0 C 74 288, 92 266, 118 270.0" stroke="#0891b2" stroke-width="6.5" fill="none" stroke-linecap="round" opacity=".9"/>
+<path d="M52 263.0 C 74 288, 92 266, 118 270.0" stroke="#a5f3fc" stroke-width="2" fill="none" stroke-linecap="round"/>
+<polyline points="48,356 62,342 76,356 90,342 104,356 118,342" fill="none" stroke="#003087" stroke-width="2.4" stroke-linejoin="round"/>
+<circle cx="48" cy="356" r="4.6" fill="#003087" stroke="#003087" stroke-width="2"/>
+<line x1="48" y1="356" x2="48" y2="368" stroke="#c99a2e" stroke-width="2"/><circle cx="48" cy="370" r="3.2" fill="#c99a2e"/>
+<circle cx="62" cy="342" r="4.6" fill="#ffffff" stroke="#003087" stroke-width="2"/>
+<circle cx="76" cy="356" r="4.6" fill="#003087" stroke="#003087" stroke-width="2"/>
+<line x1="76" y1="356" x2="76" y2="368" stroke="#c99a2e" stroke-width="2"/><circle cx="76" cy="370" r="3.2" fill="#c99a2e"/>
+<circle cx="90" cy="342" r="4.6" fill="#ffffff" stroke="#003087" stroke-width="2"/>
+<circle cx="104" cy="356" r="4.6" fill="#003087" stroke="#003087" stroke-width="2"/>
+<line x1="104" y1="356" x2="104" y2="368" stroke="#c99a2e" stroke-width="2"/><circle cx="104" cy="370" r="3.2" fill="#c99a2e"/>
+<circle cx="118" cy="342" r="4.6" fill="#ffffff" stroke="#003087" stroke-width="2"/>
+<path d="M300 226 H 344" stroke="#003087" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+<path d="M300 126 C 322 126, 318 226, 330 226" stroke="#cbd5e1" stroke-width="1.6" fill="none"/>
+<path d="M300 366 C 322 366, 318 226, 330 226" stroke="#cbd5e1" stroke-width="1.6" fill="none"/>
+<rect x="360" y="72" width="465" height="166" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+<rect x="376" y="86" width="44.8" height="22" rx="11" fill="#003087"/>
+<text x="387" y="101.5" font-size="11" fill="#fff" font-weight="700" text-anchor="start" letter-spacing="1.2" >DRY</text>
+<text x="432.8" y="102" font-size="12.5" fill="#64748b" font-weight="500" text-anchor="start" letter-spacing="0" >Solvent-free · PTFE fibrillation</text>
+<rect x="360" y="258" width="465" height="166" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+<rect x="376" y="272" width="44.8" height="22" rx="11" fill="#0891b2"/>
+<text x="387" y="287.5" font-size="11" fill="#fff" font-weight="700" text-anchor="start" letter-spacing="1.2" >WET</text>
+<text x="432.8" y="288" font-size="12.5" fill="#64748b" font-weight="500" text-anchor="start" letter-spacing="0" >High-solids slurry · NMP reduction</text>
+<path d="M410 132 H470 L462 164 Q440 176 418 164 Z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5"/>
+<circle cx="432.2" cy="139.6" r="3.0" fill="#3d5fae"/>
+<circle cx="454.1" cy="138.3" r="2.9" fill="#7f97cf"/>
+<circle cx="427.4" cy="138.1" r="2.7" fill="#3d5fae"/>
+<circle cx="422.0" cy="146.2" r="3.3" fill="#3d5fae"/>
+<circle cx="459.7" cy="151.1" r="2.9" fill="#3d5fae"/>
+<circle cx="443.4" cy="145.5" r="3.6" fill="#3d5fae"/>
+<circle cx="442.5" cy="139.2" r="2.7" fill="#7f97cf"/>
+<circle cx="423.2" cy="143.4" r="3.3" fill="#3d5fae"/>
+<circle cx="422.5" cy="149.7" r="2.3" fill="#3d5fae"/>
+<circle cx="442.1" cy="137.5" r="2.1" fill="#3d5fae"/>
+<circle cx="439.8" cy="148.8" r="3.2" fill="#16306e"/>
+<circle cx="443.8" cy="146.9" r="2.5" fill="#3d5fae"/>
+<circle cx="448.8" cy="141.9" r="2.9" fill="#7f97cf"/>
+<circle cx="439.8" cy="144.2" r="2.7" fill="#7f97cf"/>
+<circle cx="461.1" cy="138.8" r="2.7" fill="#16306e"/>
+<circle cx="424.7" cy="147.7" r="2.1" fill="#7f97cf"/>
+<circle cx="421.4" cy="149.4" r="3.3" fill="#16306e"/>
+<circle cx="433.0" cy="144.4" r="2.8" fill="#16306e"/>
+<circle cx="421.0" cy="138.2" r="2.4" fill="#7f97cf"/>
+<circle cx="447.2" cy="137.5" r="3.1" fill="#7f97cf"/>
+<circle cx="443.4" cy="152.3" r="2.7" fill="#7f97cf"/>
+<circle cx="435.0" cy="152.0" r="2.0" fill="#16306e"/>
+<circle cx="433.6" cy="150.7" r="2.8" fill="#3d5fae"/>
+<circle cx="451.8" cy="139.1" r="2.4" fill="#16306e"/>
+<circle cx="458.3" cy="147.9" r="2.3" fill="#16306e"/>
+<circle cx="442.2" cy="157.2" r="3.3" fill="#7f97cf"/>
+<path d="M440 116 V 148 M432 142 H448" stroke="#475569" stroke-width="2.2" stroke-linecap="round"/>
+<path d="M570 138 Q581.3 134.0 598 132" stroke="#c99a2e" stroke-width="1.3" fill="none"/>
+<path d="M570 138 Q577.3 152.6 588 158" stroke="#c99a2e" stroke-width="1.3" fill="none"/>
+<path d="M570 138 Q571.5 145.8 562 162" stroke="#c99a2e" stroke-width="1.3" fill="none"/>
+<path d="M598 132 Q589.1 141.8 588 158" stroke="#c99a2e" stroke-width="1.3" fill="none"/>
+<path d="M598 132 Q603.8 142.8 616 154" stroke="#c99a2e" stroke-width="1.3" fill="none"/>
+<path d="M588 158 Q603.1 153.2 616 154" stroke="#c99a2e" stroke-width="1.3" fill="none"/>
+<path d="M588 158 Q569.0 159.0 562 162" stroke="#c99a2e" stroke-width="1.3" fill="none"/>
+<circle cx="570.0" cy="138.0" r="12.0" fill="url(#pA)"/>
+<circle cx="598.0" cy="132.0" r="10.0" fill="url(#pA)"/>
+<circle cx="588.0" cy="158.0" r="11.0" fill="url(#pA)"/>
+<circle cx="616.0" cy="154.0" r="9.0" fill="url(#pA)"/>
+<circle cx="562.0" cy="162.0" r="8.0" fill="url(#pA)"/>
+<rect x="704" y="144" width="80" height="6" fill="#1e293b"/>
+<circle cx="744" cy="126" r="17" fill="url(#roll)" stroke="#475569" stroke-width="1"/><circle cx="744" cy="126" r="3" fill="#334155"/>
+<circle cx="744" cy="168" r="17" fill="url(#roll)" stroke="#475569" stroke-width="1"/><circle cx="744" cy="168" r="3" fill="#334155"/>
+<path d="M478 146 H 552" stroke="#003087" stroke-width="1.8" fill="none" marker-end="url(#ar)" opacity=".75"/>
+<path d="M630 146 H 704" stroke="#003087" stroke-width="1.8" fill="none" marker-end="url(#ar)" opacity=".75"/>
+<text x="440" y="212" font-size="12.5" fill="#0f172a" font-weight="600" text-anchor="middle" letter-spacing="0" >Dry mixing</text>
+<text x="440" y="228" font-size="11" fill="#64748b" font-weight="400" text-anchor="middle" letter-spacing="0" >Powder blending</text>
+<text x="592" y="212" font-size="12.5" fill="#0f172a" font-weight="600" text-anchor="middle" letter-spacing="0" >Fibrillation</text>
+<text x="592" y="228" font-size="11" fill="#64748b" font-weight="400" text-anchor="middle" letter-spacing="0" >PTFE network</text>
+<text x="744" y="212" font-size="12.5" fill="#0f172a" font-weight="600" text-anchor="middle" letter-spacing="0" >Calendering</text>
+<text x="744" y="228" font-size="11" fill="#64748b" font-weight="400" text-anchor="middle" letter-spacing="0" >Roll-to-roll film</text>
+<path d="M418 308 V 350 Q418 358 426 358 H454 Q462 358 462 350 V 308" fill="none" stroke="#94a3b8" stroke-width="2"/>
+<path d="M420 328 Q440 322 460 328 V 350 Q460 356 454 356 H426 Q420 356 420 350 Z" fill="url(#slurry)"/>
+<circle cx="436.1" cy="344.2" r="1.6" fill="#94a3b8"/>
+<circle cx="453.6" cy="346.4" r="1.6" fill="#94a3b8"/>
+<circle cx="440.5" cy="345.1" r="1.6" fill="#94a3b8"/>
+<circle cx="445.3" cy="335.0" r="1.6" fill="#94a3b8"/>
+<circle cx="452.0" cy="348.0" r="1.6" fill="#94a3b8"/>
+<circle cx="451.2" cy="348.4" r="1.6" fill="#94a3b8"/>
+<circle cx="436.8" cy="341.2" r="1.6" fill="#94a3b8"/>
+<circle cx="428.1" cy="345.4" r="1.6" fill="#94a3b8"/>
+<circle cx="426.9" cy="335.2" r="1.6" fill="#94a3b8"/>
+<path d="M440 298 V 340" stroke="#475569" stroke-width="2.2" stroke-linecap="round"/><path d="M432 340 H448" stroke="#475569" stroke-width="2.2" stroke-linecap="round"/>
+<path d="M578 306 H606 V 330 L594 338 L590 338 L578 330 Z" fill="#64748b"/>
+<rect x="556" y="344" width="76" height="5" fill="url(#cc)"/>
+<path d="M592 338 V 344 H632" stroke="#1e293b" stroke-width="4" fill="none"/>
+<path d="M560 358 H624" stroke="#64748b" stroke-width="1.2" marker-end="url(#ar)" opacity=".6"/>
+<rect x="708" y="342" width="72" height="5" fill="url(#cc)"/><rect x="708" y="337" width="72" height="5" fill="#1e293b"/>
+<path d="M716 330 q4 -7 0 -14 q-4 -7 0 -14" stroke="#f59e0b" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".85"/>
+<path d="M734 330 q4 -7 0 -14 q-4 -7 0 -14" stroke="#f59e0b" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".85"/>
+<path d="M752 330 q4 -7 0 -14 q-4 -7 0 -14" stroke="#f59e0b" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".85"/>
+<path d="M770 330 q4 -7 0 -14 q-4 -7 0 -14" stroke="#f59e0b" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".85"/>
+<path d="M478 332 H 552" stroke="#003087" stroke-width="1.8" fill="none" marker-end="url(#ar)" opacity=".75"/>
+<path d="M630 332 H 704" stroke="#003087" stroke-width="1.8" fill="none" marker-end="url(#ar)" opacity=".75"/>
+<text x="440" y="398" font-size="12.5" fill="#0f172a" font-weight="600" text-anchor="middle" letter-spacing="0" >Slurry</text>
+<text x="440" y="414" font-size="11" fill="#64748b" font-weight="400" text-anchor="middle" letter-spacing="0" >&gt;77 wt% solids</text>
+<text x="592" y="398" font-size="12.5" fill="#0f172a" font-weight="600" text-anchor="middle" letter-spacing="0" >Coating</text>
+<text x="592" y="414" font-size="11" fill="#64748b" font-weight="400" text-anchor="middle" letter-spacing="0" >Slot-die / comma</text>
+<text x="744" y="398" font-size="12.5" fill="#0f172a" font-weight="600" text-anchor="middle" letter-spacing="0" >Drying</text>
+<text x="744" y="414" font-size="11" fill="#64748b" font-weight="400" text-anchor="middle" letter-spacing="0" >Binder-migration control</text>
+<path d="M825 155 C 852 155, 852 212, 880 212" stroke="#003087" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+<path d="M825 341 C 852 341, 852 212, 880 212" stroke="#0891b2" stroke-width="2" fill="none"/>
+<rect x="900" y="80" width="270" height="250" rx="14" fill="#ffffff" stroke="#e2e8f0" filter="url(#sh)"/>
+<rect x="905" y="128" width="250" height="168" fill="#eef2f9"/>
+<g clip-path="url(#elc)">
+<line x1="945.6" y1="186.4" x2="960.1" y2="168.3" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="945.6" y1="186.4" x2="960.8" y2="198.7" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="905.1" y1="156.2" x2="918.0" y2="141.6" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="995.9" y1="136.1" x2="996.7" y2="158.7" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="1058.5" y1="155.8" x2="1080.1" y2="146.3" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="991.8" y1="190.3" x2="1004.9" y2="203.3" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="1026.0" y1="145.7" x2="1046.9" y2="134.0" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="990.7" y1="174.4" x2="996.7" y2="158.7" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="1120.8" y1="243.4" x2="1139.6" y2="233.5" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="1038.1" y1="256.6" x2="1043.3" y2="280.3" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="960.8" y1="261.8" x2="966.1" y2="286.5" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="960.8" y1="261.8" x2="972.2" y2="239.5" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="1090.0" y1="168.3" x2="1113.7" y2="177.7" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="974.9" y1="173.5" x2="990.7" y2="174.4" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="960.1" y1="168.3" x2="974.9" y2="173.5" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="960.1" y1="168.3" x2="965.2" y2="143.7" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="1115.1" y1="208.7" x2="1144.1" y2="203.6" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="1115.1" y1="208.7" x2="1126.0" y2="224.5" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="942.8" y1="276.8" x2="966.1" y2="286.5" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="1069.3" y1="188.1" x2="1090.0" y2="168.3" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="1067.4" y1="216.3" x2="1069.3" y2="188.1" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="1067.4" y1="216.3" x2="1084.0" y2="237.6" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="1013.5" y1="271.5" x2="1038.1" y2="256.6" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="1030.4" y1="217.1" x2="1042.9" y2="234.5" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="906.0" y1="259.9" x2="925.9" y2="269.0" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="906.0" y1="259.9" x2="922.7" y2="250.5" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="906.0" y1="259.9" x2="906.5" y2="276.3" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="986.5" y1="214.9" x2="991.8" y2="190.3" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="1140.5" y1="173.5" x2="1144.1" y2="203.6" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="1101.0" y1="275.5" x2="1117.2" y2="290.9" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="1101.0" y1="275.5" x2="1116.6" y2="264.7" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="909.5" y1="185.0" x2="923.6" y2="174.5" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="1080.1" y1="146.3" x2="1090.0" y2="168.3" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="925.9" y1="269.0" x2="942.8" y2="276.8" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="922.7" y1="250.5" x2="942.4" y2="247.9" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="942.4" y1="247.9" x2="960.8" y2="261.8" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="1061.8" y1="249.4" x2="1084.0" y2="237.6" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="1028.5" y1="193.2" x2="1030.4" y2="217.1" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="1028.5" y1="193.2" x2="1029.3" y2="167.2" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="972.2" y1="239.5" x2="988.1" y2="260.1" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="1029.3" y1="167.2" x2="1058.5" y2="155.8" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="1004.9" y1="203.3" x2="1028.5" y2="193.2" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="1075.5" y1="282.6" x2="1101.0" y2="275.5" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="918.0" y1="141.6" x2="932.4" y2="157.8" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="986.4" y1="288.8" x2="988.1" y2="260.1" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="1126.0" y1="224.5" x2="1139.6" y2="233.5" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="906.5" y1="276.3" x2="925.9" y2="269.0" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="1042.9" y1="234.5" x2="1061.8" y2="249.4" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="1116.6" y1="264.7" x2="1120.8" y2="243.4" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<line x1="1116.6" y1="264.7" x2="1140.8" y2="266.4" stroke="#c99a2e" stroke-width=".9" opacity=".8"/>
+<circle cx="945.6" cy="186.4" r="8.1" fill="url(#pB)"/>
+<circle cx="905.1" cy="156.2" r="7.3" fill="url(#pA)"/>
+<circle cx="995.9" cy="136.1" r="7.6" fill="url(#pB)"/>
+<circle cx="1058.5" cy="155.8" r="11.8" fill="url(#pA)"/>
+<circle cx="991.8" cy="190.3" r="8.4" fill="url(#pB)"/>
+<circle cx="1117.2" cy="290.9" r="7.7" fill="url(#pA)"/>
+<circle cx="1026.0" cy="145.7" r="9.6" fill="url(#pA)"/>
+<circle cx="990.7" cy="174.4" r="7.6" fill="url(#pA)"/>
+<circle cx="945.4" cy="135.7" r="11.6" fill="url(#pA)"/>
+<circle cx="911.8" cy="216.5" r="10.0" fill="url(#pB)"/>
+<circle cx="1120.8" cy="243.4" r="12.4" fill="url(#pA)"/>
+<circle cx="996.7" cy="158.7" r="8.4" fill="url(#pA)"/>
+<circle cx="1038.1" cy="256.6" r="11.2" fill="url(#pB)"/>
+<circle cx="960.8" cy="261.8" r="8.8" fill="url(#pA)"/>
+<circle cx="1090.0" cy="168.3" r="11.5" fill="url(#pB)"/>
+<circle cx="974.9" cy="173.5" r="7.2" fill="url(#pA)"/>
+<circle cx="1144.1" cy="203.6" r="10.8" fill="url(#pA)"/>
+<circle cx="1152.0" cy="284.8" r="12.2" fill="url(#pB)"/>
+<circle cx="960.1" cy="168.3" r="9.0" fill="url(#pA)"/>
+<circle cx="956.1" cy="231.9" r="8.1" fill="url(#pB)"/>
+<circle cx="1115.1" cy="208.7" r="12.0" fill="url(#pA)"/>
+<circle cx="1104.9" cy="145.6" r="10.6" fill="url(#pA)"/>
+<circle cx="988.1" cy="260.1" r="11.3" fill="url(#pB)"/>
+<circle cx="942.8" cy="276.8" r="7.7" fill="url(#pA)"/>
+<circle cx="1069.3" cy="188.1" r="12.4" fill="url(#pA)"/>
+<circle cx="1067.4" cy="216.3" r="12.3" fill="url(#pB)"/>
+<circle cx="1013.5" cy="271.5" r="12.1" fill="url(#pA)"/>
+<circle cx="1030.4" cy="217.1" r="12.0" fill="url(#pB)"/>
+<circle cx="906.0" cy="259.9" r="8.0" fill="url(#pA)"/>
+<circle cx="986.5" cy="214.9" r="10.1" fill="url(#pA)"/>
+<circle cx="1140.5" cy="173.5" r="11.8" fill="url(#pB)"/>
+<circle cx="1140.8" cy="266.4" r="10.1" fill="url(#pA)"/>
+<circle cx="935.4" cy="202.7" r="7.8" fill="url(#pA)"/>
+<circle cx="965.2" cy="143.7" r="7.4" fill="url(#pA)"/>
+<circle cx="1101.0" cy="275.5" r="10.7" fill="url(#pA)"/>
+<circle cx="1084.0" cy="237.6" r="7.8" fill="url(#pA)"/>
+<circle cx="909.5" cy="185.0" r="9.4" fill="url(#pA)"/>
+<circle cx="1080.1" cy="146.3" r="10.1" fill="url(#pA)"/>
+<circle cx="1139.6" cy="233.5" r="7.4" fill="url(#pA)"/>
+<circle cx="925.9" cy="269.0" r="11.4" fill="url(#pA)"/>
+<circle cx="1043.3" cy="280.3" r="8.9" fill="url(#pB)"/>
+<circle cx="932.4" cy="157.8" r="8.3" fill="url(#pA)"/>
+<circle cx="1138.7" cy="149.0" r="9.6" fill="url(#pA)"/>
+<circle cx="922.7" cy="250.5" r="7.7" fill="url(#pA)"/>
+<circle cx="966.1" cy="286.5" r="10.0" fill="url(#pA)"/>
+<circle cx="942.4" cy="247.9" r="12.4" fill="url(#pA)"/>
+<circle cx="1061.8" cy="249.4" r="11.9" fill="url(#pA)"/>
+<circle cx="923.6" cy="174.5" r="8.4" fill="url(#pA)"/>
+<circle cx="1028.5" cy="193.2" r="12.4" fill="url(#pA)"/>
+<circle cx="1046.9" cy="134.0" r="8.7" fill="url(#pA)"/>
+<circle cx="972.2" cy="239.5" r="7.3" fill="url(#pA)"/>
+<circle cx="1113.7" cy="177.7" r="7.6" fill="url(#pA)"/>
+<circle cx="1029.3" cy="167.2" r="12.0" fill="url(#pA)"/>
+<circle cx="1004.9" cy="203.3" r="8.4" fill="url(#pA)"/>
+<circle cx="1075.5" cy="282.6" r="9.9" fill="url(#pA)"/>
+<circle cx="960.8" cy="198.7" r="8.0" fill="url(#pA)"/>
+<circle cx="918.0" cy="141.6" r="7.8" fill="url(#pB)"/>
+<circle cx="986.4" cy="288.8" r="10.0" fill="url(#pA)"/>
+<circle cx="1126.0" cy="224.5" r="7.8" fill="url(#pA)"/>
+<circle cx="906.5" cy="276.3" r="8.1" fill="url(#pA)"/>
+<circle cx="1042.9" cy="234.5" r="7.1" fill="url(#pA)"/>
+<circle cx="1116.6" cy="264.7" r="9.2" fill="url(#pB)"/>
+<path d="M1097.7 197.3 q10.1 -9.8 25.7 0.5" stroke="#0891b2" stroke-width="2" fill="none" stroke-linecap="round" opacity=".9"/>
+<path d="M994.1 235.1 q11.6 8.7 26.8 -2.0" stroke="#0891b2" stroke-width="2" fill="none" stroke-linecap="round" opacity=".9"/>
+<path d="M1126.8 141.8 q12.3 -1.9 20.9 -3.5" stroke="#0891b2" stroke-width="2" fill="none" stroke-linecap="round" opacity=".9"/>
+<path d="M1096.9 136.9 q12.4 8.8 19.7 -2.4" stroke="#0891b2" stroke-width="2" fill="none" stroke-linecap="round" opacity=".9"/>
+<path d="M1055.9 213.6 q13.1 6.3 20.1 -1.5" stroke="#0891b2" stroke-width="2" fill="none" stroke-linecap="round" opacity=".9"/>
+<path d="M982.1 142.5 q15.1 5.7 26.6 -3.9" stroke="#0891b2" stroke-width="2" fill="none" stroke-linecap="round" opacity=".9"/>
+<path d="M1112.7 250.5 q11.7 4.8 23.4 -2.2" stroke="#0891b2" stroke-width="2" fill="none" stroke-linecap="round" opacity=".9"/>
+<path d="M935.3 171.0 q8.3 -3.3 27.0 1.6" stroke="#0891b2" stroke-width="2" fill="none" stroke-linecap="round" opacity=".9"/>
+<path d="M1112.9 245.3 q10.1 1.1 23.2 2.3" stroke="#0891b2" stroke-width="2" fill="none" stroke-linecap="round" opacity=".9"/>
+<path d="M1035.6 176.1 q13.1 9.3 20.6 3.0" stroke="#0891b2" stroke-width="2" fill="none" stroke-linecap="round" opacity=".9"/>
+</g>
+<rect x="905" y="296" width="250" height="9" fill="url(#cc)"/>
+<text x="915" y="105" font-size="15" fill="#0f172a" font-weight="700" text-anchor="start" letter-spacing="0" >Thick electrode</text>
+<text x="1155" y="105" font-size="11" fill="#64748b" font-weight="500" text-anchor="end" letter-spacing="0" >cross-section</text>
+<text x="1030" y="322" font-size="10.5" fill="#64748b" font-weight="500" text-anchor="middle" letter-spacing="0" >Current collector</text>
+<rect x="900" y="344" width="270" height="92" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+<circle cx="913" cy="364" r="3.2" fill="#0891b2"/>
+<text x="924" y="368" font-size="12" fill="#0f172a" font-weight="500" text-anchor="start" letter-spacing="0" >&gt;10 mAh cm<tspan font-size="8" dy="-5">−2</tspan><tspan dy="5"> areal capacity</tspan></text>
+<circle cx="913" cy="388" r="3.2" fill="#0891b2"/>
+<text x="924" y="392" font-size="12" fill="#0f172a" font-weight="500" text-anchor="start" letter-spacing="0" >Uniform carbon–binder domains</text>
+<circle cx="913" cy="412" r="3.2" fill="#0891b2"/>
+<text x="924" y="416" font-size="12" fill="#0f172a" font-weight="500" text-anchor="start" letter-spacing="0" >Low binder · solvent-free</text>
+<path d="M1035 438 V 456" stroke="#003087" stroke-width="2" marker-end="url(#ar)"/>
+<rect x="926" y="462" width="218" height="58" rx="12" fill="#003087"/>
+<rect x="944" y="474" width="40" height="34" rx="4" fill="#ffffff" opacity=".15" stroke="#fff" stroke-opacity=".6"/>
+<rect x="954" y="468" width="6" height="8" fill="#e2e8f0"/><rect x="968" y="468" width="6" height="8" fill="#e2e8f0"/>
+<path d="M966 482 l-6 10 h6 l-4 10" stroke="#facc15" stroke-width="2" fill="none" stroke-linejoin="round"/>
+<text x="996" y="488" font-size="14" fill="#ffffff" font-weight="700" text-anchor="start" letter-spacing="0" >High-energy cells</text>
+<text x="996" y="506" font-size="11.5" fill="#bfdbfe" font-weight="500" text-anchor="start" letter-spacing="0" >EV · ESS · fast charging</text>
+<rect x="360" y="556" width="810" height="118" rx="16" fill="url(#twin)" stroke="#a5f3fc"/>
+<rect x="376" y="570" width="113.19999999999999" height="22" rx="11" fill="#0891b2"/>
+<text x="387" y="585.5" font-size="11" fill="#fff" font-weight="700" text-anchor="start" letter-spacing="1.2" >DIGITAL TWIN</text>
+<text x="498" y="586" font-size="12.5" fill="#0e7490" font-weight="600" text-anchor="start" letter-spacing="0" >GeoDict · EDEM — simulate before you build</text>
+<path d="M398 622 l10 -5.0 l10 5.0 l-10 5.0 z" fill="#0891b2" opacity=".95"/>
+<path d="M398 622 v10 l10 5.0 v-10 z" fill="#0891b2" opacity=".7"/>
+<path d="M418 622 v10 l-10 5.0 v-10 z" fill="#0891b2" opacity=".5"/>
+<path d="M412 629 l10 -5.0 l10 5.0 l-10 5.0 z" fill="#22d3ee" opacity=".95"/>
+<path d="M412 629 v10 l10 5.0 v-10 z" fill="#22d3ee" opacity=".7"/>
+<path d="M432 629 v10 l-10 5.0 v-10 z" fill="#22d3ee" opacity=".5"/>
+<path d="M384 629 l10 -5.0 l10 5.0 l-10 5.0 z" fill="#06b6d4" opacity=".95"/>
+<path d="M384 629 v10 l10 5.0 v-10 z" fill="#06b6d4" opacity=".7"/>
+<path d="M404 629 v10 l-10 5.0 v-10 z" fill="#06b6d4" opacity=".5"/>
+<path d="M398 636 l10 -5.0 l10 5.0 l-10 5.0 z" fill="#0e7490" opacity=".95"/>
+<path d="M398 636 v10 l10 5.0 v-10 z" fill="#0e7490" opacity=".7"/>
+<path d="M418 636 v10 l-10 5.0 v-10 z" fill="#0e7490" opacity=".5"/>
+<path d="M412 615 l10 -5.0 l10 5.0 l-10 5.0 z" fill="#67e8f9" opacity=".95"/>
+<path d="M412 615 v10 l10 5.0 v-10 z" fill="#67e8f9" opacity=".7"/>
+<path d="M432 615 v10 l-10 5.0 v-10 z" fill="#67e8f9" opacity=".5"/>
+<path d="M384 615 l10 -5.0 l10 5.0 l-10 5.0 z" fill="#0891b2" opacity=".95"/>
+<path d="M384 615 v10 l10 5.0 v-10 z" fill="#0891b2" opacity=".7"/>
+<path d="M404 615 v10 l-10 5.0 v-10 z" fill="#0891b2" opacity=".5"/>
+<rect x="468" y="602" width="184" height="54" rx="10" fill="#ffffff" stroke="#a5f3fc"/>
+<text x="560" y="625" font-size="13" fill="#0f172a" font-weight="700" text-anchor="middle" letter-spacing="0" >3D microstructure</text>
+<text x="560" y="643" font-size="11" fill="#64748b" font-weight="400" text-anchor="middle" letter-spacing="0" >Voxel model of the electrode</text>
+<path d="M654 629 H 674" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arc)"/>
+<rect x="678" y="602" width="184" height="54" rx="10" fill="#ffffff" stroke="#a5f3fc"/>
+<text x="770" y="625" font-size="13" fill="#0f172a" font-weight="700" text-anchor="middle" letter-spacing="0" >Transport simulation</text>
+<text x="770" y="643" font-size="11" fill="#64748b" font-weight="400" text-anchor="middle" letter-spacing="0" >Tortuosity · effective transport</text>
+<path d="M864 629 H 889" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arc)"/>
+<rect x="893" y="602" width="184" height="54" rx="10" fill="#ffffff" stroke="#a5f3fc"/>
+<text x="985" y="625" font-size="13" fill="#0f172a" font-weight="700" text-anchor="middle" letter-spacing="0" >Process feedback</text>
+<text x="985" y="643" font-size="11" fill="#64748b" font-weight="400" text-anchor="middle" letter-spacing="0" >Predict before fabrication</text>
+<path d="M1170 214 H 1184 V 540 H 1160 V 548" stroke="#0891b2" stroke-width="1.8" stroke-dasharray="5 4" fill="none" marker-end="url(#arc)"/>
+<text x="1150" y="541" font-size="10.5" fill="#0e7490" font-weight="600" text-anchor="end" letter-spacing="0" >digitize</text>
+<path d="M500 556 V 438" stroke="#0891b2" stroke-width="1.8" stroke-dasharray="5 4" fill="none" marker-end="url(#arc)"/>
+<text x="508" y="500" font-size="10.5" fill="#0e7490" font-weight="600" text-anchor="start" letter-spacing="0" >optimize process</text>
+<path d="M1077 629 H 1108 Q 1128 629 1128 609 V 600" stroke="#0891b2" stroke-width="1.8" fill="none" opacity=".0"/>
+<text x="30" y="470" font-size="19" fill="#003087" font-weight="800" text-anchor="start" letter-spacing="0" >From powder to cell,</text>
+<text x="30" y="496" font-size="19" fill="#003087" font-weight="800" text-anchor="start" letter-spacing="0" >engineered digitally.</text>
+<line x1="30" y1="512" x2="70" y2="512" stroke="#0891b2" stroke-width="3"/>
+<text x="30" y="540" font-size="12.5" fill="#334155" font-weight="400" text-anchor="start" letter-spacing="0" >We design electrode materials and</text>
+<text x="30" y="560" font-size="12.5" fill="#334155" font-weight="400" text-anchor="start" letter-spacing="0" >dry / wet manufacturing processes for</text>
+<text x="30" y="580" font-size="12.5" fill="#334155" font-weight="400" text-anchor="start" letter-spacing="0" >high-loading thick electrodes, and use</text>
+<text x="30" y="600" font-size="12.5" fill="#334155" font-weight="400" text-anchor="start" letter-spacing="0" >digital twins to predict performance</text>
+<text x="30" y="620" font-size="12.5" fill="#334155" font-weight="400" text-anchor="start" letter-spacing="0" >before fabrication.</text>
+</svg>
