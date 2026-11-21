@@ -28,6 +28,15 @@ import researchVietnamDeputyPmVisit2 from '../imports/research-vietnam-deputy-pm
 import researchVietnamDeputyPmVisit3 from '../imports/research-vietnam-deputy-pm-visit-3.jpg'
 import galleryKwonAdvsPaper from '../imports/gallery-kwon-advs-paper.jpg'
 import awardsJiwonWooPoster2026 from '../imports/awards-jiwon-woo-poster-2026.jpg'
+import kecsFall20261Group from '../imports/kecs-fall-2026-1-group.jpg'
+import kecsFall20262JiwonTalk from '../imports/kecs-fall-2026-2-jiwon-talk.jpg'
+import kecsFall20263JiwonTalk from '../imports/kecs-fall-2026-3-jiwon-talk.jpg'
+import kecsFall20264MinsooPoster from '../imports/kecs-fall-2026-4-minsoo-poster.jpg'
+import kecsFall20265SeogwiDawon from '../imports/kecs-fall-2026-5-seogwi-dawon.jpg'
+import kecsFall20266Photobooth from '../imports/kecs-fall-2026-6-photobooth.jpg'
+import kcers2026YooInvited1 from '../imports/kcers-2026-yoo-invited-1.jpg'
+import kcers2026YooInvited2 from '../imports/kcers-2026-yoo-invited-2.jpg'
+import kcers2026YooInvitedAbstract from '../imports/kcers-2026-yoo-invited-abstract.jpg'
 import labLifeKistAutumnFesta1 from '../imports/lab-life-kist-autumn-festa-1.jpg'
 import labLifeKistAutumnFesta2 from '../imports/lab-life-kist-autumn-festa-2.jpg'
 
@@ -321,9 +330,20 @@ export interface NewsItem {
   title: string
   excerpt: string
   photos: GalleryPhoto[]
+  // Optional external link shown under the description (e.g. an abstract PDF)
+  link?: { label: string; href: string }
 }
 
 export const NEWS: NewsItem[] = [
+  {
+    id: 10,
+    slug: 'kecs-fall-meeting-2026',
+    category: 'Research',
+    date: 'November 18–20, 2026',
+    title: 'DEEP Lab at the 51st KECS Fall Meeting, Jeju',
+    excerpt: "Our lab joined the 51st Korean Electrochemical Society Fall Meeting at ICC Jeju. Jiwon Woo gave an oral presentation on the role of PTFE fibrillation in dry-electrode structure and performance, and Minsoo Lee presented a poster on SWCNT–mesoporous carbon hybrid networks for high-loading cathodes.",
+    photos: [{ src: kecsFall20261Group }, { src: kecsFall20262JiwonTalk }, { src: kecsFall20263JiwonTalk, fit: 'contain' }, { src: kecsFall20264MinsooPoster, fit: 'contain' }, { src: kecsFall20265SeogwiDawon }, { src: kecsFall20266Photobooth, fit: 'contain' }],
+  },
   {
     id: 8,
     slug: 'kist-autumn-festa-2026',
@@ -332,6 +352,16 @@ export const NEWS: NewsItem[] = [
     title: '2026 KIST Autumn Festa',
     excerpt: 'The lab joined the 2026 KIST Autumn Festa — an afternoon of games and team events with colleagues across the institute.',
     photos: [{ src: labLifeKistAutumnFesta2 }, { src: labLifeKistAutumnFesta1 }],
+  },
+  {
+    id: 9,
+    slug: 'kcers-2026-invited-talk-jung-keun-yoo',
+    category: 'Research',
+    date: 'October 1, 2026',
+    title: 'Dr. Jung-Keun Yoo Gives Invited Talk at the Korean Ceramic Society',
+    excerpt: "Dr. Jung-Keun Yoo delivered an invited talk at the 2026 Korean Ceramic Society meeting (COEX, Seoul): 'Design Strategies for Thick Electrodes in Lithium-Ion Batteries: Comparing Wet and Dry Processes and Structure–Performance Analysis' (리튬이차전지 후막 전극 설계 전략: 습·건식 공정 비교와 구조-성능 분석).",
+    photos: [{ src: kcers2026YooInvited1 }, { src: kcers2026YooInvited2 }, { src: kcers2026YooInvitedAbstract, fit: 'contain' }],
+    link: { label: 'Abstract (PDF)', href: 'https://www.kcersmeeting.or.kr/data/DownLoad/%EC%9C%A0%EC%A0%95%EA%B7%BC_%EC%B4%88%EB%A1%9D.pdf' },
   },
   {
     id: 5,

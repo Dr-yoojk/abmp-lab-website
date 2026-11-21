@@ -246,16 +246,33 @@ function WelcomeSection() {
           />
         </h2>
         <h2 className="text-4xl font-bold text-[#003087] mb-8">Electrode Processing</h2>
-        <p className="text-gray-500 max-w-3xl mx-auto text-lg leading-relaxed mb-4">
-          DEEP Laboratory at KIST is a process-focused research group specializing in thick electrode fabrication
-          for next-generation lithium-ion batteries. We pursue both dry (solvent-free) and wet (slurry-based)
-          electrode processing — covering LFP and NCM cathode systems, silicon-based anodes, and full electrode
-          stack engineering including conductive additives, binders, dispersants, and current collectors.
+        <p className="text-gray-700 max-w-2xl mx-auto text-lg leading-relaxed mb-10">
+          DEEP Laboratory at KIST engineers thick electrodes
+          <br className="hidden sm:block" /> for next-generation lithium-ion batteries.
         </p>
-        <p className="text-gray-500 max-w-3xl mx-auto leading-relaxed mb-10">
-          We integrate digital twin simulation — GeoDict and EDEM — to connect microstructure with electrochemical
-          performance, and apply systematic Design of Experiments (DoE) to accelerate process optimization. Our
-          mission is to bridge fundamental science and scalable industrial manufacturing.
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-4xl mx-auto text-left mb-10">
+          {[
+            {
+              label: 'Process',
+              text: 'Dry (solvent-free) and wet (slurry-based) electrode processing for LFP, NCM and silicon-based electrodes.',
+            },
+            {
+              label: 'Materials',
+              text: 'The full electrode stack — conductive additives, binders, dispersants and current collectors.',
+            },
+            {
+              label: 'Digital Twin',
+              text: 'GeoDict and EDEM simulation with Design of Experiments to link microstructure to performance.',
+            },
+          ].map((b) => (
+            <div key={b.label} className="rounded-xl border border-gray-100 bg-[#f8fafc] px-6 py-5">
+              <p className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#003087] mb-2">{b.label}</p>
+              <p className="text-[14.5px] text-gray-600 leading-relaxed">{b.text}</p>
+            </div>
+          ))}
+        </div>
+        <p className="text-gray-500 max-w-2xl mx-auto leading-relaxed mb-10">
+          Our mission is to bridge fundamental science and scalable industrial manufacturing.
         </p>
         <Link
           to="/research"

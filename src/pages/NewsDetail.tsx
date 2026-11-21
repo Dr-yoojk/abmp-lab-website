@@ -111,7 +111,17 @@ export default function NewsDetail() {
         </div>
 
         <h1 className="text-3xl font-bold text-gray-900 mb-4 leading-tight">{item.title}</h1>
-        <p className="text-gray-600 text-[15px] leading-relaxed mb-8">{item.excerpt}</p>
+        <p className={`text-gray-600 text-[15px] leading-relaxed ${item.link ? 'mb-4' : 'mb-8'}`}>{item.excerpt}</p>
+        {item.link && (
+          <a
+            href={item.link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 mb-8 px-4 py-2 rounded border border-[#003087] text-[#003087] text-sm font-semibold hover:bg-[#003087] hover:text-white transition-colors"
+          >
+            {item.link.label} ↗
+          </a>
+        )}
 
         <PhotoSlider key={item.slug} photos={item.photos} title={item.title} />
 

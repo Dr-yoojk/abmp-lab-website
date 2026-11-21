@@ -84,8 +84,8 @@ const PHD_INTEGRATED: Member[] = [
 ]
 
 const RESEARCH_INTERN: Member[] = [
-  { nameKo: '신유영', nameEn: 'Yuyeong Shin', role: 'Research Intern', photo: shinYuyeongPhoto, research: 'Dry Electrode Cathode' },
-  { nameKo: '김성래', nameEn: 'Seongrae Kim', role: 'Research Intern', photo: kimSeongraePhoto, research: 'Wet Electrode Cathode' },
+  { nameKo: '신유영', nameEn: 'Yuyeong Shin', role: 'Research Intern', photo: shinYuyeongPhoto, research: 'Dry Electrode Cathode', email: 'youyeong.shin@kist.re.kr' },
+  { nameKo: '김성래', nameEn: 'Seongrae Kim', role: 'Research Intern', photo: kimSeongraePhoto, research: 'Wet Electrode Cathode', email: '0926353@kist.re.kr' },
   { nameKo: '조지백', nameEn: 'Jiback Cho', role: 'Research Intern', photo: choJibackPhoto, research: 'Dry Electrode Cathode', email: 'zeebaek@kist.re.kr' },
 ]
 
