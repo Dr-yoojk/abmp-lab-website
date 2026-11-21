@@ -365,7 +365,7 @@ export const NEWS: NewsItem[] = [
   },
   {
     id: 5,
-    slug: 'vietnamese-deputy-pm-visits-abmp-lab',
+    slug: 'vietnamese-deputy-pm-visits-deep-lab',
     category: 'Research',
     date: 'September 8, 2026',
     title: 'Vietnamese Deputy PM Visits DEEP Lab',

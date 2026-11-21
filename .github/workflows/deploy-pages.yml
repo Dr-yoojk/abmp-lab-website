@@ -33,7 +33,7 @@ jobs:
 
       - run: pnpm build
         env:
-          BASE_PATH: /abmp-lab-website/
+          BASE_PATH: /deep-lab-website/
 
       - uses: actions/configure-pages@v5
 
