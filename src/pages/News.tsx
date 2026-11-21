@@ -1,16 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useFadeIn } from '../hooks/useFadeIn'
-import { NEWS } from '../data'
+import { NEWS, newsBadge } from '../data'
 import HeroPattern from '../components/HeroPattern'
 
 const CATEGORIES = ['All', 'Research', 'Awards', 'Lab life']
-
-const CATEGORY_COLORS: Record<string, string> = {
-  Research: '#003087',
-  Awards: '#c8a84b',
-  'Lab life': '#c0392b',
-}
 
 function PageHeader() {
   return (
@@ -42,7 +36,7 @@ function NewsGrid({ items }: { items: typeof NEWS }) {
       }`}
     >
       {items.map((item) => {
-        const color = CATEGORY_COLORS[item.category] ?? '#003087'
+        const { color, label } = newsBadge(item.category)
         return (
           <Link
             key={item.id}
@@ -68,7 +62,7 @@ function NewsGrid({ items }: { items: typeof NEWS }) {
                   className="text-[10px] font-bold px-2.5 py-1 rounded-full text-white"
                   style={{ backgroundColor: color }}
                 >
-                  {item.category}
+                  {label}
                 </span>
               </div>
             </div>
@@ -127,7 +121,7 @@ export default function News() {
                       : 'bg-white border border-gray-200 text-gray-600 hover:border-[#003087]/30 hover:text-[#003087]'
                   }`}
                 >
-                  {cat}
+                  {cat === 'All' ? cat : newsBadge(cat).label}
                 </button>
               ))}
             </div>

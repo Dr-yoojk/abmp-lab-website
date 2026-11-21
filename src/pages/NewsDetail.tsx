@@ -1,12 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { NEWS, type GalleryPhoto } from '../data'
-
-const CATEGORY_COLORS: Record<string, string> = {
-  Research: '#003087',
-  Awards: '#c8a84b',
-  'Lab life': '#c0392b',
-}
+import { NEWS, newsBadge, type GalleryPhoto } from '../data'
 
 function PhotoSlider({ photos, title }: { photos: GalleryPhoto[]; title: string }) {
   const [index, setIndex] = useState(0)
@@ -96,7 +90,7 @@ export default function NewsDetail() {
     )
   }
 
-  const color = CATEGORY_COLORS[item.category] ?? '#003087'
+  const { color, label } = newsBadge(item.category)
 
   return (
     <section className="py-16 bg-white">
@@ -113,7 +107,7 @@ export default function NewsDetail() {
             className="text-[10px] font-bold px-2.5 py-1 rounded-full text-white"
             style={{ backgroundColor: color }}
           >
-            {item.category}
+            {label}
           </span>
           <p className="text-[13px] text-gray-400 font-medium">{item.date}</p>
         </div>

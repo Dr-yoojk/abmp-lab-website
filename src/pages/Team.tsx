@@ -113,6 +113,11 @@ const ALUMNI_RESEARCH_INTERN: Member[] = [
   { nameKo: '황영근', nameEn: 'Younggeun Hwang', role: 'Research Intern' },
 ]
 
+// Used by the Home page's PI card and stats band.
+export const PI_SUMMARY = { photo: PI_DATA.photo, stats: PI_DATA.stats }
+export const CURRENT_MEMBER_COUNT =
+  1 + POSTDOC.length + PHD_INTEGRATED.length + RESEARCH_INTERN.length + MASTERS_STUDENTS.length
+
 // ── Shared components ──────────────────────────────────────────────────────
 
 function PhotoPlaceholder({ size }: { size: 'pi' | 'member' }) {

@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useFadeIn } from '../hooks/useFadeIn'
-import { PUBLICATIONS, NEWS } from '../data'
+import { PUBLICATIONS, NEWS, newsBadge } from '../data'
+import { PI_SUMMARY, CURRENT_MEMBER_COUNT } from './Team'
 import { getFeaturedImage } from '../utils/featuredImages'
 import Authors from '../components/Authors'
 import HeroPattern from '../components/HeroPattern'
@@ -242,7 +243,7 @@ function WelcomeSection() {
           Digital Engineering for
           <span
             className="block h-[3px] w-16 mx-auto mt-3 rounded"
-            style={{ backgroundColor: '#003087' }}
+            style={{ background: 'linear-gradient(90deg, #003087, #06b6d4)' }}
           />
         </h2>
         <h2 className="text-4xl font-bold text-[#003087] mb-8">Electrode Processing</h2>
@@ -255,19 +256,32 @@ function WelcomeSection() {
             {
               label: 'Process',
               text: 'Dry (solvent-free) and wet (slurry-based) electrode processing for LFP, NCM and silicon-based electrodes.',
+              tags: ['Dry', 'Wet', 'LFP', 'NCM', 'Si'],
             },
             {
               label: 'Materials',
               text: 'The full electrode stack — conductive additives, binders, dispersants and current collectors.',
+              tags: ['CNT', 'Porous Carbon', 'F-free Binder', 'Primer Foil'],
             },
             {
               label: 'Digital Twin',
               text: 'GeoDict and EDEM simulation with Design of Experiments to link microstructure to performance.',
+              tags: ['GeoDict', 'EDEM', 'DoE', 'Microstructure'],
             },
           ].map((b) => (
-            <div key={b.label} className="rounded-xl border border-gray-100 bg-[#f8fafc] px-6 py-5">
+            <div key={b.label} className="rounded-xl border border-gray-100 bg-[#f8fafc] px-6 py-5 flex flex-col border-t-[3px] border-t-[#06b6d4]">
               <p className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#003087] mb-2">{b.label}</p>
-              <p className="text-[14.5px] text-gray-600 leading-relaxed">{b.text}</p>
+              <p className="text-[14.5px] text-gray-600 leading-relaxed mb-4 flex-1">{b.text}</p>
+              <div className="flex flex-wrap gap-1.5">
+                {b.tags.map((t) => (
+                  <span
+                    key={t}
+                    className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-[#ecfeff] text-[#0e7490] border border-[#a5f3fc]"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
             </div>
           ))}
         </div>
@@ -288,13 +302,62 @@ function WelcomeSection() {
   )
 }
 
-// ── Latest News (Gallery teaser) ───────────────────────────────────────────────
-const NEWS_COLORS: Record<string, string> = {
-  Research: '#003087',
-  Awards: '#c8a84b',
-  'Lab life': '#c0392b',
+// ── PI + lab at a glance ───────────────────────────────────────────────────────
+function PiAndStats() {
+  const { ref, visible } = useFadeIn()
+  const stats = [
+    { value: `${CURRENT_MEMBER_COUNT}`, label: 'Lab Members' },
+    ...PI_SUMMARY.stats.filter((s) => s.label !== 'H-index'),
+  ]
+
+  return (
+    <section className="relative overflow-hidden py-20" style={{ background: 'linear-gradient(135deg, #001f5a 0%, #003087 100%)' }}>
+      <HeroPattern />
+      <div
+        ref={ref}
+        className={`relative z-10 max-w-screen-xl mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-12 items-center transition-all duration-700 ${
+          visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+        }`}
+      >
+        {/* PI card */}
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-7 text-center sm:text-left">
+          <img
+            src={PI_SUMMARY.photo}
+            alt="Dr. Jung-Keun Yoo"
+            className="w-36 h-44 rounded-xl object-cover object-top shadow-lg ring-4 ring-white/10 shrink-0"
+          />
+          <div>
+            <p className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#67e8f9] mb-3">Principal Investigator</p>
+            <h2 className="text-2xl font-bold text-white mb-1">Dr. Jung-Keun Yoo</h2>
+            <p className="text-blue-200 text-[15px] mb-4">유정근 박사 · 책임연구원</p>
+            <p className="text-blue-100/90 text-[14.5px] leading-relaxed mb-6 max-w-md">
+              Ph.D. KAIST · formerly LG Chem Battery Division and KIMS. Leads research on dry/wet thick-electrode
+              processing, digital twins and fluorine-free binders.
+            </p>
+            <Link
+              to="/team"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white text-[#003087] text-sm font-semibold hover:bg-[#ecfeff] transition-colors"
+            >
+              Meet the Team →
+            </Link>
+          </div>
+        </div>
+
+        {/* Stats */}
+        <div className="grid grid-cols-2 gap-4">
+          {stats.map((s) => (
+            <div key={s.label} className="rounded-xl bg-white/[0.06] border border-white/10 px-6 py-6 backdrop-blur-sm">
+              <p className="text-3xl md:text-4xl font-bold text-white mb-1">{s.value}</p>
+              <p className="text-[12px] font-semibold tracking-[0.1em] uppercase text-[#67e8f9]">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
 }
 
+// ── Latest News (Gallery teaser) ───────────────────────────────────────────────
 function LatestNews() {
   const { ref, visible } = useFadeIn()
   const latest = NEWS.slice(0, 3)
@@ -325,7 +388,7 @@ function LatestNews() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {latest.map((item) => {
-            const color = NEWS_COLORS[item.category] ?? '#003087'
+            const { color, label } = newsBadge(item.category)
             const cover = item.photos[0]
             return (
               <Link
@@ -353,7 +416,7 @@ function LatestNews() {
                     className="absolute top-3 left-3 text-[10px] font-bold px-2.5 py-1 rounded-full text-white"
                     style={{ backgroundColor: color }}
                   >
-                    {item.category}
+                    {label}
                   </span>
                   {item.photos.length > 1 && (
                     <span className="absolute bottom-3 right-3 text-[10px] font-semibold px-2 py-0.5 rounded bg-black/50 text-white">
@@ -701,6 +764,7 @@ export default function Home() {
     <>
       <HeroSlider />
       <WelcomeSection />
+      <PiAndStats />
       <LatestNews />
       <WorkWithUs />
       <FeaturedPublications />

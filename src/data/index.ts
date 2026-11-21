@@ -322,6 +322,18 @@ export interface GalleryPhoto {
   fit?: 'cover' | 'contain'
 }
 
+// Category badge colour + emoji, shared by Home, Gallery and the detail page.
+export const NEWS_CATEGORY_STYLE: Record<string, { color: string; emoji: string }> = {
+  Research: { color: '#003087', emoji: '🔬' },
+  Awards: { color: '#c8a84b', emoji: '🏆' },
+  'Lab life': { color: '#c0392b', emoji: '🎉' },
+}
+
+export function newsBadge(category: string) {
+  const st = NEWS_CATEGORY_STYLE[category]
+  return { color: st?.color ?? '#003087', label: st ? `${st.emoji} ${category}` : category }
+}
+
 export interface NewsItem {
   id: number
   slug: string
