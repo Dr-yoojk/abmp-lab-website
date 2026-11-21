@@ -25,11 +25,19 @@ function PhotoSlider({ photos, title }: { photos: GalleryPhoto[]; title: string 
 
   return (
     <div className="relative w-full aspect-[4/3] bg-gray-100 rounded-2xl overflow-hidden">
-      <img
-        src={photos[index].src}
-        alt={`${title} — photo ${index + 1}`}
-        className={`w-full h-full ${photos[index].fit === 'contain' ? 'object-contain' : 'object-cover'}`}
-      />
+      {/* Every photo keeps its own layer and fit, so switching slides never
+          re-crops the previous image; slides simply cross-fade. */}
+      {photos.map((photo, i) => (
+        <img
+          key={photo.src}
+          src={photo.src}
+          alt={`${title} — photo ${i + 1}`}
+          aria-hidden={i !== index}
+          className={`absolute inset-0 w-full h-full transition-opacity duration-300 ease-out ${
+            photo.fit === 'contain' ? 'object-contain' : 'object-cover'
+          } ${i === index ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        />
+      ))}
 
       {hasMultiple && (
         <>
