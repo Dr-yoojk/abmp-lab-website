@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useFadeIn } from '../hooks/useFadeIn'
-import { PUBLICATIONS } from '../data'
+import { PUBLICATIONS, NEWS } from '../data'
 import { getFeaturedImage } from '../utils/featuredImages'
 import Authors from '../components/Authors'
 import HeroPattern from '../components/HeroPattern'
@@ -288,12 +288,105 @@ function WelcomeSection() {
   )
 }
 
+// ── Latest News (Gallery teaser) ───────────────────────────────────────────────
+const NEWS_COLORS: Record<string, string> = {
+  Research: '#003087',
+  Awards: '#c8a84b',
+  'Lab life': '#c0392b',
+}
+
+function LatestNews() {
+  const { ref, visible } = useFadeIn()
+  const latest = NEWS.slice(0, 3)
+
+  return (
+    <section className="py-24" style={{ backgroundColor: '#F8F9FA' }}>
+      <div
+        ref={ref}
+        className={`max-w-screen-xl mx-auto px-6 lg:px-10 transition-all duration-700 ${
+          visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+        }`}
+      >
+        <div className="flex items-end justify-between mb-12">
+          <div>
+            <p className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#003087] mb-3">Lab News</p>
+            <h2 className="text-3xl font-bold text-gray-900">Latest News</h2>
+          </div>
+          <Link
+            to="/news"
+            className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-[#003087] hover:gap-3 transition-all duration-200"
+          >
+            View Gallery
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {latest.map((item) => {
+            const color = NEWS_COLORS[item.category] ?? '#003087'
+            const cover = item.photos[0]
+            return (
+              <Link
+                key={item.id}
+                to={`/news/${item.slug}`}
+                className="group bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
+              >
+                <div className="relative h-56 bg-gray-100 overflow-hidden">
+                  {cover ? (
+                    <img
+                      src={cover.src}
+                      alt={item.title}
+                      loading="lazy"
+                      className={`w-full h-full transition-transform duration-500 group-hover:scale-105 ${
+                        cover.fit === 'contain' ? 'object-contain' : 'object-cover'
+                      }`}
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <span className="text-[11px] font-medium text-gray-400 tracking-wide uppercase">Photo coming soon</span>
+                    </div>
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                  <span
+                    className="absolute top-3 left-3 text-[10px] font-bold px-2.5 py-1 rounded-full text-white"
+                    style={{ backgroundColor: color }}
+                  >
+                    {item.category}
+                  </span>
+                  {item.photos.length > 1 && (
+                    <span className="absolute bottom-3 right-3 text-[10px] font-semibold px-2 py-0.5 rounded bg-black/50 text-white">
+                      {item.photos.length} photos
+                    </span>
+                  )}
+                </div>
+                <div className="p-5 flex flex-col flex-1">
+                  <p className="text-[11px] text-gray-400 font-medium mb-2">{item.date}</p>
+                  <h3 className="text-[15px] font-semibold text-gray-900 leading-snug mb-2 group-hover:text-[#003087] transition-colors duration-150">
+                    {item.title}
+                  </h3>
+                  <p className="text-[13px] text-gray-500 leading-relaxed line-clamp-2">{item.excerpt}</p>
+                </div>
+              </Link>
+            )
+          })}
+        </div>
+
+        <div className="md:hidden text-center mt-8">
+          <Link to="/news" className="text-sm font-medium text-[#003087]">View Gallery →</Link>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 // ── Work With Us ───────────────────────────────────────────────────────────────
 function WorkWithUs() {
   const { ref, visible } = useFadeIn()
 
   return (
-    <section className="py-24 bg-white border-t border-gray-100">
+    <section className="py-24 bg-white">
       <div
         ref={ref}
         className={`max-w-screen-xl mx-auto px-6 lg:px-10 transition-all duration-700 ${
@@ -608,6 +701,7 @@ export default function Home() {
     <>
       <HeroSlider />
       <WelcomeSection />
+      <LatestNews />
       <WorkWithUs />
       <FeaturedPublications />
       <PublicationsByYear />
